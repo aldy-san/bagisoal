@@ -8,24 +8,58 @@ class Auth extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
     }
-    public function index()
-    {
-        $data['title'] = 'Beranda';
-        $this->load->view('template_home/header', $data);
-        $this->load->view('index');
-        $this->load->view('template_home/footer');
-    }
     public function login()
     {
-        $data['title'] = 'Login';
-        $this->load->view('template_home/header', $data);
-        $this->load->view('auth/login');
-        $this->load->view('template_home/footer');
+        $this->form_validation->set_message('required', '{field} harus diisi!');
+        $this->form_validation->set_message('valid_email', 'email tidak valid!');
+        $this->form_validation->set_message('required', '{field} harus diisi!');
+        $this->form_validation->set_rules(
+            'email',
+            'Email',
+            'required|trim|valid_email',
+        );
+        $this->form_validation->set_rules(
+            'password',
+            'Password',
+            'required|trim',
+        );
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Login';
+            $this->load->view('template_home/header', $data);
+            $this->load->view('auth/login');
+            $this->load->view('template_home/footer');
+        } else {
+            $this->_login();
+        }
+    }
+
+    private function _login()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $user = $this->db->get_where('users', ['email' => $email])->row_array();
+        //usernya ada
+        if ($user) {
+            //cek password
+            if (password_verify($password, $user['password'])) {
+                $data = [
+                    'email' => $user['email']
+                ];
+                $this->session->set_userdata($data);
+                redirect('user');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
+                redirect('auth/login');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun tidak terdaftar!</div>');
+            redirect('auth/login');
+        }
     }
     public function register()
     {
         $this->form_validation->set_message('required', '{field} harus diisi!');
-        $this->form_validation->set_message('valid_email', '{field} harus menggunakan email yang valid!');
+        $this->form_validation->set_message('valid_email', 'email tidak valid!');
         $this->form_validation->set_message('matches', 'password tidak sama!');
         $this->form_validation->set_message('is_unique', '{field} sudah terdaftar!');
         $this->form_validation->set_message('min_length', '{field} harus memiliki panjang 6-12 karakter!');
@@ -66,7 +100,7 @@ class Auth extends CI_Controller
 
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
-                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'foto' => 'default.jpg',
                 'total_poin' => '0'
             ];
@@ -74,5 +108,12 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat, Anda telat berhasil mendaftar!</div>');
             redirect('auth/login');
         }
+    }
+    public function logout()
+    {
+        $this->session->unset_userdata('email');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda telah Logout</div>');
+        redirect('auth/login');
     }
 }
