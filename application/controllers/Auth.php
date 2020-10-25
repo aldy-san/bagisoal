@@ -10,26 +10,31 @@ class Auth extends CI_Controller
     }
     public function login()
     {
-        $this->form_validation->set_message('required', '{field} harus diisi!');
-        $this->form_validation->set_message('valid_email', 'email tidak valid!');
-        $this->form_validation->set_message('required', '{field} harus diisi!');
-        $this->form_validation->set_rules(
-            'email',
-            'Email',
-            'required|trim|valid_email',
-        );
-        $this->form_validation->set_rules(
-            'password',
-            'Password',
-            'required|trim',
-        );
-        if ($this->form_validation->run() == false) {
-            $data['title'] = 'Login';
-            $this->load->view('template_home/header', $data);
-            $this->load->view('auth/login');
-            $this->load->view('template_home/footer');
+        if ($this->session->userdata('email')) {
+            redirect('<?= base_url?>');
         } else {
-            $this->_login();
+            $this->form_validation->set_message('required', '{field} harus diisi!');
+            $this->form_validation->set_message('valid_email', 'email tidak valid!');
+            $this->form_validation->set_message('required', '{field} harus diisi!');
+            $this->form_validation->set_rules(
+                'email',
+                'Email',
+                'required|trim|valid_email',
+            );
+            $this->form_validation->set_rules(
+                'password',
+                'Password',
+                'required|trim',
+            );
+            if ($this->form_validation->run() == false) {
+                $data['title'] = 'Login';
+                $this->load->view('template_home/header', $data);
+                $this->load->view('template_home/header_umum', $data);
+                $this->load->view('auth/login');
+                $this->load->view('template_home/footer');
+            } else {
+                $this->_login();
+            }
         }
     }
 
@@ -46,7 +51,7 @@ class Auth extends CI_Controller
                     'email' => $user['email']
                 ];
                 $this->session->set_userdata($data);
-                redirect('user');
+                redirect('');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
                 redirect('auth/login');
@@ -93,6 +98,7 @@ class Auth extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Registrasi';
             $this->load->view('template_home/header', $data);
+            $this->load->view('template_home/header_umum', $data);
             $this->load->view('auth/register');
             $this->load->view('template_home/footer');
         } else {

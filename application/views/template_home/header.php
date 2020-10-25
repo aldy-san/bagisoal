@@ -22,26 +22,44 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <!-- NAVLINK -->
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item active">
+        <li class="nav-item 
+        <?php if ($this->uri->segment(1) == "") {
+          echo "active";
+        } ?>">
           <a class="nav-link" href="<?= base_url('') ?>">BERANDA<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="soal-main.html">SOAL-SOAL</a>
+        <li class="nav-item 
+        <?php if ($this->uri->segment(1) == "soal") {
+          echo "active";
+        } ?>">
+          <a class="nav-link" href="<?= base_url('soal') ?>">SOAL-SOAL</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="kompetisi-main.html">KOMPETISI</a>
+        <li class="nav-item 
+        <?php if ($this->uri->segment(1) == "kompetisi") {
+          echo "active";
+        } ?>">
+          <a class="nav-link" href="<?= base_url('kompetisi') ?>">KOMPETISI</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="komunitas.html">KOMUNITAS</a>
+        <li class="nav-item dropdown
+        <?php if ($this->uri->segment(1) == "komunitas") {
+          echo "active";
+        } ?>">
+          <a class="nav-link dropdown-toggle" href="#" id="komunitasDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            KOMUNITAS
+          </a>
+          <div class="dropdown-menu" aria-labelledby="komunitasDropdown">
+            <a class="dropdown-item" href="<?= base_url('komunitas/forum') ?>">BAGI <b>SOAL</b></a>
+            <a class="dropdown-item" href="<?= base_url('komunitas/catatan') ?>">BAGI <b>CATATAN</b></a>
+          </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="peringkatDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             PERINGKAT
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">PENGGUNA</a>
+          <div class="dropdown-menu" aria-labelledby="peringkatDropdown">
             <a class="dropdown-item" href="#">PROVINSI</a>
             <a class="dropdown-item" href="#">KOTA</a>
             <a class="dropdown-item" href="#">SEKOLAH</a>
@@ -59,9 +77,3 @@
           </div>
         </div>
       </form>
-      <div class="mr-2 ml-0">
-        <a class="btn btn-outline-warning mx-1" href="<?= base_url('auth/login') ?>">MASUK</a>
-        <a class="btn btn-outline-warning mx-1" href="<?= base_url('auth/register') ?>">DAFTAR</a>
-      </div>
-    </div>
-  </nav>
