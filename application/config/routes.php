@@ -57,5 +57,6 @@ $route['soal'] = 'user/soal_main';
 $route['kompetisi'] = 'user/kompetisi_main';
 $route['komunitas/forum'] = 'user/forum_main';
 $route['komunitas/catatan'] = 'user/catatan_main';
+
 // $route['forum'] = 'user/soal_main';
 // $route['catatan'] = 'user/soal_main';

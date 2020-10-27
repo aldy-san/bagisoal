@@ -9,7 +9,12 @@ class User extends CI_Controller
         $this->load->view('template_home/header', $data);
         if ($this->session->userdata('email')) {
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-            $this->load->view('template_home/header_user', $data);
+            $admin = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+            if ($admin) {
+                redirect('admin');
+            } else {
+                $this->load->view('template_home/header_user', $data);
+            }
         } else {
             $this->load->view('template_home/header_umum', $data);
         }

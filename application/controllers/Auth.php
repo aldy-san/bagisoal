@@ -8,33 +8,33 @@ class Auth extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
     }
-    public function login()
+    public function index()
     {
+        //jika sudah login di tendang
         if ($this->session->userdata('email')) {
-            redirect('<?= base_url?>');
+            redirect('');
+        }
+        $this->form_validation->set_message('required', '{field} harus diisi!');
+        $this->form_validation->set_message('valid_email', 'email tidak valid!');
+        $this->form_validation->set_message('required', '{field} harus diisi!');
+        $this->form_validation->set_rules(
+            'email',
+            'Email',
+            'required|trim|valid_email',
+        );
+        $this->form_validation->set_rules(
+            'password',
+            'Password',
+            'required|trim',
+        );
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Login';
+            $this->load->view('template_home/header', $data);
+            $this->load->view('template_home/header_umum', $data);
+            $this->load->view('auth/login');
+            $this->load->view('template_home/footer');
         } else {
-            $this->form_validation->set_message('required', '{field} harus diisi!');
-            $this->form_validation->set_message('valid_email', 'email tidak valid!');
-            $this->form_validation->set_message('required', '{field} harus diisi!');
-            $this->form_validation->set_rules(
-                'email',
-                'Email',
-                'required|trim|valid_email',
-            );
-            $this->form_validation->set_rules(
-                'password',
-                'Password',
-                'required|trim',
-            );
-            if ($this->form_validation->run() == false) {
-                $data['title'] = 'Login';
-                $this->load->view('template_home/header', $data);
-                $this->load->view('template_home/header_umum', $data);
-                $this->load->view('auth/login');
-                $this->load->view('template_home/footer');
-            } else {
-                $this->_login();
-            }
+            $this->_login();
         }
     }
 
@@ -54,15 +54,19 @@ class Auth extends CI_Controller
                 redirect('');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
-                redirect('auth/login');
+                redirect('auth');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun tidak terdaftar!</div>');
-            redirect('auth/login');
+            redirect('auth');
         }
     }
     public function register()
     {
+        //jika sudah login di tendang
+        if ($this->session->userdata('email')) {
+            redirect('');
+        }
         $this->form_validation->set_message('required', '{field} harus diisi!');
         $this->form_validation->set_message('valid_email', 'email tidak valid!');
         $this->form_validation->set_message('matches', 'password tidak sama!');
@@ -112,14 +116,13 @@ class Auth extends CI_Controller
             ];
             $this->db->insert('users', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat, Anda telat berhasil mendaftar!</div>');
-            redirect('auth/login');
+            redirect('auth');
         }
     }
     public function logout()
     {
         $this->session->unset_userdata('email');
-
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda telah Logout</div>');
-        redirect('auth/login');
+        redirect('auth');
     }
 }
