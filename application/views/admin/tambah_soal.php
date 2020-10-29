@@ -3,8 +3,8 @@
                 <div class="row">
                     <nav aria-label="breadcrumb" class="w-100">
                         <ol class="breadcrumb m-0 w-100">
-                            <li class="breadcrumb-item" aria-current="page"><a href="admin.html">Beranda</a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a href="daftarsoal.html">Daftar Soal</a></li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="<?= base_url('admin') ?>">Beranda</a></li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="<?= base_url('admin/daftar_soal') ?>">Daftar Soal</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Tambah Soal</li>
                         </ol>
                     </nav>
@@ -13,6 +13,7 @@
             <div class="container my-3 shadow p-md-5">
                 <div class="row">
                     <div class="col-12">
+                        <?= $this->session->flashdata('message'); ?>
                         <h2><i class="fas fa-plus mr-2"></i></i>TAMBAH SOAL</h2>
                     </div>
                 </div>

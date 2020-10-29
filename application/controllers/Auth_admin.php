@@ -10,10 +10,13 @@ class Auth_admin extends CI_Controller
         //jika sudah login
         if ($this->session->userdata('email')) {
             //jika sudah login sebagai admin
+
             $email = $this->session->userdata('email');
             $admin = $this->db->get_where('admin', ['email' => $email])->row_array();
             if (!$admin) {
                 redirect('');
+            } else {
+                redirect('admin');
             }
         }
     }

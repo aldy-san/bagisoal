@@ -11,6 +11,10 @@ class Admin extends CI_Controller
         if ($this->session->userdata('email')) {
             //jika sudah login sebagai admin
             $email = $this->session->userdata('email');
+            $admin = $this->db->get_where('admin', ['email' => $email])->row_array();
+            if (!$admin) {
+                redirect('');
+            }
         } else {
             redirect('auth_admin');
         }
@@ -25,6 +29,20 @@ class Admin extends CI_Controller
         $this->load->view('admin/index');
         $this->load->view('admin/footer');
     }
+    //DAFTAR SOAL
+    public function daftar_soal()
+    {
+
+        $data['soal'] = $this->m_admin->tampil_data('soal')->result();
+        $data['title'] = 'Daftar Soal';
+        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/header_admin', $data);
+        $this->load->view('admin/side_bar');
+        $this->load->view('admin/daftar_soal', $data);
+        $this->load->view('admin/footer');
+    }
+    //TAMBAH SOAL
     public function tambah_soal()
     {
         $data['title'] = 'Tambah Soal';
@@ -48,7 +66,69 @@ class Admin extends CI_Controller
             'poin'          => $this->input->post('poin'),
             'pembahasan'    => $this->input->post('pembahasan')
         );
-        $this->load->model('m_soal');
-        $this->m_soal->tambah_data($data);
+        $this->m_admin->tambah_data('soal', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambahkan</div>');
+        redirect('admin/tambah_soal');
+    }
+    //TAMBAH KOMPETISI
+    public function tambah_kompetisi()
+    {
+        $data['title'] = 'Tambah kompetisi';
+        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/header_admin', $data);
+        $this->load->view('admin/side_bar');
+        $this->load->view('admin/tambah_kompetisi');
+        $this->load->view('admin/footer');
+    }
+    public function input_kompetisi()
+    {
+        $banner = $_FILES['banner'];
+        if ($banner != '') {
+            $config['upload_path'] = './assets/banner';
+            $config['allowed_types'] = 'jpg|png';
+
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('banner')) {
+                echo "Upload Gagal";
+                die();
+            } else {
+                $banner = $this->upload->data('file_name');
+            }
+        }
+        $data = array(
+            'nama'                   => $this->input->post('nama'),
+            'penyelenggara'          => $this->input->post('penyelenggara'),
+            'batasPendaftaran'       => $this->input->post('batasPendaftaran'),
+            'mulai'                  => $this->input->post('mulai'),
+            'berakhir'               => $this->input->post('berakhir'),
+            'banner'                 => $banner
+        );
+        $this->m_admin->tambah_data('kompetisi', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambahkan</div>');
+        redirect('admin/tambah_kompetisi');
+    }
+    //TAMBAH MITRA
+    public function tambah_mitra()
+    {
+        $data['title'] = 'Tambah Mitra';
+        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/header_admin', $data);
+        $this->load->view('admin/side_bar');
+        $this->load->view('admin/tambah_mitra');
+        $this->load->view('admin/footer');
+    }
+    public function input_mitra()
+    {
+        $data = array(
+            'nama'          => $this->input->post('nama'),
+            'bidang'        => $this->input->post('bidang'),
+            'alamat'        => $this->input->post('alamat'),
+            'email'         => $this->input->post('email')
+        );
+        $this->m_admin->tambah_data('mitra', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambahkan</div>');
+        redirect('admin/tambah_mitra');
     }
 }
