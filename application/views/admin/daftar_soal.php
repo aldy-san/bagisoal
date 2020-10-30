@@ -36,7 +36,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <!-- Modal -->
+        <!-- Modal
         <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row justify-content-center m-2">
             <div class="col-4">
                 <nav aria-label="...">

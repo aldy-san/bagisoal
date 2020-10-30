@@ -15,4 +15,9 @@ class M_admin extends CI_Model
         $this->db->where('kode_soal', $id);
         $this->db->delete('soal');
     }
+    public function hapus_users($id)
+    {
+        $this->db->where('id_user', $id);
+        $this->db->delete('users');
+    }
 }

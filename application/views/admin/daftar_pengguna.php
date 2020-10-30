@@ -10,94 +10,38 @@
         </div>
     </div>
     <div class="container my-3 shadow p-md-5">
+        <?= $this->session->flashdata('message'); ?>
         <h3><i class="fas fa-user mr-2"></i></i>DAFTAR PENGGUNA</h3>
         <hr>
         <table class="table table-sm table-responsive-sm text-center table-striped">
             <thead>
                 <tr>
-                    <th scope="col" class="align-middle">No</th>
+                    <th scope="col" class="align-middle">id user</th>
                     <th scope="col" class="align-middle">Nama</th>
-                    <th scope="col" class="align-middle">Tempat Lahir</th>
+                    <!-- <th scope="col" class="align-middle">Tempat Lahir</th>
                     <th scope="col" class="align-middle">Tanggal Lahir</th>
-                    <th scope="col" class="align-middle">Instansi</th>
+                    <th scope="col" class="align-middle">Instansi</th> -->
                     <th scope="col" class="align-middle">Email</th>
                     <th colspan="2" scope="col" class="align-middle">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Lailatul Khasanah</td>
-                    <td>Tulungagung</td>
+                <?php foreach ($pengguna as $pengguna) : ?>
+                    <tr>
+                        <th scope="row"><?= $pengguna->id_user ?></th>
+                        <td><?= $pengguna->nama ?></td>
+                        <!-- <td>Tulungagung</td>
                     <td>27-07-2001</td>
-                    <td>Universitas Negeri Malang</td>
-                    <td>lailatulkhasanah277@gmail.com</td>
-                    <td><a href="" class="btn btn-info">Profil</a></td>
-                    <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Nur Syahrial Maulidi</td>
-                    <td>Malang</td>
-                    <td>21-12-2000</td>
-                    <td>Universitas Indonesia</td>
-                    <td>nur.sm@gmail.com</td>
-                    <td><a href="" class="btn btn-info">Profil</a></td>
-                    <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Muhammad Syukur Abadi</td>
-                    <td>Malang</td>
-                    <td>22-02-2000</td>
-                    <td>Universitas Gadjah Mada</td>
-                    <td>inisyukur@gmail.com</td>
-                    <td><a href="" class="btn btn-info">Profil</a></td>
-                    <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Salsabilla Azzahra</td>
-                    <td>Blitar</td>
-                    <td>11-02-2003</td>
-                    <td>SMA Negeri 1 Blitar</td>
-                    <td>salsabilus@gmail.com</td>
-                    <td><a href="" class="btn btn-info">Profil</a></td>
-                    <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Cheryllina Athalia</td>
-                    <td>Tulungagung</td>
-                    <td>24-02-2002</td>
-                    <td>SMA Negeri 1 Boyolangu</td>
-                    <td>cherylofficial@gmail.com</td>
-                    <td><a href="" class="btn btn-info">Profil</a></td>
-                    <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Adhelia Zafiera</td>
-                    <td>Solo</td>
-                    <td>22-02-2002</td>
-                    <td>SMA Negeri 1 Solo</td>
-                    <td>raradhelia@gmail.com</td>
-                    <td><a href="" class="btn btn-info">Profil</a></td>
-                    <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>Chayra Fayyola</td>
-                    <td>Tulungaung</td>
-                    <td>12-02-2001</td>
-                    <td>Institut Teknologi Bandung</td>
-                    <td>chayra.fayy@gmail.com</td>
-                    <td><a href="" class="btn btn-info">Profil</a></td>
-                    <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-                </tr>
+                    <td>Universitas Negeri Malang</td> -->
+                        <td><?= $pengguna->email ?></td>
+                        <td><a href="" class="btn btn-info">Profil</a></td>
+                        <td onclick="return confirm('yakin?')"><a type="button" href="<?= base_url('admin/hapus_users/' . $pengguna->id_user) ?>" id="btn-delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+                        <!-- <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td> -->
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
-        <!-- Modal -->
+        <!-- Modal
         <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -116,7 +60,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row justify-content-center m-2">
             <div class="col-4">
                 <nav aria-label="...">

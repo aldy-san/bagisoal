@@ -33,7 +33,7 @@ class Admin extends CI_Controller
     public function daftar_pengguna()
     {
 
-        $data['users'] = $this->m_admin->tampil_data('users')->result();
+        $data['pengguna'] = $this->m_admin->tampil_data('users')->result();
         $data['title'] = 'Daftar Pengguna';
         $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/header', $data);
@@ -191,5 +191,12 @@ class Admin extends CI_Controller
         $this->m_admin->hapus_soal($id);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Berhasil dihapus</div>');
         redirect('daftar/soal');
+    }
+    //HAPUS SOAL
+    public function hapus_users($id)
+    {
+        $this->m_admin->hapus_users($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Berhasil dihapus</div>');
+        redirect('daftar/pengguna');
     }
 }
