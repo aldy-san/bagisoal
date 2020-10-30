@@ -57,6 +57,13 @@ $route['soal'] = 'user/soal_main';
 $route['kompetisi'] = 'user/kompetisi_main';
 $route['komunitas/forum'] = 'user/forum_main';
 $route['komunitas/catatan'] = 'user/catatan_main';
-
+$route['daftar/pengguna'] = 'admin/daftar_pengguna';
+$route['daftar/soal'] = 'admin/daftar_soal';
+$route['daftar/kompetisi'] = 'admin/daftar_kompetisi';
+$route['daftar/mitra'] = 'admin/daftar_mitra';
+$route['daftar/admin'] = 'admin/daftar_admin';
+$route['tambah/soal'] = 'admin/tambah_soal';
+$route['tambah/kompetisi'] = 'admin/tambah_kompetisi';
+$route['tambah/mitra'] = 'admin/tambah_mitra';
 // $route['forum'] = 'user/soal_main';
 // $route['catatan'] = 'user/soal_main';

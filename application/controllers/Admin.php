@@ -29,6 +29,19 @@ class Admin extends CI_Controller
         $this->load->view('admin/index');
         $this->load->view('admin/footer');
     }
+    //DAFTAR PENGGUNA
+    public function daftar_pengguna()
+    {
+
+        $data['users'] = $this->m_admin->tampil_data('users')->result();
+        $data['title'] = 'Daftar Pengguna';
+        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/header_admin', $data);
+        $this->load->view('admin/side_bar');
+        $this->load->view('admin/daftar_pengguna', $data);
+        $this->load->view('admin/footer');
+    }
     //DAFTAR SOAL
     public function daftar_soal()
     {
@@ -42,6 +55,46 @@ class Admin extends CI_Controller
         $this->load->view('admin/daftar_soal', $data);
         $this->load->view('admin/footer');
     }
+    //DAFTAR KOMPETISI
+    public function daftar_kompetisi()
+    {
+
+        $data['kompetisi'] = $this->m_admin->tampil_data('kompetisi')->result();
+        $data['title'] = 'Daftar kompetisi';
+        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/header_admin', $data);
+        $this->load->view('admin/side_bar');
+        $this->load->view('admin/daftar_kompetisi', $data);
+        $this->load->view('admin/footer');
+    }
+    //DAFTAR mitra
+    public function daftar_mitra()
+    {
+
+        $data['mitra'] = $this->m_admin->tampil_data('mitra')->result();
+        $data['title'] = 'Daftar mitra';
+        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/header_admin', $data);
+        $this->load->view('admin/side_bar');
+        $this->load->view('admin/daftar_mitra', $data);
+        $this->load->view('admin/footer');
+    }
+    //DAFTAR ADMIN
+    public function daftar_admin()
+    {
+
+        $data['admin'] = $this->m_admin->tampil_data('admin')->result();
+        $data['title'] = 'Daftar Admin';
+        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/header_admin', $data);
+        $this->load->view('admin/side_bar');
+        $this->load->view('admin/daftar_admin', $data);
+        $this->load->view('admin/footer');
+    }
+
     //TAMBAH SOAL
     public function tambah_soal()
     {
@@ -68,7 +121,7 @@ class Admin extends CI_Controller
         );
         $this->m_admin->tambah_data('soal', $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambahkan</div>');
-        redirect('admin/tambah_soal');
+        redirect('tambah/soal');
     }
     //TAMBAH KOMPETISI
     public function tambah_kompetisi()
@@ -106,7 +159,7 @@ class Admin extends CI_Controller
         );
         $this->m_admin->tambah_data('kompetisi', $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambahkan</div>');
-        redirect('admin/tambah_kompetisi');
+        redirect('tambah/kompetisi');
     }
     //TAMBAH MITRA
     public function tambah_mitra()
@@ -129,6 +182,14 @@ class Admin extends CI_Controller
         );
         $this->m_admin->tambah_data('mitra', $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambahkan</div>');
-        redirect('admin/tambah_mitra');
+        redirect('tambah/mitra');
+    }
+
+    //HAPUS SOAL
+    public function hapus_soal($id)
+    {
+        $this->m_admin->hapus_soal($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Berhasil dihapus</div>');
+        redirect('daftar/soal');
     }
 }

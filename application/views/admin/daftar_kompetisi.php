@@ -4,36 +4,53 @@
             <nav aria-label="breadcrumb" class="w-100">
                 <ol class="breadcrumb m-0 w-100">
                     <li class="breadcrumb-item" aria-current="page"><a href="<?= base_url('admin') ?>">Beranda</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Daftar Soal</li>
+                    <li class="breadcrumb-item active" aria-current="page">Daftar Kompetisi</li>
                 </ol>
             </nav>
         </div>
     </div>
     <div class="container my-3 shadow p-md-5">
-        <?= $this->session->flashdata('message'); ?>
-        <h3><i class="fas fa-folder mr-2"></i>DAFTAR SOAL</h3>
+        <h3><i class="fas fa-trophy mr-2"></i></i>DAFTAR KOMPETISI</h3>
         <hr>
-        <a href="<?= base_url('admin/tambah_soal') ?>" class="btn btn-primary mb-3"><i class="fas fa-plus-square mr-2"></i>Tambah Data</a>
+        <a href="tambah-kompetisi.html" class="btn btn-primary mb-3"><i class="fas fa-plus-square mr-2"></i>Tambah Kompetisi</a>
         <table class="table table-sm table-responsive-sm text-center table-striped">
             <thead>
                 <tr>
-                    <th scope="col" class="align-middle">KODE SOAL</th>
-                    <th scope="col" class="align-middle">SOAL</th>
-                    <th scope="col" class="align-middle">SUMBER</th>
-                    <th scope="col" colspan="3" class="align-middle">AKSI</th>
+                    <th scope="col" class="align-middle" rowspan="2">No</th>
+                    <th scope="col" class="align-middle" rowspan="2">Nama</th>
+                    <th scope="col" class="align-middle" rowspan="2">Penyelenggara</th>
+                    <th class="align-middle" colspan="3">Tanggal</th>
+                    <th scope="col" class="align-middle" colspan="3" rowspan="2">Aksi</th>
+                </tr>
+                <tr>
+                    <th scope="col" class="align-middle">Batas Pendaftaran</th>
+                    <th scope="col" class="align-middle">Dimulai</th>
+                    <th scope="col" class="align-middle">Berakhir</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($soal as $soal) : ?>
-                    <tr>
-                        <th scope="row"><?= $soal->materi . $soal->kode_soal ?></th>
-                        <td class="text-left"><?= $soal->soal ?>...</td>
-                        <td class="text-left"><?= $soal->sumber ?></td>
-                        <td><a href="" class="btn btn-info">Detail</a></td>
-                        <td><a href="edit-soal.html" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
-                        <td onclick="return confirm('yakin?')"><a type="button" href="<?= base_url('admin/hapus_soal/' . $soal->kode_soal) ?>" id="btn-delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
-                    </tr>
-                <?php endforeach; ?>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Calculus Cup</td>
+                    <td>Universitas Negeri Jakarta</td>
+                    <td>8 Oktober 2020</td>
+                    <td>10 Oktober 2020</td>
+                    <td>11 Oktober 2020</td>
+                    <td><a href="" class="btn btn-info">Detail</a></td>
+                    <td><a href="edit-kompetisi.html" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
+                    <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>ONMIPA</td>
+                    <td>Universitas Negeri Jakarta</td>
+                    <td>10 Oktober 2020</td>
+                    <td>12 Oktober 2020</td>
+                    <td>14 Oktober 2020</td>
+                    <td><a href="" class="btn btn-info">Detail</a></td>
+                    <td><a href="edit-kompetisi.html" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
+                    <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+                </tr>
             </tbody>
         </table>
         <!-- Modal -->
@@ -41,16 +58,16 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Hapus Soal</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Hapus Kompetisi</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        Apakah anda yakin menghapus soal ini?
+                        Apakah anda yakin menghapus Kompetisi ini?
                     </div>
                     <div class="modal-footer">
-                        <a type="button" class="btn btn-primary" data-dismiss="modal">Iya</a>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Iya</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
                     </div>
                 </div>

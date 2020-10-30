@@ -12,6 +12,16 @@
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
     })
 </script>
+<script>
+    $(document).ready(function() {
+        $('.btn-yes').click(function() {
+            alert(true);
+        });
+        $('#btn-delete').click(function() {
+            $('#hapus').modal('show');
+        })
+    });
+</script>
 </body>
 
 </html>

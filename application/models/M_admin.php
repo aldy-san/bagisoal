@@ -10,4 +10,9 @@ class M_admin extends CI_Model
     {
         return $this->db->get($table);
     }
+    public function hapus_soal($id)
+    {
+        $this->db->where('kode_soal', $id);
+        $this->db->delete('soal');
+    }
 }
