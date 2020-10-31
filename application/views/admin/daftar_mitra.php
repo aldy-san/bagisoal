@@ -35,7 +35,7 @@
                         <td><?= $mitra->alamat ?></td>
                         <td><?= $mitra->email ?></td>
                         <td><a href="" class="btn btn-info">Detail</a></td>
-                        <td><a href="edit-mitra.html" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
+                        <td><a href="<?= base_url('edit/mitra/' . $mitra->id_mitra) ?>" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
                         <td onclick="return confirm('yakin?')"><a type="button" href="<?= base_url('admin/hapus_mitra/' . $mitra->id_mitra) ?>" id="btn-delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
 
                     </tr>

@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-12">
                 <?= $this->session->flashdata('message'); ?>
-                <h2><i class="fas fa-edit mr-2"></i></i>EDIT SOAL</h2>
+                <h2><i class="fas fa-edit mr-2"></i></i>EDIT SOAL - <span class="text-primary"><?= $soal['materi'] . $soal['kode_soal'] ?></span></h2>
             </div>
         </div>
         <div class="row">
@@ -22,6 +22,7 @@
                 <div class="form-row my-2">
                     <div class="form-group col-12">
                         <label for="soal"><b>Soal:</b></label>
+                        <input type="hidden" name="kode_soal" id="kode_soal" value="<?= $this->uri->segment(3) ?>">
                         <textarea class="form-control col-12 p-2" id="soal" name="soal" placeholder="Masukkan Soal"><?= $soal['soal']; ?></textarea>
                         <?= form_error('soal', '<small class="text-danger ml-0">', '</small>'); ?>
                     </div>

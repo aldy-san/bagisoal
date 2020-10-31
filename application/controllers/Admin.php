@@ -35,7 +35,7 @@ class Admin extends CI_Controller
         //PAGINATION
         $config['base_url'] = 'http://localhost/bagisoal/daftar/pengguna/';
         $config['total_rows'] = $this->m_admin->jumlah_baris('users');
-        $config['per_page'] = 2;
+        $config['per_page'] = 9;
         $config['start'] = $this->uri->segment(3);
         $this->pagination->initialize($config);
 
@@ -231,6 +231,11 @@ class Admin extends CI_Controller
             'Berakhir',
             'required',
         );
+        $this->form_validation->set_rules(
+            'banner',
+            'Banner',
+            'required',
+        );
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Tambah kompetisi';
             $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
@@ -379,13 +384,160 @@ class Admin extends CI_Controller
             $this->load->view('admin/edit_soal', $data);
             $this->load->view('admin/footer');
         } else {
-            $this->input_soal();
+            $this->_edit_soal();
         }
     }
+    public function _edit_soal()
+    {
+        $data = array(
+            'soal'          => $this->input->post('soal'),
+            'opsi1'         => $this->input->post('opsi1'),
+            'opsi2'         => $this->input->post('opsi2'),
+            'opsi3'         => $this->input->post('opsi3'),
+            'opsi4'         => $this->input->post('opsi4'),
+            'sumber'        => $this->input->post('sumber'),
+            'materi'        => $this->input->post('materi'),
+            'poin'          => $this->input->post('poin'),
+            'pembahasan'    => $this->input->post('pembahasan')
+        );
+        $where = array(
+            'kode_soal' => $this->input->post('kode_soal')
+        );
+        $this->m_admin->edit_data('soal', $data, $where);
+        $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">Data Berhasil di ubah</div>');
+        redirect('daftar/soal');
+    }
     //EDIT KOMPETISI
+    public function edit_kompetisi()
+    {
+        $this->form_validation->set_rules(
+            'nama',
+            'Nama Kompetisi',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'penyelenggara',
+            'Penyelenggara',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'batasPendaftaran',
+            'Batas',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'mulai',
+            'Mulai',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'berakhir',
+            'Berakhir',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'banner',
+            'Banner',
+            'required',
+        );
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Edit kompetisi';
+            $config['base_url'] = 'http://localhost/bagisoal/edit/kompetisi/';
+            $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+            $data['kompetisi'] = $this->db->get_where('kompetisi', ['kode_kompetisi' => $this->uri->segment(3)])->row_array();
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/header_admin', $data);
+            $this->load->view('admin/side_bar');
+            $this->load->view('admin/edit_kompetisi', $data);
+            $this->load->view('admin/footer');
+        } else {
+            $this->_edit_kompetisi();
+        }
+    }
+    public function _edit_kompetisi()
+    {
+        $banner = $_FILES['banner'];
+        if ($banner != '') {
+            $config['upload_path'] = './assets/banner';
+            $config['allowed_types'] = 'jpg|png';
 
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('banner')) {
+                echo "Upload Gagal";
+                die();
+            } else {
+                $banner = $this->upload->data('file_name');
+            }
+        } else {
+            $banner = 'default_banner.jpg';
+        }
+        $data = array(
+            'nama'                   => $this->input->post('nama'),
+            'penyelenggara'          => $this->input->post('penyelenggara'),
+            'batasPendaftaran'       => $this->input->post('batasPendaftaran'),
+            'mulai'                  => $this->input->post('mulai'),
+            'berakhir'               => $this->input->post('berakhir'),
+            'banner'                 => $banner
+        );
+        $where = array(
+            'kode_kompetisi' => $this->input->post('kode_kompetisi')
+        );
+        $this->m_admin->edit_data('kompetisi', $data, $where);
+        $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">Data Berhasil di ubah</div>');
+        redirect('daftar/kompetisi');
+    }
     //EDIT MITRA
-
+    public function edit_mitra()
+    {
+        $this->form_validation->set_rules(
+            'nama',
+            'Nama Mitra',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'alamat',
+            'Alamat',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'bidang',
+            'Bidang',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'email',
+            'Email Mitra',
+            'required|valid_email',
+        );
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Edit Mitra';
+            $config['base_url'] = 'http://localhost/bagisoal/edit/mitra/';
+            $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+            $data['mitra'] = $this->db->get_where('mitra', ['id_mitra' => $this->uri->segment(3)])->row_array();
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/header_admin', $data);
+            $this->load->view('admin/side_bar');
+            $this->load->view('admin/edit_mitra', $data);
+            $this->load->view('admin/footer');
+        } else {
+            $this->_edit_mitra();
+        }
+    }
+    public function _edit_mitra()
+    {
+        $data = array(
+            'nama'          => $this->input->post('nama'),
+            'bidang'        => $this->input->post('bidang'),
+            'alamat'        => $this->input->post('alamat'),
+            'email'         => $this->input->post('email')
+        );
+        $where = array(
+            'id_mitra' => $this->input->post('id_mitra')
+        );
+        $this->m_admin->edit_data('soal', $data, $where);
+        $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">Data Berhasil di ubah</div>');
+        redirect('daftar/mitra');
+    }
     //HAPUS SOAL
     public function hapus_soal($id)
     {

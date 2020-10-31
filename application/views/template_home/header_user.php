@@ -11,7 +11,7 @@
         </a>
         <div class="dropdown-menu" style="left: -100px;" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#">Dashboard</a>
-            <a class="dropdown-item" href="#">Edit Profile</a>
+            <a class="dropdown-item" href="<?= base_url('user/profil') ?>">My Profile</a>
             <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">Log Out</a>
         </div>
     </li>

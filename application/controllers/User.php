@@ -77,4 +77,31 @@ class User extends CI_Controller
         $this->load->view('user/catatan_main');
         $this->load->view('template_home/footer');
     }
+    // PROFIL
+    public function profil()
+    {
+        if (!$this->session->userdata('email')) {
+            redirect('');
+        }
+        $data['title'] = 'Profil saya';
+        $this->load->view('template_home/header', $data);
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('template_home/header_user', $data);
+
+        $this->load->view('user/profil', $data);
+        $this->load->view('template_home/footer');
+    }
+    public function edit_profil()
+    {
+        if (!$this->session->userdata('email')) {
+            redirect('');
+        }
+        $data['title'] = 'Edit Profil';
+        $this->load->view('template_home/header', $data);
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('template_home/header_user', $data);
+
+        $this->load->view('user/edit_profil', $data);
+        $this->load->view('template_home/footer');
+    }
 }

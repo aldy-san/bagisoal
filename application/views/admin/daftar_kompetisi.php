@@ -43,7 +43,7 @@
                         <td><?php $stamp = strtotime($kom->berakhir);
                             echo date("d F Y", $stamp); ?></td>
                         <td><a href="" class="btn btn-info">Detail</a></td>
-                        <td><a href="edit-kompetisi.html" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
+                        <td><a href="<?= base_url('edit/kompetisi/' . $kom->kode_kompetisi) ?>" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
                         <td onclick="return confirm('yakin?')"><a type="button" href="<?= base_url('admin/hapus_kompetisi/' . $kom->kode_kompetisi) ?>" id="btn-delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                     </tr>
                 <?php endforeach; ?>

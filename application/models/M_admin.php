@@ -6,6 +6,10 @@ class M_admin extends CI_Model
     {
         $this->db->insert($table, $data);
     }
+    public function edit_data($table, $data, $where)
+    {
+        $this->db->update($table, $data, $where);
+    }
     public function tampil_semuaData($table, $id)
     {
         $this->db->from($table);
