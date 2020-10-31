@@ -32,8 +32,14 @@ class Admin extends CI_Controller
     //DAFTAR PENGGUNA
     public function daftar_pengguna()
     {
+        //PAGINATION
+        $config['base_url'] = 'http://localhost/bagisoal/daftar/pengguna/';
+        $config['total_rows'] = $this->m_admin->jumlah_baris('users');
+        $config['per_page'] = 2;
+        $config['start'] = $this->uri->segment(3);
+        $this->pagination->initialize($config);
 
-        $data['pengguna'] = $this->m_admin->tampil_data('users')->result();
+        $data['pengguna'] = $this->m_admin->tampil_data('users', $config['per_page'], $config['start'], 'id_user')->result();
         $data['title'] = 'Daftar Pengguna';
         $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/header', $data);
@@ -45,8 +51,14 @@ class Admin extends CI_Controller
     //DAFTAR SOAL
     public function daftar_soal()
     {
+        //PAGINATION
+        $config['base_url'] = 'http://localhost/bagisoal/daftar/soal/';
+        $config['total_rows'] = $this->m_admin->jumlah_baris('soal');
+        $config['per_page'] = 9;
+        $config['start'] = $this->uri->segment(3);
+        $this->pagination->initialize($config);
 
-        $data['soal'] = $this->m_admin->tampil_data('soal')->result();
+        $data['soal'] = $this->m_admin->tampil_data('soal', $config['per_page'], $config['start'], 'kode_soal')->result();
         $data['title'] = 'Daftar Soal';
         $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/header', $data);
@@ -59,7 +71,14 @@ class Admin extends CI_Controller
     public function daftar_kompetisi()
     {
 
-        $data['kompetisi'] = $this->m_admin->tampil_data('kompetisi')->result();
+        //PAGINATION
+        $config['base_url'] = 'http://localhost/bagisoal/daftar/kompetisi/';
+        $config['total_rows'] = $this->m_admin->jumlah_baris('kompetisi');
+        $config['per_page'] = 9;
+        $config['start'] = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+
+        $data['kompetisi'] = $this->m_admin->tampil_data('kompetisi', $config['per_page'], $config['start'], 'kode_kompetisi')->result();
         $data['title'] = 'Daftar kompetisi';
         $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/header', $data);
@@ -68,11 +87,17 @@ class Admin extends CI_Controller
         $this->load->view('admin/daftar_kompetisi', $data);
         $this->load->view('admin/footer');
     }
-    //DAFTAR mitra
+    //DAFTAR MITRA
     public function daftar_mitra()
     {
+        //PAGINATION
+        $config['base_url'] = 'http://localhost/bagisoal/daftar/mitra/';
+        $config['total_rows'] = $this->m_admin->jumlah_baris('mitra');
+        $config['per_page'] = 9;
+        $config['start'] = $this->uri->segment(3);
+        $this->pagination->initialize($config);
 
-        $data['mitra'] = $this->m_admin->tampil_data('mitra')->result();
+        $data['mitra'] = $this->m_admin->tampil_data('mitra', $config['per_page'], $config['start'], 'id_mitra')->result();
         $data['title'] = 'Daftar mitra';
         $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/header', $data);
@@ -84,8 +109,14 @@ class Admin extends CI_Controller
     //DAFTAR ADMIN
     public function daftar_admin()
     {
+        //PAGINATION
+        $config['base_url'] = 'http://localhost/bagisoal/daftar/admin/';
+        $config['total_rows'] = $this->m_admin->jumlah_baris('admin');
+        $config['per_page'] = 9;
+        $config['start'] = $this->uri->segment(3);
+        $this->pagination->initialize($config);
 
-        $data['admin'] = $this->m_admin->tampil_data('admin')->result();
+        $data['admin'] = $this->m_admin->tampil_data('admin', $config['per_page'], $config['start'], 'id_admin')->result();
         $data['title'] = 'Daftar Admin';
         $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/header', $data);
@@ -98,13 +129,62 @@ class Admin extends CI_Controller
     //TAMBAH SOAL
     public function tambah_soal()
     {
-        $data['title'] = 'Tambah Soal';
-        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('admin/header', $data);
-        $this->load->view('admin/header_admin', $data);
-        $this->load->view('admin/side_bar');
-        $this->load->view('admin/tambah_soal');
-        $this->load->view('admin/footer');
+        $this->form_validation->set_rules(
+            'soal',
+            'Soal',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'opsi1',
+            'Opsi 1',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'opsi2',
+            'Opsi 2',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'opsi3',
+            'Opsi 3',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'opsi4',
+            'Opsi 4',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'sumber',
+            'Sumber',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'materi',
+            'Materi',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'poin',
+            'Poin',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'pembahasan',
+            'Pembahasan',
+            'required',
+        );
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Tambah Soal';
+            $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/header_admin', $data);
+            $this->load->view('admin/side_bar');
+            $this->load->view('admin/tambah_soal');
+            $this->load->view('admin/footer');
+        } else {
+            $this->input_soal();
+        }
     }
     public function input_soal()
     {
@@ -121,18 +201,47 @@ class Admin extends CI_Controller
         );
         $this->m_admin->tambah_data('soal', $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambahkan</div>');
-        redirect('tambah/soal');
+        redirect('daftar/soal');
     }
     //TAMBAH KOMPETISI
     public function tambah_kompetisi()
     {
-        $data['title'] = 'Tambah kompetisi';
-        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('admin/header', $data);
-        $this->load->view('admin/header_admin', $data);
-        $this->load->view('admin/side_bar');
-        $this->load->view('admin/tambah_kompetisi');
-        $this->load->view('admin/footer');
+        $this->form_validation->set_rules(
+            'nama',
+            'Nama Kompetisi',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'penyelenggara',
+            'Penyelenggara',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'batasPendaftaran',
+            'Batas',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'mulai',
+            'Mulai',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'berakhir',
+            'Berakhir',
+            'required',
+        );
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Tambah kompetisi';
+            $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/header_admin', $data);
+            $this->load->view('admin/side_bar');
+            $this->load->view('admin/tambah_kompetisi');
+            $this->load->view('admin/footer');
+        } else {
+            $this->input_kompetisi();
+        }
     }
     public function input_kompetisi()
     {
@@ -148,6 +257,8 @@ class Admin extends CI_Controller
             } else {
                 $banner = $this->upload->data('file_name');
             }
+        } else {
+            $banner = 'default_banner.jpg';
         }
         $data = array(
             'nama'                   => $this->input->post('nama'),
@@ -159,18 +270,42 @@ class Admin extends CI_Controller
         );
         $this->m_admin->tambah_data('kompetisi', $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambahkan</div>');
-        redirect('tambah/kompetisi');
+        redirect('daftar/kompetisi');
     }
     //TAMBAH MITRA
     public function tambah_mitra()
     {
-        $data['title'] = 'Tambah Mitra';
-        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('admin/header', $data);
-        $this->load->view('admin/header_admin', $data);
-        $this->load->view('admin/side_bar');
-        $this->load->view('admin/tambah_mitra');
-        $this->load->view('admin/footer');
+        $this->form_validation->set_rules(
+            'nama',
+            'Nama Mitra',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'alamat',
+            'Alamat',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'bidang',
+            'Bidang',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'email',
+            'Email Mitra',
+            'required|valid_email',
+        );
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Tambah Mitra';
+            $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/header_admin', $data);
+            $this->load->view('admin/side_bar');
+            $this->load->view('admin/tambah_mitra');
+            $this->load->view('admin/footer');
+        } else {
+            $this->input_mitra();
+        }
     }
     public function input_mitra()
     {
@@ -182,21 +317,94 @@ class Admin extends CI_Controller
         );
         $this->m_admin->tambah_data('mitra', $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambahkan</div>');
-        redirect('tambah/mitra');
+        redirect('daftar/mitra');
     }
+
+    //EDIT SOAL
+    public function edit_soal()
+    {
+        $this->form_validation->set_rules(
+            'soal',
+            'Soal',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'opsi1',
+            'Opsi 1',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'opsi2',
+            'Opsi 2',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'opsi3',
+            'Opsi 3',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'opsi4',
+            'Opsi 4',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'sumber',
+            'Sumber',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'materi',
+            'Materi',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'poin',
+            'Poin',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'pembahasan',
+            'Pembahasan',
+            'required',
+        );
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Edit Soal';
+            $config['base_url'] = 'http://localhost/bagisoal/edit/soal/';
+            $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+            $data['soal'] = $this->db->get_where('soal', ['kode_soal' => $this->uri->segment(3)])->row_array();
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/header_admin', $data);
+            $this->load->view('admin/side_bar');
+            $this->load->view('admin/edit_soal', $data);
+            $this->load->view('admin/footer');
+        } else {
+            $this->input_soal();
+        }
+    }
+    //EDIT KOMPETISI
+
+    //EDIT MITRA
 
     //HAPUS SOAL
     public function hapus_soal($id)
     {
-        $this->m_admin->hapus_soal($id);
+        $this->m_admin->hapus_data('soal', $id, 'kode_soal');
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Berhasil dihapus</div>');
         redirect('daftar/soal');
     }
-    //HAPUS SOAL
-    public function hapus_users($id)
+    //HAPUS MITRA
+    public function hapus_mitra($id)
     {
-        $this->m_admin->hapus_users($id);
+        $this->m_admin->hapus_data('mitra', $id, 'id_mitra');
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Berhasil dihapus</div>');
-        redirect('daftar/pengguna');
+        redirect('daftar/mitra');
+    }
+    //HAPUS KOMPETISI
+    public function hapus_kompetisi($id)
+    {
+        $this->m_admin->hapus_data('kompetisi', $id, 'kode_kompetisi');
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Berhasil dihapus</div>');
+        redirect('daftar/kompetisi');
     }
 }

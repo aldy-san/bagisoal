@@ -30,7 +30,7 @@
                         <td class="text-left"><?= $soal->soal ?>...</td>
                         <td class="text-left"><?= $soal->sumber ?></td>
                         <td><a href="" class="btn btn-info">Detail</a></td>
-                        <td><a href="edit-soal.html" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
+                        <td><a href="<?= base_url('edit/soal/' . $soal->kode_soal) ?>" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
                         <td onclick="return confirm('yakin?')"><a type="button" href="<?= base_url('admin/hapus_soal/' . $soal->kode_soal) ?>" id="btn-delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                     </tr>
                 <?php endforeach; ?>
@@ -58,23 +58,8 @@
         </div> -->
         <div class="row justify-content-center m-2">
             <div class="col-4">
-                <nav aria-label="...">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="#">1<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">...</a></li>
-                        <li class="page-item"><a class="page-link" href="#">23</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+                <?= $this->pagination->create_links(); ?>
+
             </div>
         </div>
     </div>

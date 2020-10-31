@@ -6,18 +6,26 @@ class M_admin extends CI_Model
     {
         $this->db->insert($table, $data);
     }
-    public function tampil_data($table)
+    public function tampil_semuaData($table, $id)
     {
-        return $this->db->get($table);
+        $this->db->from($table);
+        $this->db->order_by($id, 'DESC');
+        return $this->db->get();
     }
-    public function hapus_soal($id)
+    public function hapus_data($table, $id, $column)
     {
-        $this->db->where('kode_soal', $id);
-        $this->db->delete('soal');
+        $this->db->where($column, $id);
+        $this->db->delete($table);
     }
-    public function hapus_users($id)
+    public function tampil_data($table, $limit, $start, $id)
     {
-        $this->db->where('id_user', $id);
-        $this->db->delete('users');
+        $this->db->from($table);
+        $this->db->order_by($id, 'DESC');
+        $this->db->limit($limit, $start);
+        return $this->db->get();
+    }
+    public function jumlah_baris($table)
+    {
+        return $this->db->get($table)->num_rows();
     }
 }

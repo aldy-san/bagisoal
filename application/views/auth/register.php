@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="syarat" name="syarat">
-                            <label class="form-check-label" for="invalidCheck">
+                            <label class="form-check-label" for="syarat">
                                 Saya menyetujui syarat dan ketentuan.
                             </label>
                         </div>
@@ -53,7 +53,7 @@
                     <button class="btn btn-primary" type="submit">SIGN UP</button>
                 </form>
                 <hr>
-                <p class="my-4 text-dark">Jika sudah memiliki akun, silahkan login | <a class="text-primary" href="<?= base_url('auth/login') ?>">Login ?</a></p>
+                <p class="my-4 text-dark">Jika sudah memiliki akun, silahkan login | <a class="text-primary" href="<?= base_url('auth') ?>">Login ?</a></p>
             </div>
         </div>
     </div>

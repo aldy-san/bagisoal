@@ -22,9 +22,6 @@ class Auth_admin extends CI_Controller
     }
     public function index()
     {
-        $this->form_validation->set_message('required', '{field} harus diisi!');
-        $this->form_validation->set_message('valid_email', 'email tidak valid!');
-        $this->form_validation->set_message('required', '{field} harus diisi!');
         $this->form_validation->set_rules(
             'email',
             'Email',

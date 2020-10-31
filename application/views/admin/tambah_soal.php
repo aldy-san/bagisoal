@@ -18,11 +18,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form class="col-12 mt-3" action="<?= base_url('admin/input_soal') ?>" method="post">
+                    <form class="col-12 mt-3" action="<?= base_url('tambah/soal') ?>" method="post">
                         <div class="form-row my-2">
                             <div class="form-group col-12">
                                 <label for="soal"><b>Soal:</b></label>
                                 <textarea class="form-control col-12 p-2" id="soal" name="soal" placeholder="Masukkan Soal"></textarea>
+                                <?= form_error('soal', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                         </div>
                         <!-- <div class="form-row my-2">
@@ -40,24 +41,29 @@
                             <div class="form-group col-12 col-md-3">
                                 <label for="opsi1"><b>Opsi 1</b></label>
                                 <textarea class="form-control" id="opsi1" name="opsi1" rows="1"></textarea>
+                                <?= form_error('opsi1', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
                                 <label for="opsi2"><b>Opsi 2</b></label>
                                 <textarea class="form-control" id="opsi2" name="opsi2" rows="1"></textarea>
+                                <?= form_error('opsi2', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
                                 <label for="opsi3"><b>Opsi 3</b></label>
                                 <textarea class="form-control" id="opsi3" name="opsi3" rows="1"></textarea>
+                                <?= form_error('opsi3', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
                                 <label for="opsi4"><b>Opsi 4</b></label>
                                 <textarea class="form-control" id="opsi4" name="opsi4" rows="1"></textarea>
+                                <?= form_error('opsi4', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="form-row my-2 justify-content-between">
                             <div class="form-group col-12 col-md-6">
                                 <label for="sumber"><b>Sumber</b></label>
                                 <input class="form-control" type="text" id="sumber" name="sumber" placeholder="Sumber">
+                                <?= form_error('sumber', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
                                 <label for="materi"><b>Materi</b></label>
@@ -66,16 +72,19 @@
                                     <option value="MTK">Matematika</option>
                                     <option value="IPA">IPA</option>
                                 </select>
+                                <?= form_error('materi', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
                                 <label for="poin"><b>Poin</b></label>
                                 <input class="form-control" type="number" id="poin" name="poin" placeholder="Poin">
+                                <?= form_error('poin', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="form-row my-2">
                             <div class="form-group col-12">
                                 <label for="pembahasan"><b>Pembahasan</b></label>
                                 <textarea class="form-control col-12 p-2" id="pembahasan" name="pembahasan" placeholder="Masukkan Pembahasan"></textarea>
+                                <?= form_error('pembahasan', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                         </div>
                         <!-- <div class="form-row my-2">

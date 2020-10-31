@@ -10,9 +10,10 @@
         </div>
     </div>
     <div class="container my-3 shadow p-md-5">
+        <?= $this->session->flashdata('message'); ?>
         <h3><i class="fas fa-trophy mr-2"></i></i>DAFTAR KOMPETISI</h3>
         <hr>
-        <a href="tambah-kompetisi.html" class="btn btn-primary mb-3"><i class="fas fa-plus-square mr-2"></i>Tambah Kompetisi</a>
+        <a href="<?= base_url('tambah/kompetisi') ?>" class="btn btn-primary mb-3"><i class="fas fa-plus-square mr-2"></i>Tambah Kompetisi</a>
         <table class="table table-sm table-responsive-sm text-center table-striped">
             <thead>
                 <tr>
@@ -29,32 +30,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Calculus Cup</td>
-                    <td>Universitas Negeri Jakarta</td>
-                    <td>8 Oktober 2020</td>
-                    <td>10 Oktober 2020</td>
-                    <td>11 Oktober 2020</td>
-                    <td><a href="" class="btn btn-info">Detail</a></td>
-                    <td><a href="edit-kompetisi.html" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
-                    <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>ONMIPA</td>
-                    <td>Universitas Negeri Jakarta</td>
-                    <td>10 Oktober 2020</td>
-                    <td>12 Oktober 2020</td>
-                    <td>14 Oktober 2020</td>
-                    <td><a href="" class="btn btn-info">Detail</a></td>
-                    <td><a href="edit-kompetisi.html" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
-                    <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-                </tr>
+                <?php $no = $this->uri->segment(3);
+                foreach ($kompetisi as $kom) : ?>
+                    <tr>
+                        <th scope="row"><?= ++$no ?></th>
+                        <td><?= $kom->nama ?></td>
+                        <td><?= $kom->penyelenggara ?></td>
+                        <td><?php $stamp = strtotime($kom->batasPendaftaran);
+                            echo date("d F Y", $stamp); ?></td>
+                        <td><?php $stamp = strtotime($kom->mulai);
+                            echo date("d F Y", $stamp); ?></td>
+                        <td><?php $stamp = strtotime($kom->berakhir);
+                            echo date("d F Y", $stamp); ?></td>
+                        <td><a href="" class="btn btn-info">Detail</a></td>
+                        <td><a href="edit-kompetisi.html" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
+                        <td onclick="return confirm('yakin?')"><a type="button" href="<?= base_url('admin/hapus_kompetisi/' . $kom->kode_kompetisi) ?>" id="btn-delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
         <!-- Modal -->
-        <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -72,26 +68,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row justify-content-center m-2">
             <div class="col-4">
-                <nav aria-label="...">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="#">1<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">...</a></li>
-                        <li class="page-item"><a class="page-link" href="#">23</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+                <?= $this->pagination->create_links(); ?>
             </div>
         </div>
     </div>

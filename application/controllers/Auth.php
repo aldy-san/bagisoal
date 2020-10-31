@@ -14,9 +14,6 @@ class Auth extends CI_Controller
         if ($this->session->userdata('email')) {
             redirect('');
         }
-        $this->form_validation->set_message('required', '{field} harus diisi!');
-        $this->form_validation->set_message('valid_email', 'email tidak valid!');
-        $this->form_validation->set_message('required', '{field} harus diisi!');
         $this->form_validation->set_rules(
             'email',
             'Email',
@@ -67,12 +64,8 @@ class Auth extends CI_Controller
         if ($this->session->userdata('email')) {
             redirect('');
         }
-        $this->form_validation->set_message('required', '{field} harus diisi!');
-        $this->form_validation->set_message('valid_email', 'email tidak valid!');
+
         $this->form_validation->set_message('matches', 'password tidak sama!');
-        $this->form_validation->set_message('is_unique', '{field} sudah terdaftar!');
-        $this->form_validation->set_message('min_length', '{field} harus memiliki panjang 6-12 karakter!');
-        $this->form_validation->set_message('max_length', '{field} harus memiliki panjang 6-12 karakter!');
         $this->form_validation->set_rules(
             'nama',
             'Nama',

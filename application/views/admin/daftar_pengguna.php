@@ -3,7 +3,7 @@
         <div class="row">
             <nav aria-label="breadcrumb" class="w-100">
                 <ol class="breadcrumb m-0 w-100">
-                    <li class="breadcrumb-item" aria-current="page"><a href="admin.html">Beranda</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="<?= base_url('') ?>">Beranda</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Daftar Pengguna</li>
                 </ol>
             </nav>
@@ -31,8 +31,8 @@
                         <th scope="row"><?= $pengguna->id_user ?></th>
                         <td><?= $pengguna->nama ?></td>
                         <!-- <td>Tulungagung</td>
-                    <td>27-07-2001</td>
-                    <td>Universitas Negeri Malang</td> -->
+                        <td>27-07-2001</td>
+                        <td>Universitas Negeri Malang</td> -->
                         <td><?= $pengguna->email ?></td>
                         <td><a href="" class="btn btn-info">Profil</a></td>
                         <td onclick="return confirm('yakin?')"><a type="button" href="<?= base_url('admin/hapus_users/' . $pengguna->id_user) ?>" id="btn-delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
@@ -63,23 +63,7 @@
         </div> -->
         <div class="row justify-content-center m-2">
             <div class="col-4">
-                <nav aria-label="...">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="#">1<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">...</a></li>
-                        <li class="page-item"><a class="page-link" href="#">23</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+                <?= $this->pagination->create_links(); ?>
             </div>
         </div>
     </div>

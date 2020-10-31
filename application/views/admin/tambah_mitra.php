@@ -18,33 +18,37 @@
             </div>
         </div>
         <div class="row">
-            <form class="col-12 mt-3" action="<?= base_url('admin/input_mitra') ?>" method="post">
-                <div class="form-row my-2">
+            <form class="col-12 mt-3" action="<?= base_url('tambah/mitra') ?>" method="post">
+                <div class="form-row">
                     <div class="form-group col-12">
-                        <label for="soal"><b>Nama Mitra</b></label>
+                        <label for="nama"><b>Nama Mitra</b></label>
                         <input type="name" class="form-control my-2" id="nama" name="nama" placeholder="Nama Mitra">
+                        <?= form_error('nama', '<small class="text-danger ml-0">', '</small>'); ?>
                     </div>
                 </div>
-                <div class="form-row my-2">
+                <div class="form-row">
                     <div class="form-group col-12">
                         <label for="bidang"><b>Bidang</b></label>
                         <input type="text" class="form-control my-2" id="bidang" name="bidang" placeholder="Bidang">
+                        <?= form_error('bidang', '<small class="text-danger ml-0">', '</small>'); ?>
                     </div>
                 </div>
-                <div class="form-row my-2">
+                <div class="form-row">
                     <div class="form-group col-12">
                         <label for="alamat"><b>Alamat</b></label>
                         <input type="text" class="form-control my-2" id="alamat" name="alamat" placeholder="Alamat">
+                        <?= form_error('alamat', '<small class="text-danger ml-0">', '</small>'); ?>
                     </div>
                 </div>
-                <div class="form-row my-2">
+                <div class="form-row">
                     <div class="form-group col-12">
                         <label for="email"><b>Email</b></label>
-                        <input type="email" class="form-control my-2" id="email" name="email" placeholder="Email Mitra">
+                        <input type="text" class="form-control my-2" id="email" name="email" placeholder="Email Mitra">
+                        <?= form_error('email', '<small class="text-danger ml-0">', '</small>'); ?>
                     </div>
                 </div>
                 <button class="btn btn-primary my-2">Tambah Mitra</button>
-                <button type="submit" class="btn btn-danger">Batal</button>
+                <button type="reset" class="btn btn-danger">reset</button>
             </form>
         </div>
     </div>
