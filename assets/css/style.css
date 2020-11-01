@@ -1,0 +1,28 @@
+.bg-rosy{
+	background-color: #ffdd59;
+}
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+.carousel img {
+    max-height: 300px;
+    margin: 0 auto;
+    object-fit: cover;
+    filter: brightness(85%);
+}
+.sidebar-outer {
+    position: relative;
+}
+input[type="file"] {
+  border: 1px solid red;
+  white-space: normal;
+  word-wrap: break-word;
+  width: 200px;
+  overflow: auto;
+}
+.text-loh{
+  color: #ffdd59;
+}

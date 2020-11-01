@@ -54,8 +54,9 @@
                     <label><b>Tambah Banner</b></label>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="banner" name="banner" <?= set_value($kompetisi['banner']) ?> />
-                            <label class="custom-file-label" for="banner">Choose file</label>
+                            <input type="file" class="custom-file-input" id="banner" name="banner" />
+                            <label class="custom-file-label" for="banner">Pilih Gambar</label>
+                            <input type="hidden" name="old" id="old" value="<?= $kompetisi['banner'] ?>">
                         </div>
                     </div>
                     <?= form_error('banner', '<small class="text-danger ml-0">', '</small>'); ?>

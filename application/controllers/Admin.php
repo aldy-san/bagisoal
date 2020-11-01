@@ -231,11 +231,6 @@ class Admin extends CI_Controller
             'Berakhir',
             'required',
         );
-        $this->form_validation->set_rules(
-            'banner',
-            'Banner',
-            'required',
-        );
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Tambah kompetisi';
             $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
@@ -250,11 +245,11 @@ class Admin extends CI_Controller
     }
     public function input_kompetisi()
     {
-        $banner = $_FILES['banner'];
+        $banner = $_FILES['banner']['name'];
+
         if ($banner != '') {
             $config['upload_path'] = './assets/banner';
             $config['allowed_types'] = 'jpg|png';
-
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('banner')) {
                 echo "Upload Gagal";
@@ -265,6 +260,7 @@ class Admin extends CI_Controller
         } else {
             $banner = 'default_banner.jpg';
         }
+
         $data = array(
             'nama'                   => $this->input->post('nama'),
             'penyelenggara'          => $this->input->post('penyelenggara'),
@@ -435,11 +431,6 @@ class Admin extends CI_Controller
             'Berakhir',
             'required',
         );
-        $this->form_validation->set_rules(
-            'banner',
-            'Banner',
-            'required',
-        );
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit kompetisi';
             $config['base_url'] = 'http://localhost/bagisoal/edit/kompetisi/';
@@ -456,8 +447,10 @@ class Admin extends CI_Controller
     }
     public function _edit_kompetisi()
     {
-        $banner = $_FILES['banner'];
+        $banner = $_FILES['banner']['name'];
+
         if ($banner != '') {
+            var_dump($banner);
             $config['upload_path'] = './assets/banner';
             $config['allowed_types'] = 'jpg|png';
 
@@ -469,8 +462,9 @@ class Admin extends CI_Controller
                 $banner = $this->upload->data('file_name');
             }
         } else {
-            $banner = 'default_banner.jpg';
+            $banner = $this->input->post('old');
         }
+
         $data = array(
             'nama'                   => $this->input->post('nama'),
             'penyelenggara'          => $this->input->post('penyelenggara'),

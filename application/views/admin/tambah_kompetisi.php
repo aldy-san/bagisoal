@@ -54,7 +54,7 @@
                     <div class="input-group">
                         <div class="custom-file ">
                             <input type="file" class="custom-file-input" id="banner" name="banner" />
-                            <label class="custom-file-label" for="banner">Choose file</label>
+                            <label class="custom-file-label" for="banner">Pilih Gambar</label>
                         </div>
                     </div>
                     <?= form_error('banner', '<small class=" text-danger ml-0">', '</small>'); ?>

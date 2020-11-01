@@ -48,10 +48,10 @@
     <p class="text-white"><?= $user['nama_admin'] ?></p>
   </li>
   <li class="dropdown list-inline-item">
-    <a style="text-decoration: none;" class="text-white" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <img src="<?= base_url() ?>/application/res/<?= $user['foto']; ?>" width="35" height="35" class="rounded-circle">
+    <a style="text-decoration: none;" class="dropdown-toggle text-white" class="text-white" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <img src="<?= base_url() ?>./assets/foto/<?= $user['foto']; ?>" width="35" height="35" class="rounded-circle">
     </a>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="left: -100px">
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="left: -100px">
       <a class="dropdown-item" href="">Profil Saya</a>
       <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">Log out</a>
     </div>

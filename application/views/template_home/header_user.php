@@ -7,11 +7,11 @@
     </li>
     <li class="nav-item dropdown d-inline">
         <a class="nav-link ml-md-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="rounded-circle d-inline-block" src="<?= base_url() ?>/application/res/<?= $user['foto']; ?>" width="40" height="40">
+            <img class="rounded-circle d-inline-block" src="<?= base_url() ?>./assets/foto/<?= $user['foto']; ?>" width="40" height="40">
         </a>
         <div class="dropdown-menu" style="left: -100px;" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#">Dashboard</a>
-            <a class="dropdown-item" href="<?= base_url('user/profil') ?>">My Profile</a>
+            <a class="dropdown-item" href="<?= base_url('profil') ?>">My Profile</a>
             <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">Log Out</a>
         </div>
     </li>

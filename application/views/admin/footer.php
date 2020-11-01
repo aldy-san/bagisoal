@@ -12,7 +12,7 @@
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
     })
 </script>
-<script>
+<!-- <script>
     $(document).ready(function() {
         $('.btn-yes').click(function() {
             alert(true);
@@ -21,7 +21,7 @@
             $('#hapus').modal('show');
         })
     });
-</script>
+</script> -->
 </body>
 
 </html>

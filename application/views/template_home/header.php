@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://kit.fontawesome.com/91e0a5b445.js" crossorigin="anonymous"></script>
   <link rel="icon" href="<?= base_url() ?>application/res/bs.png" type="image/png">
-  <link rel="stylesheet" type="text/css" href="<?= base_url() ?>application/css/style.css">
+  <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/css/style.css">
   <title>
     <?= $title; ?>
   </title>

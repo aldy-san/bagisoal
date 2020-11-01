@@ -27,17 +27,6 @@
                         <?= form_error('soal', '<small class="text-danger ml-0">', '</small>'); ?>
                     </div>
                 </div>
-                <!-- <div class="form-row my-2">
-                            <div class="form-group col-md-4 col-12">
-                                <label for="gambarSoal"><b>Tambahkan gambar (Soal)</b></label>
-                                <div class="input-group mb-3">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Pilih File</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                 <div class="form-row my-2">
                     <div class="form-group col-12 col-md-3">
                         <label for="opsi1"><b>Opsi 1</b></label>
