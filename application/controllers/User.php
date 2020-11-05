@@ -7,17 +7,6 @@ class User extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
-        //jika sudah login
-        if ($this->session->userdata('email')) {
-            //jika sudah login sebagai admin
-            $email = $this->session->userdata('email');
-            $admin = $this->db->get_where('admin', ['email' => $email])->row_array();
-            if ($admin) {
-                redirect('admin');
-            }
-        } else {
-            redirect('auth_admin');
-        }
     }
     public function index()
     {
