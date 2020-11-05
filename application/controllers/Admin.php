@@ -29,6 +29,18 @@ class Admin extends CI_Controller
         $this->load->view('admin/index');
         $this->load->view('admin/footer');
     }
+    //PROFIL
+    public function profil()
+    {
+        $data['title'] = 'Profil';
+        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/header_admin', $data);
+        $this->load->view('admin/side_bar');
+        $this->load->view('admin/profil');
+        $this->load->view('admin/footer');
+    }
+
     //DAFTAR PENGGUNA
     public function daftar_pengguna()
     {

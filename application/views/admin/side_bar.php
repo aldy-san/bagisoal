@@ -38,8 +38,11 @@
                             <a class="dropdown-item" href="<?= base_url('tambah/mitra') ?>">Tambah Mitra</a>
                         </div>
                     </li>
-                    <li class="nav-item py-3 px-1">
-                        <a class="nav-link" href="<?= base_url('admin/profil') ?>"><i class="fas fa-user mr-2"></i>Profil</a>
+                    <li class="nav-item py-3 px-1 
+                    <?php if ($this->uri->segment(1) == "profil-admin") {
+                        echo "active";
+                    } ?>">
+                        <a class="nav-link" href="<?= base_url('profil-admin') ?>"><i class="fas fa-user mr-2"></i>Profil</a>
                     </li>
                     <li class="nav-item py-3 px-1">
                         <a class="nav-link" href="<?= base_url('auth/logout') ?>"><i class="fas fa-sign-out-alt mr-2"></i>Log out</a>

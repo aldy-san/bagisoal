@@ -29,6 +29,8 @@ $route['edit/kompetisi/(:any)']     = 'admin/edit_kompetisi';
 $route['edit/mitra']                = 'admin/edit_mitra';
 $route['edit/mitra/(:any)']         = 'admin/edit_mitra';
 $route['edit/mitra/(:any)']         = 'admin/edit_mitra';
+$route['profil-admin']              = 'admin/profil';
+$route['profil-admin/edit']         = 'admin/edit_profil';
 
 $route['profil']                    = 'user/profil';
 $route['edit-profil']               = 'user/edit_profil';

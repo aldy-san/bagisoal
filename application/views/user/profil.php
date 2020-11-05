@@ -13,7 +13,7 @@
                         <img src="<?= base_url() ?>./assets/foto/<?= $user['foto']; ?>" class="rounded-circle" width="155" height="155">
                     </div>
                     <div class="col-12 col-md-8 text-center text-md-left text-dark">
-                        <a href="<?= base_url('edit-profil') ?>" class="btn btn-primary btn-sm float-right">Edit Profil</a>
+                        <a href="<?= base_url('admin/edit_profil') ?>" class="btn btn-primary btn-sm float-right">Edit Profil</a>
                         <h6>ID USER : <?= $user['id_user'] ?></h6>
                         <h3><?= $user['nama'] ?></h3>
                         <h5>Poin: <?= $user['total_poin'] ?></h5>
