@@ -59,7 +59,6 @@
         <div class="row justify-content-center m-2">
             <div class="col-4">
                 <?= $this->pagination->create_links(); ?>
-
             </div>
         </div>
     </div>

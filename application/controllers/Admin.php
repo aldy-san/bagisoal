@@ -167,6 +167,11 @@ class Admin extends CI_Controller
             'required',
         );
         $this->form_validation->set_rules(
+            'jawaban',
+            'Jawaban',
+            'required',
+        );
+        $this->form_validation->set_rules(
             'sumber',
             'Sumber',
             'required',
@@ -206,6 +211,7 @@ class Admin extends CI_Controller
             'opsi2'         => $this->input->post('opsi2'),
             'opsi3'         => $this->input->post('opsi3'),
             'opsi4'         => $this->input->post('opsi4'),
+            'jawaban'       => $this->input->post('jawaban'),
             'sumber'        => $this->input->post('sumber'),
             'materi'        => $this->input->post('materi'),
             'poin'          => $this->input->post('poin'),

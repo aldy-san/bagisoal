@@ -8,7 +8,7 @@
         <div class="col-2 align-self-center">
             <h5 class=" my-auto text-left">Jelajahi Soal</h5>
         </div>
-        <div class="col-3 col-lg-1">
+        <div class="float-right mr-3">
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#filter">Filter</button>
         </div>
         <!-- Modal -->
@@ -91,186 +91,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Peleburan antara sel telur dan....</a></th>
-                        <td>Biologi</td>
-                        <td>SIMAK UI 2018</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>5 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Tentukan rumus empiris...</a></th>
-                        <td>Kimia</td>
-                        <td>STAN 2017</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>10 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="">Tentukanlah hasil dari Integral...</a></th>
-                        <td>Matematika</td>
-                        <td>Ujian Mandiri ITB 2016</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>20 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Suatu campuran reaksi didalam...</a></th>
-                        <td>Kimia</td>
-                        <td>Ujian Mandiri UGM 2017</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>4 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Bentuk sederhana dari 4x +...</a></th>
-                        <td>Matematika</td>
-                        <td>UTBK 2019</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>22 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Peleburan antara sel telur dan....</a></th>
-                        <td>Biologi</td>
-                        <td>SIMAK UI 2018</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>5 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Tentukan rumus empiris...</a></th>
-                        <td>Kimia</td>
-                        <td>STAN 2017</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>10 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="">Tentukanlah hasil dari Integral...</a></th>
-                        <td>Matematika</td>
-                        <td>Ujian Mandiri ITB 2016</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>20 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Suatu campuran reaksi didalam...</a></th>
-                        <td>Kimia</td>
-                        <td>Ujian Mandiri UGM 2017</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>4 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Bentuk sederhana dari 4x +...</a></th>
-                        <td>Matematika</td>
-                        <td>UTBK 2019</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>22 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Peleburan antara sel telur dan....</a></th>
-                        <td>Biologi</td>
-                        <td>SIMAK UI 2018</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>5 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Tentukan rumus empiris...</a></th>
-                        <td>Kimia</td>
-                        <td>STAN 2017</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>10 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="">Tentukanlah hasil dari Integral...</a></th>
-                        <td>Matematika</td>
-                        <td>Ujian Mandiri ITB 2016</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>20 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Suatu campuran reaksi didalam...</a></th>
-                        <td>Kimia</td>
-                        <td>Ujian Mandiri UGM 2017</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>4 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Bentuk sederhana dari 4x +...</a></th>
-                        <td>Matematika</td>
-                        <td>UTBK 2019</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>22 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Peleburan antara sel telur dan....</a></th>
-                        <td>Biologi</td>
-                        <td>SIMAK UI 2018</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>5 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Tentukan rumus empiris...</a></th>
-                        <td>Kimia</td>
-                        <td>STAN 2017</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>10 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="">Tentukanlah hasil dari Integral...</a></th>
-                        <td>Matematika</td>
-                        <td>Ujian Mandiri ITB 2016</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>20 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Suatu campuran reaksi didalam...</a></th>
-                        <td>Kimia</td>
-                        <td>Ujian Mandiri UGM 2017</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>4 poin</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="text-left"><a href="#">Bentuk sederhana dari 4x +...</a></th>
-                        <td>Matematika</td>
-                        <td>UTBK 2019</td>
-                        <td>1200</td>
-                        <td>800</td>
-                        <td>66%</td>
-                        <td>22 poin</td>
-                    </tr>
+                    <?php foreach ($soal as $soal) : ?>
+                        <tr>
+                            <th scope="row" class="text-left"><a href="<?= base_url('soal/jawab/' . $soal->kode_soal) ?>" style="text-decoration: none;"><?= substr($soal->soal, 0, 50) ?>...</a></th>
+                            <td><?= $soal->materi ?></td>
+                            <td><?= $soal->sumber ?></td>
+                            <td>1200</td>
+                            <td>800</td>
+                            <td>66%</td>
+                            <td><?= $soal->poin ?></td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -278,21 +109,7 @@
 
     <div class="row justify-content-center m-2">
         <div class="col-4">
-            <nav aria-label="...">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="#">1<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+            <?= $this->pagination->create_links(); ?>
         </div>
     </div>
 </div>

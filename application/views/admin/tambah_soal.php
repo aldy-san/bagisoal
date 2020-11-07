@@ -28,28 +28,39 @@
                         </div>
                         <div class="form-row my-2">
                             <div class="form-group col-12 col-md-3">
-                                <label for="opsi1"><b>Opsi 1</b></label>
+                                <label for="opsi1"><b>Opsi A</b></label>
                                 <textarea class="form-control" id="opsi1" name="opsi1" rows="1"></textarea>
                                 <?= form_error('opsi1', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
-                                <label for="opsi2"><b>Opsi 2</b></label>
+                                <label for="opsi2"><b>Opsi B</b></label>
                                 <textarea class="form-control" id="opsi2" name="opsi2" rows="1"></textarea>
                                 <?= form_error('opsi2', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
-                                <label for="opsi3"><b>Opsi 3</b></label>
+                                <label for="opsi3"><b>Opsi C</b></label>
                                 <textarea class="form-control" id="opsi3" name="opsi3" rows="1"></textarea>
                                 <?= form_error('opsi3', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
-                                <label for="opsi4"><b>Opsi 4</b></label>
+                                <label for="opsi4"><b>Opsi D</b></label>
                                 <textarea class="form-control" id="opsi4" name="opsi4" rows="1"></textarea>
                                 <?= form_error('opsi4', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="form-row my-2 justify-content-between">
-                            <div class="form-group col-12 col-md-6">
+                            <div class="form-group col-12 col-md-3">
+                                <label for="jawaban"><b>Jawaban</b></label>
+                                <select id="jawaban" name="jawaban" class="form-control">
+                                    <option selected disabled value="">Pilih</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                </select>
+                                <?= form_error('jawaban', '<small class="text-danger ml-0">', '</small>'); ?>
+                            </div>
+                            <div class="form-group col-12 col-md-3">
                                 <label for="sumber"><b>Sumber</b></label>
                                 <input class="form-control" type="text" id="sumber" name="sumber" placeholder="Sumber">
                                 <?= form_error('sumber', '<small class="text-danger ml-0">', '</small>'); ?>
