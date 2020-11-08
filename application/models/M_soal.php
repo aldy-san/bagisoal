@@ -9,23 +9,36 @@ class M_soal extends CI_Model
         $this->db->limit($limit, $start);
         return $this->db->get();
     }
-    public function cekTerjawab($id, $soal)
+    public function tampil_data_log($table, $limit, $start, $id, $where)
     {
-        $query = $this->db->get_where('user_soal', array('id_user' => $id, 'kode_soal' => $soal));
-        if ($query->num_rows() === 0) {
-            return false;
-        } else {
-            return true;
-        }
+        $this->db->from($table);
+        $this->db->join('soal', 'soal.kode_soal = ' . $table . '.kode_soal');
+        $this->db->where($where);
+        $this->db->order_by($id, 'DESC');
+        $this->db->limit($limit, $start);
+        return $this->db->get()->result();
     }
-    public function cekJawaban($id, $soal)
+    public function cekTerjawab($id, $soal)
     {
         $this->db->select('user_soal.jawaban');
         $this->db->from('user_soal');
         $this->db->join('soal', 'soal.jawaban = user_soal.jawaban');
         $this->db->where(array('id_user' => $id, 'user_soal.kode_soal' => $soal, 'soal.kode_soal' => $soal));
-        $jawaban = $this->db->get()->result();
-        if ($jawaban) {
+        $query = $this->db->get()->num_rows();
+        if ($query === 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public function cekJawaban($soal, $jawaban)
+    {
+        $this->db->select('jawaban');
+        $this->db->from('soal');
+        $this->db->where(array('kode_soal' => $soal));
+        $kunci = $this->db->get()->result();
+
+        if ($jawaban == $kunci[0]->jawaban) {
             return true;
         } else {
             return false;
@@ -34,5 +47,13 @@ class M_soal extends CI_Model
     public function jawab($data)
     {
         $this->db->insert('user_soal', $data);
+    }
+
+    public function tambah_poin($id, $kode)
+    {
+        $poin_soal = $this->db->get_where('soal', ['kode_soal' => $kode])->row()->poin;
+        $poin_user = $this->db->get_where('users', ['id_user' => $id])->row()->total_poin;
+        $poin_baru = $poin_user + $poin_soal;
+        $this->db->update('users', array('total_poin' => $poin_baru), array('id_user' => $id));
     }
 }

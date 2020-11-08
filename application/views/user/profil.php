@@ -13,7 +13,7 @@
                         <img src="<?= base_url() ?>./assets/foto/<?= $user['foto']; ?>" class="rounded-circle" width="155" height="155">
                     </div>
                     <div class="col-12 col-md-8 text-center text-md-left text-dark">
-                        <a href="<?= base_url('admin/edit_profil') ?>" class="btn btn-primary btn-sm float-right">Edit Profil</a>
+                        <a href="<?= base_url('edit-profil') ?>" class="btn btn-primary btn-sm float-right">Edit Profil</a>
                         <h6>ID USER : <?= $user['id_user'] ?></h6>
                         <h3><?= $user['nama'] ?></h3>
                         <h5>Poin: <?= $user['total_poin'] ?></h5>
@@ -61,6 +61,7 @@
                 <table class="table table-sm table-responsive-sm text-center">
                     <thead class="table-dark">
                         <tr>
+                            <th class="align-middle" scope="col">ID</th>
                             <th class="align-middle" scope="col">SOAL</th>
                             <th class="align-middle" scope="col">MATERI</th>
                             <th class="align-middle" scope="col">SUMBER</th>
@@ -69,90 +70,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="#">Peleburan antara sel telur dan....</a></th>
-                            <td>Biologi</td>
-                            <td>SIMAK UI 2018</td>
-                            <td>5 poin</td>
-                            <td><span class="badge badge-success">BENAR</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="#">Tentukan rumus empiris...</a></th>
-                            <td>Kimia</td>
-                            <td>STAN 2017</td>
-                            <td>10 poin</td>
-                            <td><span class="badge badge-danger">SALAH</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="">Tentukanlah hasil dari Integral...</a></th>
-                            <td>Matematika</td>
-                            <td>Ujian Mandiri ITB 2016</td>
-                            <td>20 poin</td>
-                            <td><span class="badge badge-danger">SALAH</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="#">Peleburan antara sel telur dan....</a></th>
-                            <td>Biologi</td>
-                            <td>SIMAK UI 2018</td>
-                            <td>5 poin</td>
-                            <td><span class="badge badge-success">BENAR</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="#">Tentukan rumus empiris...</a></th>
-                            <td>Kimia</td>
-                            <td>STAN 2017</td>
-                            <td>10 poin</td>
-                            <td><span class="badge badge-danger">SALAH</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="">Tentukanlah hasil dari Integral...</a></th>
-                            <td>Matematika</td>
-                            <td>Ujian Mandiri ITB 2016</td>
-                            <td>20 poin</td>
-                            <td><span class="badge badge-danger">SALAH</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="#">Peleburan antara sel telur dan....</a></th>
-                            <td>Biologi</td>
-                            <td>SIMAK UI 2018</td>
-                            <td>5 poin</td>
-                            <td><span class="badge badge-success">BENAR</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="#">Tentukan rumus empiris...</a></th>
-                            <td>Kimia</td>
-                            <td>STAN 2017</td>
-                            <td>10 poin</td>
-                            <td><span class="badge badge-danger">SALAH</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="">Tentukanlah hasil dari Integral...</a></th>
-                            <td>Matematika</td>
-                            <td>Ujian Mandiri ITB 2016</td>
-                            <td>20 poin</td>
-                            <td><span class="badge badge-danger">SALAH</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="#">Peleburan antara sel telur dan....</a></th>
-                            <td>Biologi</td>
-                            <td>SIMAK UI 2018</td>
-                            <td>5 poin</td>
-                            <td><span class="badge badge-success">BENAR</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="#">Tentukan rumus empiris...</a></th>
-                            <td>Kimia</td>
-                            <td>STAN 2017</td>
-                            <td>10 poin</td>
-                            <td><span class="badge badge-danger">SALAH</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="">Tentukanlah hasil dari Integral...</a></th>
-                            <td>Matematika</td>
-                            <td>Ujian Mandiri ITB 2016</td>
-                            <td>20 poin</td>
-                            <td><span class="badge badge-danger">SALAH</span></td>
-                        </tr>
+                        <?php foreach ($log as $log) : ?>
+                            <tr>
+                                <th scope="row"><?= $log->id_jawaban ?></th>
+                                <td class="text-left"><a href="#"><?= substr($log->soal, 0, 50) ?>...</td>
+                                <td><?= $log->materi ?></td>
+                                <td><?= $log->sumber ?></td>
+                                <td><?= $log->poin ?></td>
+                                <?php if ($log->hasil == "BENAR") {
+                                    echo "<td><span class='badge badge-success'> $log->hasil </span></td>";
+                                } else {
+                                    echo "<td><span class='badge badge-danger'> $log->hasil </span></td>";
+                                } ?>
+
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

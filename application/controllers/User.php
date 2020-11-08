@@ -16,13 +16,14 @@ class User extends CI_Controller
     {
         $data['title'] = 'Beranda';
         $this->load->view('template_home/header', $data);
+        $data['soal'] = $this->m_admin->tampil_data_limit('soal', 5, 'kode_soal')->result();
         if ($this->session->userdata('email')) {
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('template_home/header_user', $data);
         } else {
             $this->load->view('template_home/header_umum');
         }
-        $this->load->view('user/index');
+        $this->load->view('user/index', $data);
         $this->load->view('template_home/footer');
     }
 
@@ -70,14 +71,23 @@ class User extends CI_Controller
     // PROFIL
     public function profil()
     {
-        if (!$this->session->userdata('email')) {
+        //PAGINATION
+        $config['base_url'] = 'http://localhost/bagisoal/profil/';
+        $config['total_rows'] = $this->m_admin->jumlah_baris('user_soal');
+        $config['per_page'] = 12;
+        $config['start'] = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+        $id = $this->session->userdata('id_user');
+        $email = $this->session->userdata('email');
+        if (!$id) {
             redirect('');
         }
         $data['title'] = 'Profil saya';
-        $this->load->view('template_home/header', $data);
-        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('template_home/header_user', $data);
+        $data['user'] = $this->db->get_where('users', ['email' => $email])->row_array();
+        $data['log'] = $this->m_soal->tampil_data_log('user_soal', $config['per_page'], $config['start'], 'id_jawaban', array('id_user' => $id));
 
+        $this->load->view('template_home/header', $data);
+        $this->load->view('template_home/header_user', $data);
         $this->load->view('user/profil', $data);
         $this->load->view('template_home/footer');
     }

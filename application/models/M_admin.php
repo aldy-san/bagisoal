@@ -28,6 +28,13 @@ class M_admin extends CI_Model
         $this->db->limit($limit, $start);
         return $this->db->get();
     }
+    public function tampil_data_limit($table, $limit, $id)
+    {
+        $this->db->from($table);
+        $this->db->order_by($id, 'DESC');
+        $this->db->limit($limit);
+        return $this->db->get();
+    }
     public function jumlah_baris($table)
     {
         return $this->db->get($table)->num_rows();

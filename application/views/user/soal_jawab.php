@@ -6,40 +6,40 @@
                     <div class="col-12 text-left">
                         <?= $this->session->flashdata('message'); ?>
                         <hr class="my-1">
-                        <p><?= $soal['soal'] ?></p>
+                        <p class="text-justify"><?= $soal['soal'] ?></p>
                         <hr>
                         <form action="<?= current_url() ?>" method="post">
                             <input type="hidden" id="kode_soal" name="kode_soal" value="<?= $soal['kode_soal'] ?>">
                             <div class="form-row justify-content-between">
                                 <div class="col-12">
-                                    <div class="form-check">
+                                    <div class="form-check py-1">
                                         <input class="form-check-input" type="radio" name="opsi" id="opsi1" value="A">
                                         <label class="form-check-label" for="opsi1">
                                             <?= $soal['opsi1'] ?>
                                         </label>
                                     </div>
-                                    <div class="form-check">
+                                    <div class="form-check py-1">
                                         <input class="form-check-input" type="radio" name="opsi" id="opsi2" value="B">
                                         <label class="form-check-label" for="opsi2">
                                             <?= $soal['opsi2'] ?>
                                         </label>
                                     </div>
-                                    <div class="form-check">
+                                    <div class="form-check py-1">
                                         <input class="form-check-input" type="radio" name="opsi" id="opsi3" value="C">
                                         <label class="form-check-label" for="opsi3">
                                             <?= $soal['opsi3'] ?>
                                         </label>
                                     </div>
-                                    <div class="form-check">
+                                    <div class="form-check py-1">
                                         <input class="form-check-input" type="radio" name="opsi" id="opsi4" value="D">
                                         <label class="form-check-label" for="opsi4">
                                             <?= $soal['opsi4'] ?>
                                         </label>
                                     </div>
                                     <?= form_error('opsi', '<small class="text-danger ml-0">', '</small>'); ?>
-
                                 </div>
-                                <button type="submit" class="btn btn-sm btn-primary rounded my-2">Jawab</button>
+                                <button type="submit" class="btn btn-sm btn-primary rounded my-2 ">Jawab</button>
+                                <p class="text-warning">L</p>
                             </div>
                         </form>
                     </div>
@@ -65,13 +65,13 @@
                 <div class="row">
                     <div class="col-12 p-3 shadow-sm">
                         <h5 class="text-center">KETERANGAN</h5>
-                        <?php if ($cekTerjawab) {
-                            if ($cekJawaban) {
+                        <?php
+                        if ($this->session->userdata('email')) {
+                            if ($cekTerjawab) {
                                 echo "<div class='alert alert-success text-center' role='alert'>Soal Sudah Terjawab</div>";
-                            } else {
-                                echo "<div class='alert alert-danger text-center' role='alert'>Soal Sudah Terjawab</div>";
                             }
-                        }  ?>
+                        }
+                        ?>
 
                         <p class="m-1"><b>Kode Soal:</b> <?= $soal['materi'] . $soal['kode_soal'] ?></p>
                         <p class="m-1"><b>Sumber:</b> <?= $soal['sumber'] ?></p>
