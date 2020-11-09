@@ -54,14 +54,6 @@
                                     <input class="form-check-input" type="checkbox" id="Biologi" value="option2">
                                     <label class="form-check-label" for="Biologi">Biologi</label>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="Biologi" value="option2">
-                                    <label class="form-check-label" for="Biologi">B. Indonesia</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="Biologi" value="option2">
-                                    <label class="form-check-label" for="Biologi">B. Inggris</label>
-                                </div>
                             </form>
                         </div>
                     </div>
@@ -92,13 +84,25 @@
                 </thead>
                 <tbody>
                     <?php foreach ($soal as $soal) : ?>
-                        <tr>
-                            <th scope="row" class="text-left"><a href="<?= base_url('soal/jawab/' . $soal->kode_soal) ?>" style="text-decoration: none;"><?= substr($soal->soal, 0, 50) ?>...</a></th>
+                        <?php
+                        $jawaban = $this->m_soal->soal_jumlah_jawab($soal->kode_soal);
+                        $benar = $this->m_soal->soal_jumlah_hasil($soal->kode_soal, 'BENAR');
+                        if ($jawaban > 0) {
+                            $rasio = round($benar / $jawaban * 100);
+                        } else {
+                            $rasio = 0;
+                        }
+                        $cekTerjawab = $this->m_soal->cekTerjawab($id, $soal->kode_soal);
+                        ?>
+                        <tr <?php if ($cekTerjawab) {
+                                echo "style='background-color: #B4F8C8;'";
+                            } ?>>
+                            <th scope="row"><a href="<?= base_url('soal/jawab/' . $soal->kode_soal) ?>" style="text-decoration: none; font-weight:600;"><?= substr($soal->soal, 0, 50) ?>...</a></th>
                             <td><?= $soal->materi ?></td>
                             <td><?= $soal->sumber ?></td>
-                            <td>1200</td>
-                            <td>800</td>
-                            <td>66%</td>
+                            <td><?= $jawaban ?></td>
+                            <td><?= $benar ?></td>
+                            <td><?= $rasio ?>%</td>
                             <td><?= $soal->poin ?></td>
                         </tr>
                     <?php endforeach; ?>

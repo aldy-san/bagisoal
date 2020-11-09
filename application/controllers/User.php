@@ -72,10 +72,10 @@ class User extends CI_Controller
     public function profil()
     {
         //PAGINATION
-        $config['base_url'] = 'http://localhost/bagisoal/profil/';
+        $config['base_url'] = 'http://localhost/bagisoal/profil-saya/';
         $config['total_rows'] = $this->m_admin->jumlah_baris('user_soal');
-        $config['per_page'] = 12;
-        $config['start'] = $this->uri->segment(3);
+        $config['per_page'] = 10;
+        $config['start'] = $this->uri->segment(2);
         $this->pagination->initialize($config);
         $id = $this->session->userdata('id_user');
         $email = $this->session->userdata('email');
@@ -85,6 +85,14 @@ class User extends CI_Controller
         $data['title'] = 'Profil saya';
         $data['user'] = $this->db->get_where('users', ['email' => $email])->row_array();
         $data['log'] = $this->m_soal->tampil_data_log('user_soal', $config['per_page'], $config['start'], 'id_jawaban', array('id_user' => $id));
+        $data['total_jawab'] = $this->m_soal->user_jumlah_jawab($id);
+        $data['total_benar'] = $this->m_soal->user_jumlah_hasil($id, 'BENAR');
+        $data['total_salah'] = $this->m_soal->user_jumlah_hasil($id, 'SALAH');
+        if ($data['total_jawab'] > 0) {
+            $data['rasio']   = $data['total_benar'] / $data['total_jawab'] * 100;
+        } else {
+            $data['rasio'] = 0;
+        }
 
         $this->load->view('template_home/header', $data);
         $this->load->view('template_home/header_user', $data);

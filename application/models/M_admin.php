@@ -5,6 +5,8 @@ class M_admin extends CI_Model
     public function tambah_data($table, $data)
     {
         $this->db->insert($table, $data);
+        $insert_id = $this->db->insert_id();
+        return  $insert_id;
     }
     public function edit_data($table, $data, $where)
     {
@@ -32,6 +34,14 @@ class M_admin extends CI_Model
     {
         $this->db->from($table);
         $this->db->order_by($id, 'DESC');
+        $this->db->limit($limit);
+        return $this->db->get();
+    }
+    public function tampil_log_admin($limit, $admin)
+    {
+        $this->db->from('log_admin');
+        $this->db->where(array('id_admin' => $admin));
+        $this->db->order_by('id', 'DESC');
         $this->db->limit($limit);
         return $this->db->get();
     }

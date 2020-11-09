@@ -8,9 +8,9 @@
                                                                                     echo "data-target='#nav'";
                                                                                 } ?>><i class="fas fa-home mr-2"></i>Beranda</a>
                     </li>
-                    <li class="nav-item py-3 px-1">
+                    <!-- <li class="nav-item py-3 px-1">
                         <a class="nav-link" href="<?= base_url('admin') ?>#grafik" data-target="#grafik"><i class="fas fa-chart-line mr-2"></i>Grafik Pengguna</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item py-3 px-1">
                         <a class="nav-link" href="<?= base_url('admin') ?>#riwayat" data-target="#riwayat"><i class="fas fa-history mr-2"></i>Riwayat Aktivitas</a>
                     </li>

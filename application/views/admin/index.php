@@ -14,7 +14,7 @@
                 <div class="card-body bg-info">
                     <i class="fas fa-users d-inline mr-2"></i>
                     <h5 class="card-title d-inline">Jumlah Pengguna</h5>
-                    <h6 class="display-4">2200</h6>
+                    <h6 class="display-4"><?= $pengguna ?></h6>
                     <a href="<?= base_url('admin/daftar_pengguna') ?>" class="text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></a>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <div class="card-body bg-success">
                     <i class="fas fa-folder d-inline mr-2"></i>
                     <h5 class="card-title d-inline">Jumlah Soal</h5>
-                    <h6 class="display-4">700</h6>
+                    <h6 class="display-4"><?= $soal ?></h6>
                     <a href="<?= base_url('admin/daftar_soal') ?>" class="text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></a>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <div class="card-body bg-warning">
                     <i class="fas fa-trophy d-inline mr-2"></i>
                     <h5 class="card-title d-inline">Jumlah Kompetisi</h5>
-                    <h6 class="display-4">2</h6>
+                    <h6 class="display-4"><?= $kompetisi ?></h6>
                     <a href="<?= base_url('admin/daftar_kompetisi') ?>" class="text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></a>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 <div class="card-body bg-danger">
                     <i class="fas fa-handshake d-inline mr-2"></i>
                     <h5 class="card-title d-inline">Jumlah Mitra</h5>
-                    <h6 class="display-4">7</h6>
+                    <h6 class="display-4"><?= $mitra ?></h6>
                     <a href="<?= base_url('admin/daftar_mitra') ?>" class="text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></a>
                 </div>
             </div>
@@ -48,13 +48,13 @@
                 <div class="card-body bg-secondary">
                     <i class="fas fa-users-cog d-inline mr-2"></i>
                     <h5 class="card-title d-inline">Jumlah Admin</h5>
-                    <h6 class="display-4">3</h6>
+                    <h6 class="display-4"><?= $admin ?></h6>
                     <a href="<?= base_url('admin/daftar_admin') ?>" class="text-white">Lihat Detail<i class="fas fa-angle-double-right ml-2"></i></a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container p-5 mt-3 rounded shadow" id="grafik">
+    <!-- <div class="container p-5 mt-3 rounded shadow" id="grafik">
         <div class="row">
             <div class="col-12">
                 <h2>Grafik Pengguna</h2>
@@ -70,7 +70,7 @@
                 <div id="chart_div"></div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="container p-5 my-3 rounded shadow" id="riwayat">
         <div class="row">
             <div class="col-12">
@@ -82,76 +82,25 @@
                 <table class="table table-sm table-responsive-sm hide-scroll  text-center">
                     <thead class="table-dark">
                         <tr>
-                            <th class="" scope="col">AKTIVITAS</th>
+                            <th class="" scope="col">ID</th>
                             <th class="" scope="col">WAKTU</th>
+                            <th class="" scope="col">AKTIVITAS</th>
                             <th class="" scope="col">ADMIN</th>
                             <th class="" scope="col">KETERANGAN</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tambah Soal</td>
-                            <td>Selasa, 30 Oktober 2019</td>
-                            <td>Admin Satu</td>
-                            <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                        </tr>
-                        <tr>
-                            <td>Hapus Soal</td>
-                            <td>Senin, 29 Oktober 2019</td>
-                            <td>Admin Satu</td>
-                            <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                        </tr>
-                        <tr>
-                            <td>Hapus Soal</td>
-                            <td>Senin, 29 Oktober 2019</td>
-                            <td>Admin Satu</td>
-                            <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                        </tr>
-                        <tr>
-                            <td>Edit Soal</td>
-                            <td>Senin, 29 Oktober 2019</td>
-                            <td>Admin Dua</td>
-                            <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                        </tr>
-                        <tr>
-                            <td>Edit Soal</td>
-                            <td>Senin, 29 Oktober 2019</td>
-                            <td>Admin Tiga</td>
-                            <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                        </tr>
-                        <tr>
-                            <td>Tambah Soal</td>
-                            <td>Selasa, 30 Oktober 2019</td>
-                            <td>Admin Satu</td>
-                            <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                        </tr>
-                        <tr>
-                            <td>Hapus Soal</td>
-                            <td>Senin, 29 Oktober 2019</td>
-                            <td>Admin Satu</td>
-                            <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                        </tr>
-                        <tr>
-                            <td>Hapus Soal</td>
-                            <td>Senin, 29 Oktober 2019</td>
-                            <td>Admin Satu</td>
-                            <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                        </tr>
-                        <tr>
-                            <td>Edit Soal</td>
-                            <td>Senin, 29 Oktober 2019</td>
-                            <td>Admin Dua</td>
-                            <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                        </tr>
-                        <tr>
-                            <td>Edit Soal</td>
-                            <td>Senin, 29 Oktober 2019</td>
-                            <td>Admin Tiga</td>
-                            <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">...</td>
-                        </tr>
+                        <?php foreach ($log as $log) : ?>
+                            <?php $admin = $this->db->get_where('admin', array('id_admin' => $log->id_admin))->row_array(); ?>
+                            <tr>
+                                <td><?= $log->id ?></td>
+                                <td><?php $stamp = strtotime($log->tanggal);
+                                    echo date("d F Y", $stamp); ?></td>
+                                <td><?= $log->keterangan . " " . $log->data ?></td>
+                                <td><?= $admin['nama_admin'] ?></td>
+                                <td><a href="#" class="btn btn-info">DETAIL</a></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

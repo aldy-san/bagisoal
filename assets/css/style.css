@@ -26,3 +26,7 @@ input[type="file"] {
 .text-loh{
   color: #ffdd59;
 }
+.bg-lightgreen{
+  background-color: lightgreen !important;
+  background-image: none;
+}

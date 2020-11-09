@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="row">
-            <form class="col-12 mt-3" action="<?= base_url('edit/soal') ?>" method="post">
+            <form class="col-12 mt-3" action="<?= current_url() ?>" method="post">
                 <div class="form-row my-2">
                     <div class="form-group col-12">
                         <label for="soal"><b>Soal:</b></label>

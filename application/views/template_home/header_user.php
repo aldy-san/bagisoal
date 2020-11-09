@@ -10,9 +10,10 @@
             <img class="rounded-circle d-inline-block" src="<?= base_url() ?>./assets/foto/<?= $user['foto']; ?>" width="40" height="40">
         </a>
         <div class="dropdown-menu" style="left: -100px;" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Dashboard</a>
-            <a class="dropdown-item" href="<?= base_url('profil') ?>">My Profile</a>
-            <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">Log Out</a>
+            <a class="dropdown-item" href="<?= base_url('profil-saya') ?>"> <i class="fas fa-fw fa-sm fa-user text-dark"></i> Profil</a>
+            <a class="dropdown-item" href="<?= base_url('edit-profil') ?>"> <i class="fas fa-fw fa-sm fa-cog text-dark"></i> Pengaturan</a>
+            <hr class="my-1">
+            <a class="dropdown-item" href="<?= base_url('auth/logout') ?>"><i class="fas fa-fw fa-sm fa-sign-out-alt text-danger"></i> Keluar</a>
         </div>
     </li>
 </ul>

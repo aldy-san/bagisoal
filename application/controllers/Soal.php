@@ -21,6 +21,10 @@ class Soal extends CI_Controller
         $config['start'] = $this->uri->segment(3);
         $this->pagination->initialize($config);
 
+        $id = $this->session->userdata('id_user');
+        $email = $this->session->userdata('email');
+        $data['id'] = $id;
+
         $data['soal'] = $this->m_admin->tampil_data('soal', $config['per_page'], $config['start'], 'kode_soal')->result();
         $data['title'] = 'Soal';
         $this->load->view('template_home/header', $data);
@@ -44,9 +48,11 @@ class Soal extends CI_Controller
             $data['title'] = 'Soal';
             $data['soal'] = $this->db->get_where('soal', ['kode_soal' => $this->uri->segment(3)])->row_array();
             $this->load->view('template_home/header', $data);
+            $id = $this->session->userdata('id_user');
+            $email = $this->session->userdata('email');
+            $data['id'] = $id;
             if ($this->session->userdata('email')) {
-                $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-                $id = $data['user']['id_user'];
+                $data['user'] = $this->db->get_where('users', ['email' => $email])->row_array();
                 $data['cekTerjawab'] = $this->m_soal->cekTerjawab($id, $this->uri->segment(3));
                 $this->load->view('template_home/header_user', $data);
             } else {

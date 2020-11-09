@@ -3,7 +3,7 @@
     <div class="row">
       <nav aria-label="breadcrumb" class="w-100">
         <ol class="breadcrumb m-0 w-100">
-          <li class="breadcrumb-item" aria-current="page"><a href="admin.html">Beranda</a></li>
+          <li class="breadcrumb-item" aria-current="page"><a href="<?= base_url('admin') ?>">Beranda</a></li>
           <li class="breadcrumb-item active" aria-current="page">Profil Saya</li>
         </ol>
       </nav>
@@ -16,14 +16,14 @@
       </div>
     </div>
     <div class="row my-3 justify-content-between">
-      <div class="col-12 col-md-9">
+      <div class="col-12 col-md-12">
         <div class="row">
           <div class="col-12 col-md-4 text-center my-2">
             <img src="<?= base_url() ?>./assets/foto/<?= $user['foto']; ?>" class="rounded-circle" width="155" height="155">
           </div>
           <div class="col-12 col-md-8 text-center text-md-left">
             <h3 class="d-md-inline"><?= $user['nama_admin'] ?></h3>
-            <a href="<?= base_url('admin/edit_profil') ?>" class="btn btn-primary float-right">Edit Profil</a>
+            <a href="<?= base_url('profil-admin/edit') ?>" class="btn btn-primary float-right">Edit Profil</a>
             <h5>Admin-<?= $user['jabatan'] ?></h5>
             <div class="my-2">
               <i class="fas fa-fw fa-envelope mr-2"></i>
@@ -55,43 +55,23 @@
                 </tr>
               </thead>
               <tbody>
+                <?php foreach ($log as $log) : ?>
+                  <tr>
+                    <td><?= $log->keterangan . " " . $log->data ?></td>
+                    <td><?php $stamp = strtotime($log->tanggal);
+                        echo date("d F Y", $stamp); ?></td>
+                    <td><a href="#" class="btn btn-sm btn-info">DETAIL</a></td>
+                  </tr>
+                <?php endforeach; ?>
                 <tr>
-                  <td>Tambah Soal</td>
-                  <td>Selasa, 30 Oktober 2019</td>
-                  <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                </tr>
-                <tr>
-                  <td>Hapus Soal</td>
-                  <td>Senin, 29 Oktober 2019</td>
-                  <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                </tr>
-                <tr>
-                  <td>Hapus Soal</td>
-                  <td>Senin, 29 Oktober 2019</td>
-                  <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                </tr>
-                <tr>
-                  <td>Edit Soal</td>
-                  <td>Senin, 29 Oktober 2019</td>
-                  <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                </tr>
-                <tr>
-                  <td>Edit Soal</td>
-                  <td>Senin, 29 Oktober 2019</td>
-                  <td><a href="#" class="btn btn-info">DETAIL</a></td>
-                </tr>
-                <tr>
-                  <td colspan="4">...</td>
-                </tr>
-                <tr>
-                  <td colspan="4" class="border-0"><button class="btn btn-primary">Lihat Lebih</button></td>
+                  <td colspan="4" class="border-0"><button class="btn btn-sm btn-primary">Lihat Lebih</button></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-3 text-left shadow-sm p-2 h-100">
+      <!-- <div class="col-12 col-md-3 text-left shadow-sm p-2 h-100">
         <ul class="list-group">
           <li class="list-group-item active border-0 text-center">Laporan Masalah</li>
           <a href="#" class="list-group-item list-group-item-action border-0">
@@ -123,7 +103,7 @@
             Dan 5 laporan lain...
           </a>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

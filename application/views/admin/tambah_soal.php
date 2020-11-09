@@ -22,37 +22,37 @@
                         <div class="form-row my-2">
                             <div class="form-group col-12">
                                 <label for="soal"><b>Soal:</b></label>
-                                <textarea class="form-control col-12 p-2" id="soal" name="soal" placeholder="Masukkan Soal"></textarea>
+                                <textarea class="form-control col-12 p-2" id="soal" name="soal" placeholder="Masukkan Soal"><?php echo set_value('soal'); ?></textarea>
                                 <?= form_error('soal', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="form-row my-2">
                             <div class="form-group col-12 col-md-3">
                                 <label for="opsi1"><b>Opsi A</b></label>
-                                <textarea class="form-control" id="opsi1" name="opsi1" rows="1"></textarea>
+                                <textarea class="form-control" id="opsi1" name="opsi1" rows="1"><?php echo set_value('opsi1'); ?></textarea>
                                 <?= form_error('opsi1', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
                                 <label for="opsi2"><b>Opsi B</b></label>
-                                <textarea class="form-control" id="opsi2" name="opsi2" rows="1"></textarea>
+                                <textarea class="form-control" id="opsi2" name="opsi2" rows="1"><?php echo set_value('opsi2'); ?></textarea>
                                 <?= form_error('opsi2', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
                                 <label for="opsi3"><b>Opsi C</b></label>
-                                <textarea class="form-control" id="opsi3" name="opsi3" rows="1"></textarea>
+                                <textarea class="form-control" id="opsi3" name="opsi3" rows="1"><?php echo set_value('opsi3'); ?></textarea>
                                 <?= form_error('opsi3', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
                                 <label for="opsi4"><b>Opsi D</b></label>
-                                <textarea class="form-control" id="opsi4" name="opsi4" rows="1"></textarea>
+                                <textarea class="form-control" id="opsi4" name="opsi4" rows="1"><?php echo set_value('opsi4'); ?></textarea>
                                 <?= form_error('opsi4', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="form-row my-2 justify-content-between">
                             <div class="form-group col-12 col-md-3">
                                 <label for="jawaban"><b>Jawaban</b></label>
-                                <select id="jawaban" name="jawaban" class="form-control">
-                                    <option selected disabled value="">Pilih</option>
+                                <select id="jawaban" name="jawaban" class="form-control" value="<?php echo set_value('jawaban'); ?>">
+                                    <option selected disabled>Pilih</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
                                     <option value="C">C</option>
@@ -62,28 +62,30 @@
                             </div>
                             <div class="form-group col-12 col-md-3">
                                 <label for="sumber"><b>Sumber</b></label>
-                                <input class="form-control" type="text" id="sumber" name="sumber" placeholder="Sumber">
+                                <input class="form-control" type="text" id="sumber" name="sumber" placeholder="Sumber" value="<?php echo set_value('sumber'); ?>">
                                 <?= form_error('sumber', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
                                 <label for="materi"><b>Materi</b></label>
-                                <select id="materi" name="materi" class="form-control">
+                                <select id="materi" name="materi" class="form-control" value="<?php echo set_value('materi'); ?>">
                                     <option selected disabled value="">Materi...</option>
                                     <option value="MTK">Matematika</option>
-                                    <option value="IPA">IPA</option>
+                                    <option value="FIS">FISIKA</option>
+                                    <option value="BIO">BIOLOGI</option>
+                                    <option value="KIM">KIMIA</option>
                                 </select>
                                 <?= form_error('materi', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
                                 <label for="poin"><b>Poin</b></label>
-                                <input class="form-control" type="number" id="poin" name="poin" placeholder="Poin">
+                                <input class="form-control" type="number" id="poin" name="poin" placeholder="Poin" value="<?php echo set_value('poin'); ?>">
                                 <?= form_error('poin', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="form-row my-2">
                             <div class="form-group col-12">
                                 <label for="pembahasan"><b>Pembahasan</b></label>
-                                <textarea class="form-control col-12 p-2" id="pembahasan" name="pembahasan" placeholder="Masukkan Pembahasan"></textarea>
+                                <textarea class="form-control col-12 p-2" id="pembahasan" name="pembahasan" placeholder="Masukkan Pembahasan"><?php echo set_value('sumber'); ?></textarea>
                                 <?= form_error('pembahasan', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                         </div>

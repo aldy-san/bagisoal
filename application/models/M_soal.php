@@ -31,6 +31,30 @@ class M_soal extends CI_Model
             return true;
         }
     }
+    public function user_jumlah_jawab($id)
+    {
+        $this->db->from('user_soal');
+        $this->db->where(array('id_user' => $id));
+        return $this->db->get()->num_rows();
+    }
+    public function user_jumlah_hasil($id, $hasil)
+    {
+        $this->db->from('user_soal');
+        $this->db->where(array('id_user' => $id, 'hasil' => $hasil));
+        return $this->db->get()->num_rows();
+    }
+    public function soal_jumlah_jawab($kode)
+    {
+        $this->db->from('user_soal');
+        $this->db->where(array('kode_soal' => $kode));
+        return $this->db->get()->num_rows();
+    }
+    public function soal_jumlah_hasil($kode, $hasil)
+    {
+        $this->db->from('user_soal');
+        $this->db->where(array('kode_soal' => $kode, 'hasil' => $hasil));
+        return $this->db->get()->num_rows();
+    }
     public function cekJawaban($soal, $jawaban)
     {
         $this->db->select('jawaban');

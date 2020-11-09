@@ -22,28 +22,28 @@
                 <div class="form-row">
                     <div class="form-group col-12">
                         <label for="nama"><b>Nama Mitra</b></label>
-                        <input type="name" class="form-control my-2" id="nama" name="nama" placeholder="Nama Mitra">
+                        <input type="name" class="form-control my-2" id="nama" name="nama" placeholder="Nama Mitra" value="<?php echo set_value('nama'); ?>">
                         <?= form_error('nama', '<small class="text-danger ml-0">', '</small>'); ?>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-12">
                         <label for="bidang"><b>Bidang</b></label>
-                        <input type="text" class="form-control my-2" id="bidang" name="bidang" placeholder="Bidang">
+                        <input type="text" class="form-control my-2" id="bidang" name="bidang" placeholder="Bidang" value="<?php echo set_value('bidang'); ?>">
                         <?= form_error('bidang', '<small class="text-danger ml-0">', '</small>'); ?>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-12">
                         <label for="alamat"><b>Alamat</b></label>
-                        <input type="text" class="form-control my-2" id="alamat" name="alamat" placeholder="Alamat">
+                        <input type="text" class="form-control my-2" id="alamat" name="alamat" placeholder="Alamat" value="<?php echo set_value('alamat'); ?>">
                         <?= form_error('alamat', '<small class="text-danger ml-0">', '</small>'); ?>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-12">
                         <label for="email"><b>Email</b></label>
-                        <input type="text" class="form-control my-2" id="email" name="email" placeholder="Email Mitra">
+                        <input type="text" class="form-control my-2" id="email" name="email" placeholder="Email Mitra" value="<?php echo set_value('email'); ?>">
                         <?= form_error('email', '<small class="text-danger ml-0">', '</small>'); ?>
                     </div>
                 </div>

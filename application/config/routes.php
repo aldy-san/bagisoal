@@ -31,5 +31,6 @@ $route['edit/mitra/(:any)']         = 'admin/edit_mitra';
 $route['profil-admin']              = 'admin/profil';
 $route['profil-admin/edit']         = 'admin/edit_profil';
 
-$route['profil']                    = 'user/profil';
+$route['profil-saya']               = 'user/profil';
+$route['profil-saya/(:any)']        = 'user/profil';
 $route['edit-profil']               = 'user/edit_profil';

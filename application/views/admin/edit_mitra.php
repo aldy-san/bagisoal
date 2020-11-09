@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="row">
-            <form class="col-12 mt-3" action="<?= base_url('tambah/mitra') ?>" method="post">
+            <form class="col-12 mt-3" action="<?= current_url() ?>" method="post">
                 <div class="form-row">
                     <div class="form-group col-12">
                         <label for="nama"><b>Nama Mitra</b></label>

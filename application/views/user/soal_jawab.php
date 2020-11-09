@@ -38,8 +38,11 @@
                                     </div>
                                     <?= form_error('opsi', '<small class="text-danger ml-0">', '</small>'); ?>
                                 </div>
-                                <button type="submit" class="btn btn-sm btn-primary rounded my-2 ">Jawab</button>
-                                <p class="text-warning">L</p>
+                                <button type="submit" class="btn btn-sm btn-primary rounded my-2" <?php if ($id) {
+                                                                                                        if ($cekTerjawab) {
+                                                                                                            echo "disabled";
+                                                                                                        }
+                                                                                                    } ?>>Jawab</button>
                             </div>
                         </form>
                     </div>

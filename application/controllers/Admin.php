@@ -23,10 +23,16 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Admin';
         $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $data['pengguna'] = $this->m_admin->jumlah_baris('users');
+        $data['soal'] = $this->m_admin->jumlah_baris('soal');
+        $data['kompetisi'] = $this->m_admin->jumlah_baris('kompetisi');
+        $data['mitra'] = $this->m_admin->jumlah_baris('mitra');
+        $data['admin'] = $this->m_admin->jumlah_baris('admin');
+        $data['log'] = $this->m_admin->tampil_data_limit('log_admin', 12, 'id')->result();
         $this->load->view('admin/header', $data);
         $this->load->view('admin/header_admin', $data);
         $this->load->view('admin/side_bar');
-        $this->load->view('admin/index');
+        $this->load->view('admin/index', $data);
         $this->load->view('admin/footer');
     }
     //PROFIL
@@ -34,13 +40,92 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Profil';
         $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $data['log'] = $this->m_admin->tampil_log_admin(6, $this->session->userdata('id_admin'))->result();
         $this->load->view('admin/header', $data);
         $this->load->view('admin/header_admin', $data);
         $this->load->view('admin/side_bar');
         $this->load->view('admin/profil');
         $this->load->view('admin/footer');
     }
+    public function edit_profil()
+    {
+        if (!$this->session->userdata('email')) {
+            redirect('');
+        }
+        $this->form_validation->set_rules(
+            'nama',
+            'Nama',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'no_hp',
+            'Nomor Handphone',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'alamat',
+            'Alamat',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'password',
+            'Password',
+            'required',
+        );
 
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Profil';
+            $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/header_admin', $data);
+            $this->load->view('admin/side_bar');
+            $this->load->view('admin/edit_profil', $data);
+            $this->load->view('admin/footer');
+        } else {
+            $this->_edit_profil();
+        }
+    }
+    public function _edit_profil()
+    {
+        $user = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $pass = $this->input->post('password');
+        $cek = strcmp($pass, $user);
+        if ($cek == 0) {
+            $foto = $_FILES['foto']['name'];
+            if ($foto != '') {
+                $config['upload_path'] = './assets/foto';
+                $config['allowed_types'] = 'jpg|png';
+                $config['max_filename']     = '30';
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('foto')) {
+                    echo "Upload Gagal";
+                    die();
+                } else {
+                    $foto = $this->upload->data('file_name');
+                }
+            } else {
+                $foto = $this->input->post('old');
+            }
+            $data = array(
+                'nama_admin'          => htmlspecialchars($this->input->post('nama', true)),
+                'email'         => htmlspecialchars($this->input->post('email', true)),
+                'no_hp'         => $this->input->post('no_hp'),
+                'alamat'        => $this->input->post('alamat', true),
+                'password'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'foto'          => $foto,
+            );
+            $where = array(
+                'id_admin' => $this->input->post('id_admin')
+            );
+
+            $this->m_admin->edit_data('admin', $data, $where);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil di ubah</div>');
+            redirect('profil-admin');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah</div>');
+            redirect('profil-admin/edit');
+        }
+    }
     //DAFTAR PENGGUNA
     public function daftar_pengguna()
     {
@@ -217,7 +302,17 @@ class Admin extends CI_Controller
             'poin'          => $this->input->post('poin'),
             'pembahasan'    => $this->input->post('pembahasan')
         );
-        $this->m_admin->tambah_data('soal', $data);
+        //log
+        $id = $this->session->userdata('id_admin');
+        $last_id = $this->m_admin->tambah_data('soal', $data);
+        $log = array(
+            'id_admin'      => $id,
+            'keterangan'    => 'Tambah',
+            'tanggal'       => date('Y-m-d'),
+            'data'          => 'Soal',
+            'id_data'       => $last_id
+        );
+        $this->m_admin->tambah_data('log_admin', $log);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambahkan</div>');
         redirect('daftar/soal');
     }
@@ -287,7 +382,17 @@ class Admin extends CI_Controller
             'berakhir'               => $this->input->post('berakhir'),
             'banner'                 => $banner
         );
-        $this->m_admin->tambah_data('kompetisi', $data);
+        //log
+        $id = $this->session->userdata('id_admin');
+        $last_id = $this->m_admin->tambah_data('kompetisi', $data);
+        $log = array(
+            'id_admin'      => $id,
+            'keterangan'    => 'Tambah',
+            'tanggal'       => date('Y-m-d'),
+            'data'          => 'Kompetisi',
+            'id_data'       => $last_id
+        );
+        $this->m_admin->tambah_data('log_admin', $log);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambahkan</div>');
         redirect('daftar/kompetisi');
     }
@@ -334,7 +439,17 @@ class Admin extends CI_Controller
             'alamat'        => $this->input->post('alamat'),
             'email'         => $this->input->post('email')
         );
-        $this->m_admin->tambah_data('mitra', $data);
+        //log
+        $id = $this->session->userdata('id_admin');
+        $last_id = $this->m_admin->tambah_data('mitra', $data);
+        $log = array(
+            'id_admin'      => $id,
+            'keterangan'    => 'Tambah',
+            'tanggal'       => date('Y-m-d'),
+            'data'          => 'Mitra',
+            'id_data'       => $last_id
+        );
+        $this->m_admin->tambah_data('log_admin', $log);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil ditambahkan</div>');
         redirect('daftar/mitra');
     }
@@ -417,7 +532,18 @@ class Admin extends CI_Controller
         $where = array(
             'kode_soal' => $this->input->post('kode_soal')
         );
-        $this->m_admin->edit_data('soal', $data, $where);
+        //log
+        $id = $this->session->userdata('id_admin');
+        $last_id = $this->m_admin->edit_data('soal', $data, $where);
+        $log = array(
+            'id_admin'      => $id,
+            'keterangan'    => 'Edit',
+            'tanggal'       => date('Y-m-d'),
+            'data'          => 'Soal',
+            'id_data'       => $this->input->post('kode_soal')
+        );
+        $this->m_admin->tambah_data('log_admin', $log);
+
         $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">Data Berhasil di ubah</div>');
         redirect('daftar/soal');
     }
@@ -494,7 +620,16 @@ class Admin extends CI_Controller
         $where = array(
             'kode_kompetisi' => $this->input->post('kode_kompetisi')
         );
-        $this->m_admin->edit_data('kompetisi', $data, $where);
+        //log
+        $id = $this->session->userdata('id_admin');
+        $log = array(
+            'id_admin'      => $id,
+            'keterangan'    => 'Edit',
+            'tanggal'       => date('Y-m-d'),
+            'data'          => 'Kompetisi',
+            'id_data'       => $this->input->post('kode_kompetisi')
+        );
+        $this->m_admin->tambah_data('log_admin', $log);
         $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">Data Berhasil di ubah</div>');
         redirect('daftar/kompetisi');
     }
@@ -546,7 +681,16 @@ class Admin extends CI_Controller
         $where = array(
             'id_mitra' => $this->input->post('id_mitra')
         );
-        $this->m_admin->edit_data('soal', $data, $where);
+        //log
+        $id = $this->session->userdata('id_admin');
+        $log = array(
+            'id_admin'      => $id,
+            'keterangan'    => 'Edit',
+            'tanggal'       => date('Y-m-d'),
+            'data'          => 'Mitra',
+            'id_data'       => $this->input->post('id_mitra')
+        );
+        $this->m_admin->tambah_data('log_admin', $log);
         $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">Data Berhasil di ubah</div>');
         redirect('daftar/mitra');
     }
@@ -554,6 +698,16 @@ class Admin extends CI_Controller
     public function hapus_soal($id)
     {
         $this->m_admin->hapus_data('soal', $id, 'kode_soal');
+        //log
+        $id_admin = $this->session->userdata('id_admin');
+        $log = array(
+            'id_admin'      => $id_admin,
+            'keterangan'    => 'Hapus',
+            'tanggal'       => date('Y-m-d'),
+            'data'          => 'Soal',
+            'id_data'       => $id
+        );
+        $this->m_admin->tambah_data('log_admin', $log);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Berhasil dihapus</div>');
         redirect('daftar/soal');
     }
@@ -561,6 +715,16 @@ class Admin extends CI_Controller
     public function hapus_mitra($id)
     {
         $this->m_admin->hapus_data('mitra', $id, 'id_mitra');
+        //log
+        $id_admin = $this->session->userdata('id_admin');
+        $log = array(
+            'id_admin'      => $id_admin,
+            'keterangan'    => 'Hapus',
+            'tanggal'       => date('Y-m-d'),
+            'data'          => 'Mitra',
+            'id_data'       => $id
+        );
+        $this->m_admin->tambah_data('log_admin', $log);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Berhasil dihapus</div>');
         redirect('daftar/mitra');
     }
@@ -568,6 +732,16 @@ class Admin extends CI_Controller
     public function hapus_kompetisi($id)
     {
         $this->m_admin->hapus_data('kompetisi', $id, 'kode_kompetisi');
+        //log
+        $id_admin = $this->session->userdata('id_admin');
+        $log = array(
+            'id_admin'      => $id_admin,
+            'keterangan'    => 'Hapus',
+            'tanggal'       => date('Y-m-d'),
+            'data'          => 'Kompetisi',
+            'id_data'       => $id
+        );
+        $this->m_admin->tambah_data('log_admin', $log);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Berhasil dihapus</div>');
         redirect('daftar/kompetisi');
     }

@@ -52,7 +52,8 @@ class Auth_admin extends CI_Controller
             //cek password
             if ($password === $user['password']) {
                 $data = [
-                    'email' => $user['email']
+                    'id_admin'  => $user['id_admin'],
+                    'email'     => $user['email']
                 ];
                 $this->session->set_userdata($data);
                 redirect('admin');
@@ -68,6 +69,7 @@ class Auth_admin extends CI_Controller
 
     public function logout()
     {
+        $this->session->unset_userdata('id_admin');
         $this->session->unset_userdata('email');
 
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda telah Logout</div>');

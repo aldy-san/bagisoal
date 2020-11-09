@@ -22,38 +22,38 @@
             <div class="form-row">
                 <div class="form-group col-12">
                     <label for="nama"><b>Nama Kompetisi</b></label>
-                    <input type="name" class="form-control my-2" id="nama" name="nama" placeholder="Nama Kompetisi">
+                    <input type="name" class="form-control my-2" id="nama" name="nama" placeholder="Nama Kompetisi" value="<?php echo set_value('nama'); ?>">
                     <?= form_error('nama', '<small class="text-danger ml-0">', '</small>'); ?>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12">
                     <label for="penyelenggara"><b>Penyelenggara</b></label>
-                    <input type="text" class="form-control my-2" id="penyelenggara" name="penyelenggara" placeholder="Penyelenggara">
+                    <input type="text" class="form-control my-2" id="penyelenggara" name="penyelenggara" placeholder="Penyelenggara" value="<?php echo set_value('penyelenggara'); ?>">
                     <?= form_error('penyelenggara', '<small class="text-danger ml-0">', '</small>'); ?>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12 col-md-3 my-2">
                     <label><b>Batas Pendaftaran</b></label>
-                    <input type="date" class="form-control" id="batasPendaftaran" name="batasPendaftaran">
+                    <input type="date" class="form-control" id="batasPendaftaran" name="batasPendaftaran" value="<?php echo set_value('batasPendaftaran'); ?>">
                     <?= form_error('batasPendaftaran', '<small class="text-danger ml-0">', '</small>'); ?>
                 </div>
                 <div class="form-group col-12 col-md-3 my-2">
                     <label><b>Mulai</b></label>
-                    <input type="date" class="form-control" id="mulai" name="mulai">
+                    <input type="date" class="form-control" id="mulai" name="mulai" value="<?php echo set_value('mulai'); ?>">
                     <?= form_error('mulai', '<small class="text-danger ml-0">', '</small>'); ?>
                 </div>
                 <div class="form-group col-12 col-md-3 my-2">
                     <label><b>Berakhir</b></label>
-                    <input type="date" class="form-control" id="berakhir" name="berakhir">
+                    <input type="date" class="form-control" id="berakhir" name="berakhir" value="<?php echo set_value('berakhir'); ?>">
                     <?= form_error('berakhir', '<small class="text-danger ml-0">', '</small>'); ?>
                 </div>
                 <div class="form-group col-12 col-md-3 my-2">
                     <label><b>Tambah Banner</b></label>
                     <div class="input-group">
                         <div class="custom-file ">
-                            <input type="file" class="custom-file-input" id="banner" name="banner" />
+                            <input type="file" class="custom-file-input" id="banner" name="banner" value="<?php echo set_value('banner'); ?>">
                             <label class="custom-file-label" for="banner">Pilih Gambar</label>
                         </div>
                     </div>
