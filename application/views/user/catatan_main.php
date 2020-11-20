@@ -3,8 +3,9 @@
         <div class="col-md-10 col-12 shadow p-3">
             <div class="container">
                 <div class="row my-3 justify-content-between">
-                    <button type="button" class="btn btn-dark shadow px-3">Berbagi Catatan</button>
+                    <a type="button" class="btn btn-dark shadow px-3" href="<?= base_url('catatan/tulis');?>">Berbagi Catatan</a>
                 </div>
+                <?= $this->session->flashdata('message'); ?>
                 <div class="row py-3">
                     <div class="col-12 shadow-sm p-2">
                         <h6 class="m-0 d-flex align-items-center">
@@ -33,6 +34,7 @@
                         </div>
                     </div>
                 </div>
+                <?php foreach($catatan as $catatan): ?>
                 <div class="row py-3">
                     <div class="col-12 shadow-sm p-2">
                         <h6 class="m-0 d-flex align-items-center">
@@ -40,14 +42,9 @@
                             <a href="" style="text-decoration: none;" class="text-dark"><b>M. Syukur Abadi</b></a>
                         </h6>
                         <div class="pt-2">
-                            <h4 class="">Lorem Ipsum</h4>
+                            <h4 class=""><?= $catatan['judul_catatan'];?></h4>
                             <p class="text-justify m-0">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum...
+                                <?= $catatan['konten'];?>
                                 <a href="#">Selengkapnya</a>
                             </p>
                         </div>
@@ -61,90 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row py-3">
-                    <div class="col-12 shadow-sm p-2">
-                        <h6 class="m-0 d-flex align-items-center">
-                            <img src="res/fc.jpg" width="26" height="26" class="rounded-circle mr-1">
-                            <a href="" style="text-decoration: none;" class="text-dark"><b>M. Syukur Abadi</b></a>
-                        </h6>
-                        <div class="pt-2">
-                            <h4 class="">Lorem Ipsum</h4>
-                            <p class="text-justify m-0">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum...
-                                <a href="#">Selengkapnya</a>
-                            </p>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <a href="#" class="badge badge-info">#Tags</a>
-                                <a href="#" class="badge badge-info">#Tags</a>
-                            </div>
-                            <div class="col-12">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row py-3">
-                    <div class="col-12 shadow-sm p-2">
-                        <h6 class="m-0 d-flex align-items-center">
-                            <img src="res/fc.jpg" width="26" height="26" class="rounded-circle mr-1">
-                            <a href="" style="text-decoration: none;" class="text-dark"><b>M. Syukur Abadi</b></a>
-                        </h6>
-                        <div class="pt-2">
-                            <h4 class="">Lorem Ipsum</h4>
-                            <p class="text-justify m-0">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum...
-                                <a href="#">Selengkapnya</a>
-                            </p>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <a href="#" class="badge badge-info">#Tags</a>
-                                <a href="#" class="badge badge-info">#Tags</a>
-                            </div>
-                            <div class="col-12">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row py-3">
-                    <div class="col-12 shadow-sm p-2">
-                        <h6 class="m-0 d-flex align-items-center">
-                            <img src="res/fc.jpg" width="26" height="26" class="rounded-circle mr-1">
-                            <a href="" style="text-decoration: none;" class="text-dark"><b>M. Syukur Abadi</b></a>
-                        </h6>
-                        <div class="pt-2">
-                            <h4 class="">Lorem Ipsum</h4>
-                            <p class="text-justify m-0">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum...
-                                <a href="#">Selengkapnya</a>
-                            </p>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <a href="#" class="badge badge-info">#Tags</a>
-                                <a href="#" class="badge badge-info">#Tags</a>
-                            </div>
-                            <div class="col-12">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach;?>
             </div>
         </div>
         <div class="col-2 sidebar-outer text-center d-none d-sm-block">
