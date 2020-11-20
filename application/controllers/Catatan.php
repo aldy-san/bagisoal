@@ -8,6 +8,7 @@ class Catatan extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
     }
+
 	public function index()
     {
         $data['title'] = 'Bagi Catatan';
@@ -56,6 +57,8 @@ class Catatan extends CI_Controller
     private function _tulis_catatan()
     {
     	$data = [ 
+    		'id_user'		=> $this->session->userdata('id_user'),
+    		'nama'			=> $this->session->userdata('nama'),
     		'judul_catatan' => $this->input->post('judul_catatan'),
     		'konten'		=> $this->input->post('konten')
     	];

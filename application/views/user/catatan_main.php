@@ -39,7 +39,7 @@
                     <div class="col-12 shadow-sm p-2">
                         <h6 class="m-0 d-flex align-items-center">
                             <img src="res/fc.jpg" width="26" height="26" class="rounded-circle mr-1">
-                            <a href="" style="text-decoration: none;" class="text-dark"><b>M. Syukur Abadi</b></a>
+                            <a href="" style="text-decoration: none;" class="text-dark"><b><?= $catatan['nama'];?></b></a>
                         </h6>
                         <div class="pt-2">
                             <h4 class=""><?= $catatan['judul_catatan'];?></h4>
