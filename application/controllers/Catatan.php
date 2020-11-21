@@ -77,4 +77,20 @@ class Catatan extends CI_Controller
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Catatan Berhasil Ditulis !</div>');
 		redirect('catatan');
 	}
+
+	public function showcatatanById($id)
+	{
+		$data['title'] = 'Tulis Catatan';
+		$data['catatan'] = $this->db->get_where('catatan', ['id_catatan' => $id])->row_array();
+		$this->load->view('template_home/header', $data);
+		if ($this->session->userdata('email')) {
+			$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+			$this->load->view('template_home/header_user', $data);
+		} else {
+			$this->load->view('template_home/header_umum', $data);
+		}
+		$this->load->view('user/catatan/show-catatan', $data);
+		$this->load->view('template_home/footer');
+	}
+
 }
