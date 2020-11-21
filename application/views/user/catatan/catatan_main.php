@@ -17,7 +17,7 @@
                                 <h4 class=""><?= $catatan->judul_catatan; ?></h4>
                                 <p class="text-justify m-0">
                                     <?= $catatan->konten; ?>
-                                    <a href="<?= base_url('catatan/showcatatanById/') ?><?= $catatan->catatan;?>">Selengkapnya</a>
+                                    <a href="<?= base_url('catatan/showcatatanById/') ?><?= $catatan->id_catatan; ?>">Selengkapnya</a>
                                 </p>
                             </div>
                             <div class="row">
@@ -31,7 +31,11 @@
                         </div>
                     </div>
                 <?php endforeach; ?>
-                <?= $this->pagination->create_links(); ?>
+                <div class="row justify-content-center m-2">
+                    <div class="col-4">
+                        <?= $this->pagination->create_links(); ?>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-2 sidebar-outer text-center d-none d-sm-block">
