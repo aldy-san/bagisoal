@@ -16,7 +16,7 @@
                 </div>
                 <button class="btn btn-primary" type="submit">LOGIN</button>
                 <hr>
-                <p class="my-4 text-dark"> <a class="text-primary" href="<?= base_url('auth/register') ?>">Lupa Password ?</a></p>
+                <p class="my-4 text-dark"> <a class="text-primary" href="<?= base_url('auth/lupa_password') ?>">Lupa Password ?</a></p>
                 <p class="my-4 text-dark">Jika belum memiliki akun harap daftar terlebih dahulu | <a class="text-primary" href="<?= base_url('auth/register') ?>">Daftar ?</a></p>
             </form>
         </div>

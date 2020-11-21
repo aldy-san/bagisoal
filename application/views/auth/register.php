@@ -53,6 +53,7 @@
                     <button class="btn btn-primary" type="submit">SIGN UP</button>
                 </form>
                 <hr>
+                <p class="my-4 text-dark"> <a class="text-primary" href="<?= base_url('auth/lupa_password') ?>">Lupa Password ?</a></p>
                 <p class="my-4 text-dark">Jika sudah memiliki akun, silahkan login | <a class="text-primary" href="<?= base_url('auth') ?>">Login ?</a></p>
             </div>
         </div>

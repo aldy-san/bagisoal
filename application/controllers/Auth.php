@@ -119,7 +119,7 @@ class Auth extends CI_Controller
             $user_token = [
                 'email' => $email,
                 'token' => $token,
-                'date_created' => time()
+                'date_created' => date('Y-m-d')
             ];
 
             $this->db->insert('users', $data);
@@ -149,6 +149,9 @@ class Auth extends CI_Controller
         if ($type == 'verify') {
             $this->email->subject('Account Verification');
             $this->email->message('Klik link ini untuk menverifikasi akun anda : <a href = "' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">KLIK DISINI</a>');
+        } else if ($type == 'lupa_password') {
+            $this->email->subject('RESET PASSWORD');
+            $this->email->message('Klik link ini untuk reset password anda : <a href = "' . base_url() . 'auth/reset_password?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">KLIK DISINI</a>');
         }
 
         if ($this->email->send()) {
@@ -191,5 +194,101 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('id_user');
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda telah Logout</div>');
         redirect('auth');
+    }
+
+    public function lupa_password()
+    {
+        //jika sudah login di tendang
+        if ($this->session->userdata('email')) {
+            redirect('');
+        }
+        $this->form_validation->set_rules(
+            'email',
+            'Email',
+            'required|trim|valid_email',
+        );
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Lupa Password';
+            $this->load->view('template_home/header', $data);
+            $this->load->view('template_home/header_umum', $data);
+            $this->load->view('auth/lupa_password');
+            $this->load->view('template_home/footer');
+        } else {
+            $email = $this->input->post('email');
+
+            $user = $this->db->get_where('users', ['email' => $email])->row_array();
+
+            if ($user) {
+                $token = base64_encode(random_bytes(32));
+                $user_token = [
+                    'email' => $email,
+                    'token' => $token,
+                    'date_created' => date('Y-m-d')
+                ];
+                $this->db->insert('user_token', $user_token);
+                $this->_sendEmail($token, 'lupa_password');
+
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Silahkan lihat email anda untuk reset password</div>');
+                redirect('auth/lupa_password');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email belum terdaftar atau belum terverifikasi</div>');
+                redirect('auth/lupa_password');
+            }
+        }
+    }
+    public function reset_password()
+    {
+        $email = $this->input->get('email');
+        $token = $this->input->get('token');
+
+        $user = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        if ($user) {
+            $user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
+            if ($user_token) {
+                $this->session->set_userdata('reset_email', $email);
+                $this->changePassword();
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal Reset Password! Token salah</div>');
+                redirect('auth');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal Reset Password! Email salah</div>');
+            redirect('auth');
+        }
+    }
+    public function changePassword()
+    {
+        // if (!$this->session->userdata('reset_email')) {
+        //     redirect('auth');
+        // }
+        $this->form_validation->set_rules(
+            'password1',
+            'Password',
+            'required|min_length[6]|max_length[12]|matches[password2]',
+        );
+        $this->form_validation->set_rules(
+            'password2',
+            'Password',
+            'required|matches[password1]',
+        );
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Reset Password';
+            $this->load->view('template_home/header', $data);
+            $this->load->view('template_home/header_umum', $data);
+            $this->load->view('auth/reset_password');
+            $this->load->view('template_home/footer');
+        } else {
+            $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
+            $email = $this->session->userdata('reset_email');
+
+            $this->db->set('password', $password);
+            $this->db->where('email', $email);
+            $this->db->update('users');
+
+            $this->session->unset_userdata('reset_email');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password anda berhasil di reset</div>');
+            redirect('auth');
+        }
     }
 }
