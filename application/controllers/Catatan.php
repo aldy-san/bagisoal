@@ -12,7 +12,16 @@ class Catatan extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Bagi Catatan';
-		$data['catatan'] = $this->db->get('catatan')->result_array();
+
+		//PAGINATION
+		$config['base_url'] = 'http://localhost/bagisoal/komunitas/catatan/';
+        $config['total_rows'] = $this->m_admin->jumlah_baris('catatan');
+        $config['per_page'] = 9;
+        $config['start'] = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+
+        $data['catatan'] = $this->m_admin->tampil_data('catatan', $config['per_page'], $config['start'], 'id_catatan')->result();
+
 		$this->load->view('template_home/header', $data);
 		if ($this->session->userdata('email')) {
 			$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
@@ -65,5 +74,20 @@ class Catatan extends CI_Controller
 		$this->db->insert('catatan', $data);
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Catatan Berhasil Ditulis !</div>');
 		redirect('catatan');
+	}
+
+	public function showcatatanById($id)
+	{
+		$data['title'] = 'Tulis Catatan';
+		$data['id'] = $this->get_where('catatan', ['id_catatan' => $id])->row_array();
+		$this->load->view('template_home/header', $data);
+		if ($this->session->userdata('email')) {
+			$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+			$this->load->view('template_home/header_user', $data);
+		} else {
+			$this->load->view('template_home/header_umum', $data);
+		}
+		$this->load->view('user/catatan/show-catatan');
+		$this->load->view('template_home/footer');
 	}
 }

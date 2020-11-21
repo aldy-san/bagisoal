@@ -11,13 +11,13 @@
                         <div class="col-12 shadow-sm p-2">
                             <h6 class="m-0 d-flex align-items-center">
                                 <img src="res/fc.jpg" width="26" height="26" class="rounded-circle mr-1">
-                                <a href="" style="text-decoration: none;" class="text-dark"><b><?= $catatan['nama']; ?></b></a>
+                                <a href="" style="text-decoration: none;" class="text-dark"><b><?= $catatan->nama; ?></b></a>
                             </h6>
                             <div class="pt-2">
-                                <h4 class=""><?= $catatan['judul_catatan']; ?></h4>
+                                <h4 class=""><?= $catatan->judul_catatan; ?></h4>
                                 <p class="text-justify m-0">
-                                    <?= $catatan['konten']; ?>
-                                    <a href="#">Selengkapnya</a>
+                                    <?= $catatan->konten; ?>
+                                    <a href="<?= base_url('catatan/showcatatanById/') ?><?= $catatan->catatan;?>">Selengkapnya</a>
                                 </p>
                             </div>
                             <div class="row">
@@ -31,6 +31,7 @@
                         </div>
                     </div>
                 <?php endforeach; ?>
+                <?= $this->pagination->create_links(); ?>
             </div>
         </div>
         <div class="col-2 sidebar-outer text-center d-none d-sm-block">
