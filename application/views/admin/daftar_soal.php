@@ -26,10 +26,10 @@
             <tbody>
                 <?php foreach ($soal as $soal) : ?>
                     <tr>
-                        <th scope="row"><?= $soal->materi . $soal->kode_soal ?></th>
+                        <th scope="row"><?= $soal->kode_soal ?></th>
                         <td><?= substr($soal->soal, 0, 50) ?>...</td>
-                        <td><?= $soal->sumber ?></td>
-                        <td><a href="" class="btn btn-info">Detail</a></td>
+                        <td><?= $soal->materi ?></td>
+                        <!-- <td><a href="" class="btn btn-info">Detail</a></td> -->
                         <td><a href="<?= base_url('edit/soal/' . $soal->kode_soal) ?>" class="btn btn-warning text-white"><i class="fas fa-edit"></i></a></td>
                         <td onclick="return confirm('yakin?')"><a type="button" href="<?= base_url('admin/hapus_soal/' . $soal->kode_soal) ?>" id="btn-delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                     </tr>

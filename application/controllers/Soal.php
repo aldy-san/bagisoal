@@ -34,7 +34,7 @@ class Soal extends CI_Controller
         } else {
             $this->load->view('template_home/header_umum', $data);
         }
-        $this->load->view('user/soal_main');
+        $this->load->view('user/soal/soal_main');
         $this->load->view('template_home/footer');
     }
     public function jawab()
@@ -58,7 +58,7 @@ class Soal extends CI_Controller
             } else {
                 $this->load->view('template_home/header_umum', $data);
             }
-            $this->load->view('user/soal_jawab', $data);
+            $this->load->view('user/soal/soal_jawab', $data);
             $this->load->view('template_home/footer');
         } else {
             if (!$this->session->userdata('email')) {

@@ -43,6 +43,10 @@ class Auth extends CI_Controller
         //usernya ada
         if ($user) {
             //cek password
+            if ($user['is_active'] == 0) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Alamat Email belum Terverifikasi!</div>');
+                redirect('auth');
+            }
             if (password_verify($password, $user['password'])) {
                 $data = [
                     'id_user' => $user['id_user'],
@@ -101,16 +105,83 @@ class Auth extends CI_Controller
             $this->load->view('auth/register');
             $this->load->view('template_home/footer');
         } else {
+            $email = $this->input->post('email', true);
             $data = [
-
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
-                'email' => htmlspecialchars($this->input->post('email', true)),
+                'email' => htmlspecialchars($email),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'foto' => 'default.jpg',
-                'total_poin' => '0'
+                'total_poin' => '0',
+                'is_active' => '0'
             ];
+            //SIAPKAN TOKEN
+            $token = base64_encode(random_bytes(32));
+            $user_token = [
+                'email' => $email,
+                'token' => $token,
+                'date_created' => time()
+            ];
+
             $this->db->insert('users', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat, Anda telat berhasil mendaftar!</div>');
+            $this->db->insert('user_token', $user_token);
+
+            $this->_sendEmail($token, 'verify');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat, Anda berhasil mendaftar. Silahkan verifikasi email anda</div>');
+            redirect('auth');
+        }
+    }
+    private function _sendEmail($token, $type)
+    {
+        $config = [
+            'protocol'  => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_user' => 'bagisoal1@gmail.com',
+            'smtp_pass' => 'Aldisukapb1',
+            'smtp_port' => 465,
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'newline'   => "\r\n"
+        ];
+        $this->load->library('email');
+        $this->email->initialize($config);
+        $this->email->from('bagisoal1@gmail.com', 'BAGISOAL');
+        $this->email->to($this->input->post('email'));
+        if ($type == 'verify') {
+            $this->email->subject('Account Verification');
+            $this->email->message('Klik link ini untuk menverifikasi akun anda : <a href = "' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">KLIK DISINI</a>');
+        }
+
+        if ($this->email->send()) {
+            return true;
+        } else {
+            echo $this->email->print_debugger();
+            die;
+        }
+    }
+    public function verify()
+    {
+        $email = $this->input->get('email');
+        $token = $this->input->get('token');
+
+        $user = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        if ($user) {
+            $user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
+            if ($user_token) {
+                $this->db->set('is_active', 1);
+                $this->db->where('email', $email);
+                $this->db->update('users');
+
+                $this->db->delete('user_token', ['email' => $email]);
+
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun Berhasil di Verifikasi</div>');
+                redirect('auth');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun Verifikasi gagal! Token Salah</div>');
+                redirect('auth');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun Verifikasi gagal! Email Tidak Terdaftar</div>');
             redirect('auth');
         }
     }

@@ -17,7 +17,7 @@
 
 <body>
   <!-- NAVIGATION -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
     <a class="navbar-brand ml-2" style="font-weight: bold;">BAGI<span class="text-warning">SOAL</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
         <?php if ($this->uri->segment(1) == "soal") {
           echo "active";
         } ?>">
-          <a class="nav-link" href="<?= base_url('soal') ?>">SOAL-SOAL</a>
+          <a class="nav-link" href="<?= base_url('soal') ?>">SOAL</a>
         </li>
         <li class="nav-item 
         <?php if ($this->uri->segment(1) == "kompetisi") {
@@ -69,7 +69,7 @@
           <a class="nav-link" href="#help">BANTUAN</a>
         </li>
       </ul>
-      <form class="form-inline mx-auto my-2">
+      <form class="form-inline mx-auto my-2 d-md-none d-lg-block">
         <div class="input-group">
           <input class="form-control mr-2 input" type="search" placeholder="Cari" aria-label="Search">
           <div class="input-group-append">

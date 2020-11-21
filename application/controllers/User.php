@@ -17,6 +17,7 @@ class User extends CI_Controller
         $data['title'] = 'Beranda';
         $this->load->view('template_home/header', $data);
         $data['soal'] = $this->m_admin->tampil_data_limit('soal', 5, 'kode_soal')->result();
+        $data['user_terbaik'] = $this->m_admin->tampil_data_limit('users', 5, 'total_poin')->result();
         if ($this->session->userdata('email')) {
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('template_home/header_user', $data);
@@ -37,7 +38,7 @@ class User extends CI_Controller
         } else {
             $this->load->view('template_home/header_umum', $data);
         }
-        $this->load->view('user/kompetisi_main');
+        $this->load->view('user/kompetisi/kompetisi_main');
         $this->load->view('template_home/footer');
     }
 

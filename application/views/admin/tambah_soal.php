@@ -61,7 +61,7 @@
                                 <?= form_error('jawaban', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
-                                <label for="sumber"><b>Sumber</b></label>
+                                <label for="sumber"><b>Materi</b></label>
                                 <input class="form-control" type="text" id="sumber" name="sumber" placeholder="Sumber" value="<?php echo set_value('sumber'); ?>">
                                 <?= form_error('sumber', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
@@ -69,10 +69,10 @@
                                 <label for="materi"><b>Materi</b></label>
                                 <select id="materi" name="materi" class="form-control" value="<?php echo set_value('materi'); ?>">
                                     <option selected disabled value="">Materi...</option>
-                                    <option value="MTK">Matematika</option>
-                                    <option value="FIS">FISIKA</option>
-                                    <option value="BIO">BIOLOGI</option>
-                                    <option value="KIM">KIMIA</option>
+                                    <option value="Matematika">Matematika</option>
+                                    <option value="Fisika">Fisika</option>
+                                    <option value="Biologi">Biologi</option>
+                                    <option value="Kimia">Kimia</option>
                                 </select>
                                 <?= form_error('materi', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>

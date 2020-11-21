@@ -1,11 +1,11 @@
-<ul class="navbar-nav mr-md-3">
-    <li class="nav-item d-inline">
+<ul class="navbar-nav mr-md-3 d-flex ">
+    <li class="nav-item d-sm-none">
         <div class="text-white align-self-center text-right">
             <p style="line-height: 25px" class="p-0 m-0"><?= $user['nama'] ?></p>
             <p style="line-height: 25px" class="p-0 m-0"><?= $user['total_poin'] ?> Poin</p>
         </div>
     </li>
-    <li class="nav-item dropdown d-inline">
+    <li class="nav-item dropdown ">
         <a class="nav-link ml-md-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img class="rounded-circle d-inline-block" src="<?= base_url() ?>./assets/foto/<?= $user['foto']; ?>" width="40" height="40">
         </a>

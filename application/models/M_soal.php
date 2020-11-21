@@ -2,10 +2,10 @@
 
 class M_soal extends CI_Model
 {
-    public function tampil_data($table, $limit, $start, $id)
+    public function tampil_data($table, $limit, $start, $order)
     {
         $this->db->from($table);
-        $this->db->order_by($id, 'DESC');
+        $this->db->order_by($order, 'DESC');
         $this->db->limit($limit, $start);
         return $this->db->get();
     }
