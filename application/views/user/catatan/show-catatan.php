@@ -5,20 +5,20 @@
           <div class="col-9">
             <div class="container">
               <div class="row p-2 shadow-sm">
-                
+              <?= $this->session->flashdata('message'); ?>  
                 <div class="col-12 text-left">
                   <h2><?= $catatan['judul_catatan'];?></h2>
                   <hr class="my-1">
                   <p><?= $catatan['konten'];?></p>
                   <hr>
-                  <form>
+                  <form method="post" action="<?= base_url('catatan/showcatatan/') ?><?= $catatan['id_catatan']?>">
                     <div class="form-row justify-content-between">
-                      <div class="col-10">
-                        <input type="text" name="jawaban" placeholder="Komentar disini" class="form-control">
-                      </div>
-                      <div class="col-2">
-                        <button type="submit" class="btn btn-warning rounded">Jawab</button>
-                      </div>
+                        <div class="col-10">
+                          <input type="text" name="komentar" placeholder="Komentar disini" class="form-control">
+                        </div>
+                        <div class="col-2">
+                          <button type="submit" class="btn btn-warning rounded">Jawab</button>
+                        </div>
                     </div>
                   </form>
                 </div>

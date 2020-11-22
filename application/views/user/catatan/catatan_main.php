@@ -17,7 +17,7 @@
                                 <h4 class=""><?= $catatan->judul_catatan; ?></h4>
                                 <p class="text-justify m-0">
                                     <?= $catatan->konten; ?>
-                                    <a href="<?= base_url('catatan/showcatatanById/') ?><?= $catatan->id_catatan; ?>">Selengkapnya</a>
+                                    <a href="<?= base_url('catatan/showcatatan/') ?><?= $catatan->id_catatan; ?>">Selengkapnya</a>
                                 </p>
                             </div>
                             <div class="row">

@@ -78,19 +78,34 @@ class Catatan extends CI_Controller
 		redirect('catatan');
 	}
 
-	public function showcatatanById($id)
+	public function showcatatan($id)
 	{
-		$data['title'] = 'Tulis Catatan';
-		$data['catatan'] = $this->db->get_where('catatan', ['id_catatan' => $id])->row_array();
-		$this->load->view('template_home/header', $data);
-		if ($this->session->userdata('email')) {
-			$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-			$this->load->view('template_home/header_user', $data);
+		if ($this->form_validation->run() == false) {
+			$data['title'] = 'Bagikan Catatan';
+			$data['catatan'] = $this->db->get_where('catatan', ['id_catatan' => $id])->row_array();
+			$this->load->view('template_home/header', $data);
+			if ($this->session->userdata('email')) {
+				$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+				$this->load->view('template_home/header_user', $data);
+			} else {
+				$this->load->view('template_home/header_umum', $data);
+			}
+			$this->load->view('user/catatan/show-catatan');
+			$this->load->view('template_home/footer');
 		} else {
-			$this->load->view('template_home/header_umum', $data);
-		}
-		$this->load->view('user/catatan/show-catatan', $data);
-		$this->load->view('template_home/footer');
-	}
+			$komentar = [
+			'id_user'		=> $this->session->userdata('id_user'),			
+			'id_catatan'	=> $id,
+			'komentar'		=> $this->input->post('komentar')
+			];
 
+			$this->db->insert('komentar', $komentar);
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Komentar Berhasil Ditulis !</div>');
+			var_dump($komentar);
+			die;
+		redirect('catatan/showcatatan');
+		}
+
+		
+	}
 }

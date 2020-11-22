@@ -11,7 +11,6 @@ $route['kompetisi']                 = 'user/kompetisi_main';
 $route['komunitas/forum']           = 'user/forum_main';
 $route['komunitas/catatan']         = 'catatan';
 $route['komunitas/catatan/(:any)']  = 'catatan';
-
 //ADMIN
 $route['daftar/pengguna']           = 'admin/daftar_pengguna';
 $route['daftar/pengguna/(:any)']    = 'admin/daftar_pengguna';
