@@ -9,7 +9,7 @@
             <h2><?= $catatan['judul_catatan']; ?></h2>
             <div>
               <img src="<?= base_url() ?>./assets/foto/<?= $catatan['foto']; ?>" width="26" height="26" class="rounded-circle mr-1">
-              <a href="" style="text-decoration: none;" class="text-dark"><b><?= $catatan['nama']; ?></b></a>
+              <a href="" style="text-decoration: none;" class="text-secondary"><b><?= $catatan['nama']; ?></b></a>
             </div>
             <hr class="my-1">
             <p><?= $catatan['konten']; ?></p>
@@ -34,6 +34,9 @@
               <div class="row">
                 <h4 class="p-2"><b>Komentar</b></h4>
               </div>
+              <?php if ($komentar == null) {
+                echo "<div class='alert alert-info' role='alert'>Jadilah komentar pertama !</div>";
+              } ?>
               <?php foreach ($komentar as $k) : ?>
                 <div class="row my-3 shadow-sm">
                   <div class="col-12">

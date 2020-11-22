@@ -54,6 +54,14 @@ class M_soal extends CI_Model
         $this->db->order_by($id, 'DESC');
         return $this->db->get();
     }
+    public function tampil_data_join_where($table, $id, $where)
+    {
+        $this->db->from($table);
+        $this->db->where($where);
+        $this->db->join('users', $table . '.id_user = users.id_user');
+        $this->db->order_by($id, 'DESC');
+        return $this->db->get();
+    }
     public function user_jumlah_jawab($id)
     {
         $this->db->from('user_soal');
