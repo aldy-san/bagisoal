@@ -31,6 +31,21 @@ class M_soal extends CI_Model
             return true;
         }
     }
+    public function tampil_data_join_user($table, $limit, $start, $id)
+    {
+        $this->db->from($table);
+        $this->db->join('users', $table . '.id_user = users.id_user');
+        $this->db->order_by($id, 'DESC');
+        $this->db->limit($limit, $start);
+        return $this->db->get();
+    }
+    public function tampil_data_join($table, $id)
+    {
+        $this->db->from($table);
+        $this->db->join('users', $table . '.id_user = users.id_user');
+        $this->db->order_by($id, 'DESC');
+        return $this->db->get();
+    }
     public function user_jumlah_jawab($id)
     {
         $this->db->from('user_soal');

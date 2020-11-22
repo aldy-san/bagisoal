@@ -7,6 +7,10 @@
           <?= $this->session->flashdata('message'); ?>
           <div class="col-12 text-left">
             <h2><?= $catatan['judul_catatan']; ?></h2>
+            <div>
+              <img src="<?= base_url() ?>./assets/foto/<?= $catatan['foto']; ?>" width="26" height="26" class="rounded-circle mr-1">
+              <a href="" style="text-decoration: none;" class="text-dark"><b><?= $catatan['nama']; ?></b></a>
+            </div>
             <hr class="my-1">
             <p><?= $catatan['konten']; ?></p>
             <hr>
@@ -30,26 +34,16 @@
               <div class="row">
                 <h4 class="p-2"><b>Komentar</b></h4>
               </div>
-              <div class="row my-3 shadow-sm">
-                <div class="col-12">
-                  <h6 class="m-0 d-flex align-items-center">
-                    <img src="res/fc.jpg" width="26" height="26" class="rounded-circle mr-1">
-                    <a href="" style="text-decoration: none;" class="text-dark"><b>M. Syukur Abadi</b></a>
-                  </h6>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt.</p>
+              <?php foreach ($komentar as $k) : ?>
+                <div class="row my-3 shadow-sm">
+                  <div class="col-12">
+                    <h6 class="m-0 d-flex align-items-center">
+                      <img src="<?= base_url() ?>./assets/foto/<?= $k['foto']; ?>" width="26" height="26" class="rounded-circle mr-1">
+                      <a href="" style="text-decoration: none;" class="text-dark"><b><?= $k['nama'] ?></b></a>
+                    </h6>
+                    <p><?= $k['komentar']; ?></p>
+                  </div>
                 </div>
-              </div>
-              <?php foreach($komentar as $k): ?>
-              <div class="row my-3 shadow-sm">
-                <div class="col-12">
-                  <h6 class="m-0 d-flex align-items-center">
-                    <img src="res/fc.jpg" width="26" height="26" class="rounded-circle mr-1">
-                    <a href="" style="text-decoration: none;" class="text-dark"><b>M. Syukur Abadi</b></a>
-                  </h6>
-                  <p><?= $k['komentar'];?></p>
-                </div>
-              </div>
               <?php endforeach; ?>
             </div>
           </div>
