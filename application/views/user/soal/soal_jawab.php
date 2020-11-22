@@ -75,8 +75,8 @@
                             }
                         }
                         ?>
-
-                        <p class="m-1"><b>Kode Soal:</b> <?= $soal['materi'] . $soal['kode_soal'] ?></p>
+                        <p class="m-1"><b>Kode Soal:</b> <?= $soal['kode_soal'] ?></p>
+                        <p class="m-1"><b>Materi:</b> <?= $soal['materi'] ?></p>
                         <p class="m-1"><b>Sumber:</b> <?= $soal['sumber'] ?></p>
                         <!-- <p class="m-1"><b>Diunggah:</b> 10 Oktober 2020</p> -->
                         <p class="m-1"><b>Poin:</b> <?= $soal['poin'] ?></p>
