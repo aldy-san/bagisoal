@@ -40,27 +40,17 @@
                     tempor incididunt.</p>
                 </div>
               </div>
+              <?php foreach($komentar as $k): ?>
               <div class="row my-3 shadow-sm">
                 <div class="col-12">
                   <h6 class="m-0 d-flex align-items-center">
-                    <img src="res/ks.jpg" width="26" height="26" class="rounded-circle mr-1">
-                    <a href="" style="text-decoration: none;" class="text-dark"><b>Orang lain</b></a>
+                    <img src="res/fc.jpg" width="26" height="26" class="rounded-circle mr-1">
+                    <a href="" style="text-decoration: none;" class="text-dark"><b>M. Syukur Abadi</b></a>
                   </h6>
-                  <p>Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <p><?= $k['komentar'];?></p>
                 </div>
               </div>
-              <div class="row my-3 shadow-sm">
-                <div class="col-12">
-                  <h6 class="m-0 d-flex align-items-center">
-                    <img src="res/sm.jpg" width="26" height="26" class="rounded-circle mr-1">
-                    <a href="" style="text-decoration: none;" class="text-dark"><b>Temennya aldi</b></a>
-                  </h6>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitatio.</p>
-                </div>
-              </div>
+              <?php endforeach; ?>
             </div>
           </div>
         </div>

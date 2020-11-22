@@ -88,6 +88,7 @@ class Catatan extends CI_Controller
 		if ($this->form_validation->run() == false) {
 			$data['title'] = 'Bagikan Catatan';
 			$data['catatan'] = $this->db->get_where('catatan', ['id_catatan' => $id])->row_array();
+			$data['komentar'] = $this->db->get_where('komentar', ['id_catatan' => $id])->result_array();
 			$this->load->view('template_home/header', $data);
 			if ($this->session->userdata('email')) {
 				$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
@@ -106,9 +107,7 @@ class Catatan extends CI_Controller
 
 			$this->db->insert('komentar', $komentar);
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Komentar Berhasil Ditulis !</div>');
-			var_dump($komentar);
-			die;
-			redirect('catatan/showcatatan');
+			redirect('catatan/showcatatan/'.$id);
 		}
 	}
 }
