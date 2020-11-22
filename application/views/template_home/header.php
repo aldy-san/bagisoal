@@ -25,24 +25,36 @@
     <!-- NAVLINK -->
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
+
         <li class="nav-item 
         <?php if ($this->uri->segment(1) == "") {
           echo "active";
         } ?>">
           <a class="nav-link" href="<?= base_url('') ?>">BERANDA<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item 
+        <li class="nav-item dropdown
         <?php if ($this->uri->segment(1) == "soal") {
           echo "active";
         } ?>">
-          <a class="nav-link" href="<?= base_url('soal') ?>">SOAL</a>
+          <a class="nav-link dropdown-toggle" href="#" id="soalDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            SOAL
+          </a>
+          <div class="dropdown-menu" aria-labelledby="soalDropdown">
+            <a class="dropdown-item" href="<?= base_url('soal') ?>">SEMUA</a>
+            <a class="dropdown-item" href="<?= base_url('soal/matematika') ?>">MATEMATIKA</a>
+            <a class="dropdown-item" href="<?= base_url('soal/fisika') ?>">FISIKA</a>
+            <a class="dropdown-item" href="<?= base_url('soal/biologi') ?>">BIOLOGI</a>
+            <a class="dropdown-item" href="<?= base_url('soal/kimia') ?>">KIMIA</a>
+          </div>
         </li>
+
         <li class="nav-item 
         <?php if ($this->uri->segment(1) == "kompetisi") {
           echo "active";
         } ?>">
           <a class="nav-link" href="<?= base_url('kompetisi') ?>">KOMPETISI</a>
         </li>
+
         <li class="nav-item dropdown
         <?php if ($this->uri->segment(1) == "komunitas") {
           echo "active";
@@ -55,6 +67,7 @@
             <a class="dropdown-item" href="<?= base_url('komunitas/catatan') ?>">BAGI <b>CATATAN</b></a>
           </div>
         </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="peringkatDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             PERINGKAT
@@ -65,6 +78,7 @@
             <a class="dropdown-item" href="#">SEKOLAH</a>
           </div>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="#help">BANTUAN</a>
         </li>

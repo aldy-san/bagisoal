@@ -9,6 +9,14 @@ class M_soal extends CI_Model
         $this->db->limit($limit, $start);
         return $this->db->get();
     }
+    public function tampil_data_where($table, $limit, $start, $order, $where)
+    {
+        $this->db->from($table);
+        $this->db->where($where);
+        $this->db->order_by($order, 'DESC');
+        $this->db->limit($limit, $start);
+        return $this->db->get();
+    }
     public function tampil_data_log($table, $limit, $start, $id, $where)
     {
         $this->db->from($table);
@@ -79,5 +87,9 @@ class M_soal extends CI_Model
         $poin_user = $this->db->get_where('users', ['id_user' => $id])->row()->total_poin;
         $poin_baru = $poin_user + $poin_soal;
         $this->db->update('users', array('total_poin' => $poin_baru), array('id_user' => $id));
+    }
+    public function jumlah_baris($table, $where)
+    {
+        return $this->db->get_where($table, $where)->num_rows();
     }
 }

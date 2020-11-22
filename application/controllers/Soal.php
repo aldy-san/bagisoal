@@ -15,10 +15,10 @@ class Soal extends CI_Controller
     public function index()
     {
         //PAGINATION
-        $config['base_url'] = 'http://localhost/bagisoal/daftar/soal/';
+        $config['base_url'] = 'http://localhost/bagisoal/soal/';
         $config['total_rows'] = $this->m_admin->jumlah_baris('soal');
         $config['per_page'] = 12;
-        $config['start'] = $this->uri->segment(3);
+        $config['start'] = $this->uri->segment(2);
         $this->pagination->initialize($config);
 
         $id = $this->session->userdata('id_user');
@@ -34,7 +34,107 @@ class Soal extends CI_Controller
         } else {
             $this->load->view('template_home/header_umum', $data);
         }
-        $this->load->view('user/soal/soal_main');
+        $this->load->view('user/soal/soal_main', $data);
+        $this->load->view('template_home/footer');
+    }
+    public function matematika()
+    {
+        //PAGINATION
+        $config['base_url'] = 'http://localhost/bagisoal/soal/matematika/';
+        $config['total_rows'] = $this->m_soal->jumlah_baris('soal', ['materi' => 'Matematika']);
+        $config['per_page'] = 12;
+        $config['start'] = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+
+        $id = $this->session->userdata('id_user');
+        $email = $this->session->userdata('email');
+        $data['id'] = $id;
+
+        $data['soal'] = $this->m_soal->tampil_data_where('soal', $config['per_page'], $config['start'], 'kode_soal', ['materi' => 'Matematika'])->result();
+        $data['title'] = 'Soal';
+        $this->load->view('template_home/header', $data);
+        if ($this->session->userdata('email')) {
+            $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('template_home/header_user', $data);
+        } else {
+            $this->load->view('template_home/header_umum', $data);
+        }
+        $this->load->view('user/soal/soal_main', $data);
+        $this->load->view('template_home/footer');
+    }
+    public function fisika()
+    {
+        //PAGINATION
+        $config['base_url'] = 'http://localhost/bagisoal/soal/fisika/';
+        $config['total_rows'] = $this->m_soal->jumlah_baris('soal', ['materi' => 'Fisika']);
+        $config['per_page'] = 12;
+        $config['start'] = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+
+        $id = $this->session->userdata('id_user');
+        $email = $this->session->userdata('email');
+        $data['id'] = $id;
+
+        $data['soal'] = $this->m_soal->tampil_data_where('soal', $config['per_page'], $config['start'], 'kode_soal', ['materi' => 'Fisika'])->result();
+        $data['title'] = 'Soal';
+        $this->load->view('template_home/header', $data);
+        if ($this->session->userdata('email')) {
+            $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('template_home/header_user', $data);
+        } else {
+            $this->load->view('template_home/header_umum', $data);
+        }
+        $this->load->view('user/soal/soal_main', $data);
+        $this->load->view('template_home/footer');
+    }
+    public function biologi()
+    {
+        //PAGINATION
+        $config['base_url'] = 'http://localhost/bagisoal/soal/biologi/';
+        $config['total_rows'] = $this->m_soal->jumlah_baris('soal', ['materi' => 'Biologi']);
+        $config['per_page'] = 12;
+        $config['start'] = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+
+        $id = $this->session->userdata('id_user');
+        $email = $this->session->userdata('email');
+        $data['id'] = $id;
+
+        $data['soal'] = $this->m_soal->tampil_data_where('soal', $config['per_page'], $config['start'], 'kode_soal', ['materi' => 'Biologi'])->result();
+        $data['title'] = 'Soal';
+        $this->load->view('template_home/header', $data);
+        if ($this->session->userdata('email')) {
+            $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('template_home/header_user', $data);
+        } else {
+            $this->load->view('template_home/header_umum', $data);
+        }
+        $this->load->view('user/soal/soal_main', $data);
+        $this->load->view('template_home/footer');
+    }
+    public function kimia()
+    {
+        //PAGINATION
+        $config['base_url'] = 'http://localhost/bagisoal/soal/kimia/';
+        $config['total_rows'] = $this->m_soal->jumlah_baris('soal', ['materi' => 'Kimia']);
+        $config['per_page'] = 12;
+        $config['start'] = $this->uri->segment(3);
+        $this->pagination->initialize($config);
+
+        $id = $this->session->userdata('id_user');
+        $email = $this->session->userdata('email');
+        $data['id'] = $id;
+
+        $data['soal'] = $this->m_soal->tampil_data_where('soal', $config['per_page'], $config['start'], 'kode_soal', ['materi' => 'Kimia'])->result();
+        $data['title'] = 'Soal';
+        $this->load->view('template_home/header', $data);
+        if ($this->session->userdata('email')) {
+            $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('template_home/header_user', $data);
+        } else {
+            $this->load->view('template_home/header_umum', $data);
+        }
+        $this->load->view('user/soal/soal_main', $data);
         $this->load->view('template_home/footer');
     }
     public function jawab()
