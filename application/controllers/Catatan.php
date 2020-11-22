@@ -80,6 +80,11 @@ class Catatan extends CI_Controller
 
 	public function showcatatan($id)
 	{
+		$this->form_validation->set_rules(
+			'komentar',
+			'Komentar',
+			'required',
+		);
 		if ($this->form_validation->run() == false) {
 			$data['title'] = 'Bagikan Catatan';
 			$data['catatan'] = $this->db->get_where('catatan', ['id_catatan' => $id])->row_array();
@@ -94,18 +99,16 @@ class Catatan extends CI_Controller
 			$this->load->view('template_home/footer');
 		} else {
 			$komentar = [
-			'id_user'		=> $this->session->userdata('id_user'),			
-			'id_catatan'	=> $id,
-			'komentar'		=> $this->input->post('komentar')
+				'id_user'		=> $this->session->userdata('id_user'),
+				'id_catatan'	=> $id,
+				'komentar'		=> $this->input->post('komentar')
 			];
 
 			$this->db->insert('komentar', $komentar);
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Komentar Berhasil Ditulis !</div>');
 			var_dump($komentar);
 			die;
-		redirect('catatan/showcatatan');
+			redirect('catatan/showcatatan');
 		}
-
-		
 	}
 }
