@@ -1,5 +1,5 @@
 <ul class="navbar-nav mr-md-3 d-flex ">
-    <li class="nav-item d-sm-none">
+    <li class="nav-item">
         <div class="text-white align-self-center text-right">
             <p style="line-height: 25px" class="p-0 m-0"><?= $user['nama'] ?></p>
             <p style="line-height: 25px" class="p-0 m-0"><?= $user['total_poin'] ?> Poin</p>

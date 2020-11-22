@@ -147,7 +147,7 @@ class User extends CI_Controller
 
             $this->m_user->edit_data('users', $data, $where);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil di ubah</div>');
-            redirect('profil');
+            redirect('profil-saya');
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah</div>');
             redirect('edit_profil');
