@@ -10,66 +10,51 @@
                     <div class="row py-3">
                         <div class="col-12 shadow-sm p-2">
                             <h6 class="m-0 d-flex align-items-center">
-                                <img src="res/fc.jpg" width="26" height="26" class="rounded-circle mr-1">
-                                <a href="" style="text-decoration: none;" class="text-dark"><b><?= $catatan['nama']; ?></b></a>
+                                <img src="<?= base_url() ?>./assets/foto/<?= $catatan->foto; ?>" width="26" height="26" class="rounded-circle mr-1">
+                                <a href="" style="text-decoration: none;" class="text-dark"><b><?= $catatan->nama; ?></b></a>
                             </h6>
                             <div class="pt-2">
-                                <h4 class=""><?= $catatan['judul_catatan']; ?></h4>
+                                <h4><a style="text-decoration: none;" href="<?= base_url('catatan/showcatatan/') ?><?= $catatan->id_catatan; ?>"><?= $catatan->judul_catatan; ?></a></h4>
                                 <p class="text-justify m-0">
-                                    <?= $catatan['konten']; ?>
-                                    <a href="#">Selengkapnya</a>
+                                    <?= $catatan->konten; ?>
                                 </p>
                             </div>
-                            <div class="row">
+                            <!-- <div class="row my-2">
                                 <div class="col-12">
                                     <a href="#" class="badge badge-info">#Tags</a>
                                     <a href="#" class="badge badge-info">#Tags</a>
                                 </div>
                                 <div class="col-12">
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 <?php endforeach; ?>
+                <div class="row justify-content-center m-2">
+                    <div class="col-4">
+                        <?= $this->pagination->create_links(); ?>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-2 sidebar-outer text-center d-none d-sm-block">
             <div class="position-fixed col-2 shadow p-2 rounded">
-                <div>
+                <!-- <div>
                     <h3 class="text-center">Trending</h3>
                     <a href="#" class="badge badge-info">#Matematika</a>
                     <a href="#" class="badge badge-info">#TPB</a>
                     <a href="#" class="badge badge-info">#UTBK</a>
                     <a href="#" class="badge badge-info">#SBMPTN</a>
-                </div>
-                <hr class="m-1">
+                </div> -->
                 <div class="text-left">
-                    <h3 class="text-center">Top User</h3>
-                    <div class="">
-                        <img src="res/fc.jpg" width="24" height="24" class="rounded-circle mr-2">
-                        <a href="">Putin</a>
-                        <span class="badge badge-pill badge-light text-right">720 Poin</span>
-                    </div>
-                    <div class="">
-                        <img src="res/fc.jpg" width="24" height="24" class="rounded-circle mr-2">
-                        <a href="">Temennya Putin</a>
-                        <span class="badge badge-pill badge-light text-right">720 Poin</span>
-                    </div>
-                    <div class="">
-                        <img src="res/fc.jpg" width="24" height="24" class="rounded-circle mr-2">
-                        <a href="">Putin</a>
-                        <span class="badge badge-pill badge-light text-right">720 Poin</span>
-                    </div>
-                    <div class="">
-                        <img src="res/fc.jpg" width="24" height="24" class="rounded-circle mr-2">
-                        <a href="">Temennya Putin</a>
-                        <span class="badge badge-pill badge-light text-right">720 Poin</span>
-                    </div>
-                    <div class="">
-                        <img src="res/fc.jpg" width="24" height="24" class="rounded-circle mr-2">
-                        <a href="">Putin</a>
-                        <span class="badge badge-pill badge-light text-right">720 Poin</span>
-                    </div>
+                    <h3 class="text-center p-3">Top User</h3>
+                    <?php foreach ($top_user as $top) : ?>
+                        <div class="my-2">
+                            <img src="<?= base_url() ?>./assets/foto/<?= $top['foto']; ?>" width="24" height="24" class="rounded-circle mr-2">
+                            <a href=""><?= $top['nama']; ?></a>
+                            <span class="badge badge-pill badge-light text-right"><?= $top['total_poin']; ?> Poin</span>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

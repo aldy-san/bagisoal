@@ -11,7 +11,7 @@ $route['soal/jawab/(:num)']         = 'soal/jawab';
 $route['kompetisi']                 = 'user/kompetisi_main';
 $route['komunitas/forum']           = 'user/forum_main';
 $route['komunitas/catatan']         = 'catatan';
-
+$route['komunitas/catatan/(:any)']  = 'catatan';
 //ADMIN
 $route['daftar/pengguna']           = 'admin/daftar_pengguna';
 $route['daftar/pengguna/(:num)']    = 'admin/daftar_pengguna';
