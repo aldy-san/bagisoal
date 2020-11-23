@@ -28,7 +28,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row"><a href="kompetisi-1.html">ON MIPA 2020</a></th>
+                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
                         <td>Kemdikbud RI</td>
                         <td>8 Oktober 2020, 16:00 WIB</td>
                         <td>10 Oktober 2020 - 11 Oktober 2020</td>
@@ -38,7 +38,7 @@
                         } ?>">Daftar</button></td>
                     </tr>
                     <tr>
-                        <th scope="row"><a href="kompetisi-1.html">Calculus Cup</a></th>
+                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
                         <td>Universtias Negeri Jakarta</td>
                         <td>8 Oktober 2020, 16:00 WIB</td>
                         <td>10 Oktober 2020 - 11 Oktober 2020</td>
@@ -48,7 +48,7 @@
                         } ?>">Daftar</button></td>
                     </tr>
                     <tr>
-                        <th scope="row"><a href="kompetisi-1.html">ON MIPA 2020</a></th>
+                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
                         <td>Kemdikbud RI</td>
                         <td>8 Oktober 2020, 16:00 WIB</td>
                         <td>10 Oktober 2020 - 11 Oktober 2020</td>
@@ -58,7 +58,7 @@
                         } ?>">Daftar</button></td>
                     </tr>
                     <tr>
-                        <th scope="row"><a href="kompetisi-1.html">Calculus Cup</a></th>
+                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
                         <td>Universtias Negeri Jakarta</td>
                         <td>8 Oktober 2020, 16:00 WIB</td>
                         <td>10 Oktober 2020 - 11 Oktober 2020</td>
@@ -68,7 +68,7 @@
                         } ?>">Daftar</button></td>
                     </tr>
                     <tr>
-                        <th scope="row"><a href="kompetisi-1.html">Calculus Cup</a></th>
+                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
                         <td>Universtias Negeri Jakarta</td>
                         <td>8 Oktober 2020, 16:00 WIB</td>
                         <td>10 Oktober 2020 - 11 Oktober 2020</td>
@@ -78,7 +78,7 @@
                         } ?>">Daftar</button></td>
                     </tr>
                     <tr>
-                        <th scope="row"><a href="kompetisi-1.html">ON MIPA 2020</a></th>
+                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
                         <td>Kemdikbud RI</td>
                         <td>8 Oktober 2020, 16:00 WIB</td>
                         <td>10 Oktober 2020 - 11 Oktober 2020</td>
@@ -88,7 +88,7 @@
                         } ?>">Daftar</button></td>
                     </tr>
                     <tr>
-                        <th scope="row"><a href="kompetisi-1.html">Calculus Cup</a></th>
+                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
                         <td>Universtias Negeri Jakarta</td>
                         <td>8 Oktober 2020, 16:00 WIB</td>
                         <td>10 Oktober 2020 - 11 Oktober 2020</td>
@@ -97,7 +97,6 @@
                             echo "disabled";
                         } ?>">Daftar</button></td>
                     </tr>
-
                 </tbody>
             </table>
         </div>

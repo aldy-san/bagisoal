@@ -8,8 +8,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['soal']                      = 'soal';
 $route['soal/(:num)']               = 'soal';
 $route['soal/jawab/(:num)']         = 'soal/jawab';
-$route['kompetisi']                 = 'user/kompetisi_main';
-$route['komunitas/forum']           = 'user/forum_main';
+$route['komunitas/forum']           = 'forum';
 $route['komunitas/catatan']         = 'catatan';
 $route['komunitas/catatan/(:any)']  = 'catatan';
 //ADMIN

@@ -63,7 +63,7 @@
             KOMUNITAS
           </a>
           <div class="dropdown-menu" aria-labelledby="komunitasDropdown">
-            <a class="dropdown-item" href="<?= base_url('komunitas/forum') ?>">BAGI <b>SOAL</b></a>
+            <a class="dropdown-item" href="<?= base_url('komunitas/forum') ?>">BAGI <b>PERTANYAAN</b></a>
             <a class="dropdown-item" href="<?= base_url('komunitas/catatan') ?>">BAGI <b>CATATAN</b></a>
           </div>
         </li>

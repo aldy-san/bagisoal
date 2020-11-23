@@ -104,7 +104,7 @@
                             <a href="" style="text-decoration: none;" class="text-dark"><b>nsyahrial666</b></a>
                         </h6>
                         <div class="pt-2">
-                            <a class="h5" style="text-decoration: none; cursor:pointer;" href="#">Apakah lorem ipsum nganu?</a>
+                            <a class="h5" style="text-decoration: none; cursor:pointer;" href="<?= base_url('forum/show') ?>">Apakah lorem ipsum nganu?</a>
                             <p class="my-1">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -154,41 +154,22 @@
         </div>
         <div class="col-2 sidebar-outer text-center d-none d-sm-block">
             <div class="position-fixed col-2 shadow p-2 rounded">
-                <div>
+                <!-- <div>
                     <h3 class="text-center">Trending</h3>
                     <a href="#" class="badge badge-info">#Matematika</a>
                     <a href="#" class="badge badge-info">#TPB</a>
                     <a href="#" class="badge badge-info">#UTBK</a>
                     <a href="#" class="badge badge-info">#SBMPTN</a>
-                </div>
-                <hr class="m-1">
+                </div> -->
                 <div class="text-left">
-                    <h3 class="text-center">Top User</h3>
-                    <div class="">
-                        <img src="res/fc.jpg" width="24" height="24" class="rounded-circle mr-2">
-                        <a href="">Putin</a>
-                        <span class="badge badge-pill badge-light text-right">720 Poin</span>
-                    </div>
-                    <div class="">
-                        <img src="res/fc.jpg" width="24" height="24" class="rounded-circle mr-2">
-                        <a href="">Temennya Putin</a>
-                        <span class="badge badge-pill badge-light text-right">720 Poin</span>
-                    </div>
-                    <div class="">
-                        <img src="res/fc.jpg" width="24" height="24" class="rounded-circle mr-2">
-                        <a href="">Putin</a>
-                        <span class="badge badge-pill badge-light text-right">720 Poin</span>
-                    </div>
-                    <div class="">
-                        <img src="res/fc.jpg" width="24" height="24" class="rounded-circle mr-2">
-                        <a href="">Temennya Putin</a>
-                        <span class="badge badge-pill badge-light text-right">720 Poin</span>
-                    </div>
-                    <div class="">
-                        <img src="res/fc.jpg" width="24" height="24" class="rounded-circle mr-2">
-                        <a href="">Putin</a>
-                        <span class="badge badge-pill badge-light text-right">720 Poin</span>
-                    </div>
+                    <h3 class="text-center p-3">Top User</h3>
+                    <?php foreach ($top_user as $top) : ?>
+                        <div class="my-2">
+                            <img src="<?= base_url() ?>./assets/foto/<?= $top['foto']; ?>" width="24" height="24" class="rounded-circle mr-2">
+                            <a href=""><?= $top['nama']; ?></a>
+                            <span class="badge badge-pill badge-light text-right"><?= $top['total_poin']; ?> Poin</span>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
