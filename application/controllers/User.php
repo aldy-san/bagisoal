@@ -27,6 +27,20 @@ class User extends CI_Controller
         $this->load->view('user/index', $data);
         $this->load->view('template_home/footer');
     }
+    public function peringkat()
+    {
+        $data['title'] = 'Beranda';
+        $this->load->view('template_home/header', $data);
+        $data['user_terbaik'] = $this->m_admin->tampil_data_limit('users', 10, 'total_poin')->result();
+        if ($this->session->userdata('email')) {
+            $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('template_home/header_user', $data);
+        } else {
+            $this->load->view('template_home/header_umum');
+        }
+        $this->load->view('user/peringkat', $data);
+        $this->load->view('template_home/footer');
+    }
 
     // PROFIL
     public function profil()

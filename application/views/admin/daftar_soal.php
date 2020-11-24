@@ -19,7 +19,7 @@
                 <tr>
                     <th scope="col" class="align-middle">KODE SOAL</th>
                     <th scope="col" class="align-middle">SOAL</th>
-                    <th scope="col" class="align-middle">SUMBER</th>
+                    <th scope="col" class="align-middle">MATERI</th>
                     <th scope="col" colspan="3" class="align-middle">AKSI</th>
                 </tr>
             </thead>

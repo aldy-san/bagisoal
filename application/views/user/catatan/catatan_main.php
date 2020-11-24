@@ -2,6 +2,9 @@
     <div class="row">
         <div class="col-md-10 col-12 shadow p-3">
             <div class="container">
+                <div class="row">
+                    <h2>Berbagilah catatan dengan semua orang</h2>
+                </div>
                 <div class="row my-3 justify-content-between">
                     <a type="button" class="btn btn-dark shadow px-3" href="<?= base_url('catatan/tulis'); ?>">Berbagi Catatan</a>
                 </div>
@@ -52,7 +55,7 @@
                         <div class="my-2">
                             <img src="<?= base_url() ?>./assets/foto/<?= $top['foto']; ?>" width="24" height="24" class="rounded-circle mr-2">
                             <a href=""><?= $top['nama']; ?></a>
-                            <span class="badge badge-pill badge-light text-right"><?= $top['total_poin']; ?> Poin</span>
+                            <span class="badge badge-pill badge-light float-right"><?= $top['total_poin']; ?> Poin</span>
                         </div>
                     <?php endforeach; ?>
                 </div>

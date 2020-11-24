@@ -68,15 +68,8 @@
           </div>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="peringkatDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            PERINGKAT
-          </a>
-          <div class="dropdown-menu" aria-labelledby="peringkatDropdown">
-            <a class="dropdown-item" href="#">PROVINSI</a>
-            <a class="dropdown-item" href="#">KOTA</a>
-            <a class="dropdown-item" href="#">SEKOLAH</a>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= base_url('user/peringkat') ?>">PERINGKAT</a>
         </li>
 
         <li class="nav-item">

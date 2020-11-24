@@ -162,6 +162,7 @@ class Soal extends CI_Controller
             $this->load->view('template_home/footer');
         } else {
             if (!$this->session->userdata('email')) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Login terlebih dahulu!</div>');
                 redirect('auth');
             }
             $this->_jawab();

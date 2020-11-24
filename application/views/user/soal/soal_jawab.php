@@ -5,9 +5,8 @@
                 <div class="row p-2 shadow-sm">
                     <div class="col-12 text-left">
                         <?= $this->session->flashdata('message'); ?>
-                        <hr class="my-1">
-                        <p class="text-justify"><?= $soal['soal'] ?></p>
-                        <hr>
+                        <p class="text-justify my-2"><?= $soal['soal'] ?></p>
+                        <hr class="my-0">
                         <form action="<?= current_url() ?>" method="post">
                             <input type="hidden" id="kode_soal" name="kode_soal" value="<?= $soal['kode_soal'] ?>">
                             <div class="form-row justify-content-between">

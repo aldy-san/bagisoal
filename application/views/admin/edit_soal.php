@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-12">
                 <?= $this->session->flashdata('message'); ?>
-                <h2><i class="fas fa-edit mr-2"></i></i>EDIT SOAL - <span class="text-primary"><?= $soal['materi'] . $soal['kode_soal'] ?></span></h2>
+                <h2><i class="fas fa-edit mr-2"></i></i>EDIT SOAL - <span class="text-primary"><?= $soal['kode_soal'] ?></span></h2>
             </div>
         </div>
         <div class="row">

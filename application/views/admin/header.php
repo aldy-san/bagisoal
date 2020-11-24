@@ -22,4 +22,4 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarBawah" aria-controls="navbarBawah" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand ml-2" href="index.html" style="font-weight: bold;">BAGI<span class="text-warning">SOAL</span></a>
+    <a class="navbar-brand ml-2" href="<?= base_url('admin') ?>" style="font-weight: bold;">BAGI<span class="text-warning">SOAL</span></a>

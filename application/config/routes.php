@@ -10,7 +10,7 @@ $route['soal/(:num)']               = 'soal';
 $route['soal/jawab/(:num)']         = 'soal/jawab';
 $route['komunitas/forum']           = 'forum';
 $route['komunitas/catatan']         = 'catatan';
-$route['komunitas/catatan/(:any)']  = 'catatan';
+$route['komunitas/catatan/(:num)']  = 'catatan';
 //ADMIN
 $route['daftar/pengguna']           = 'admin/daftar_pengguna';
 $route['daftar/pengguna/(:num)']    = 'admin/daftar_pengguna';
@@ -32,5 +32,5 @@ $route['profil-admin']              = 'admin/profil';
 $route['profil-admin/edit']         = 'admin/edit_profil';
 
 $route['profil-saya']               = 'user/profil';
-$route['profil-saya/(:numnum)']        = 'user/profil';
+$route['profil-saya/(:num)']        = 'user/profil';
 $route['edit-profil']               = 'user/edit_profil';
