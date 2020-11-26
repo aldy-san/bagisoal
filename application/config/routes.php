@@ -9,6 +9,7 @@ $route['soal']                      = 'soal';
 $route['soal/(:num)']               = 'soal';
 $route['soal/jawab/(:num)']         = 'soal/jawab';
 $route['komunitas/forum']           = 'forum';
+$route['komunitas/forum/(:num)']    = 'forum';
 $route['komunitas/catatan']         = 'catatan';
 $route['komunitas/catatan/(:num)']  = 'catatan';
 //ADMIN

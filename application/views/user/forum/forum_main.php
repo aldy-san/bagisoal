@@ -20,7 +20,7 @@
                             <a href="" style="text-decoration: none;" class="text-dark"><b>nsyahrial666</b></a>
                         </h6>
                         <div class="pt-2">
-                            <a class="h5" style="text-decoration: none; cursor:pointer;" href="#">Apakah lorem ipsum nganu?</a>
+                            <a class="h5" style="text-decoration: none; cursor:pointer;" href="<?= base_url('forum/showforum/') ?>">Apakah lorem ipsum nganu?</a>
                             <p class="my-1">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,

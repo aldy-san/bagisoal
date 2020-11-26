@@ -16,7 +16,7 @@ class Forum extends CI_Controller
     {
         $data['title'] = 'Forum';
         $this->load->view('template_home/header', $data);
-        $data['top_user'] = $this->m_admin->tampil_data_limit('users', 5, 'id_user')->result_array();
+        $data['top_user'] = $this->m_admin->tampil_data_limit('users', 5, 'total_poin')->result_array();
         if ($this->session->userdata('email')) {
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('template_home/header_user', $data);
@@ -26,7 +26,7 @@ class Forum extends CI_Controller
         $this->load->view('user/forum/forum_main');
         $this->load->view('template_home/footer');
     }
-    public function show()
+    public function showforum()
     {
         $data['title'] = 'Forum';
         $this->load->view('template_home/header', $data);

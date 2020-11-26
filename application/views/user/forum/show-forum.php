@@ -47,7 +47,7 @@
                                     </h6>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                         tempor incididunt.</p>
-                                    <button class="btn btn-success my-2"><span class="badge badge-pill badge-dark mr-2">10</span> <b>SETUJU</b></button>
+                                    <button class="btn btn-success btn-sm mb-3 "><span class="badge badge-pill badge-dark mr-2">10</span> <b>SETUJU</b></button>
                                 </div>
                             </div>
                             <div class="row my-3 shadow-sm">
@@ -58,7 +58,7 @@
                                     </h6>
                                     <p>Excepteur sint occaecat cupidatat non
                                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <button class="btn btn-success my-2"><span class="badge badge-pill badge-dark mr-2">3</span> <b>SETUJU</b></button>
+                                    <button class="btn btn-success btn-sm mb-3"><span class="badge badge-pill badge-dark mr-2">3</span> <b>SETUJU</b></button>
                                 </div>
                             </div>
                             <div class="row my-3 shadow-sm">
@@ -70,7 +70,7 @@
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                                         quis nostrud exercitatio.</p>
-                                    <button class="btn btn-success my-2"><span class="badge badge-pill badge-dark mr-2">1</span> <b>SETUJU</b></button>
+                                    <button class="btn btn-success btn-sm mb-3"><span class="badge badge-pill badge-dark mr-2">1</span> <b>SETUJU</b></button>
                                 </div>
                             </div>
                         </div>
