@@ -11,19 +11,15 @@
                         </a>
                     </div>
                     <div class="col-10 text-left">
-                        <h2>Apakah yang dimaksud dengan lorem ipsum?</h2>
+                        <h2><?= $pertanyaan['judul_pertanyaan']?></h2>
                         <hr class="my-1">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p><?= $pertanyaan['pertanyaan']?></p>
                         <hr>
-                        <form>
+                        <form method="post" action="<?= current_url(); ?>">
                             <div class="form-row justify-content-between">
                                 <div class="col-10">
-                                    <input type="text" name="jawaban" placeholder="Jawab pertanyaan disini" class="form-control">
+                                    <input type="text" name="jawaban" placeholder="Jawab pertanyaan disini" class="form-control" >
+                                    <?= form_error('jawaban', '<small class="text-danger ml-0">', '</small>'); ?>
                                 </div>
                                 <div class="col-2">
                                     <button type="submit" class="btn btn-warning rounded">Jawab</button>
@@ -50,29 +46,18 @@
                                     <button class="btn btn-success btn-sm mb-3 "><span class="badge badge-pill badge-dark mr-2">10</span> <b>SETUJU</b></button>
                                 </div>
                             </div>
-                            <div class="row my-3 shadow-sm">
-                                <div class="col-12">
-                                    <h6 class="m-0 d-flex align-items-center">
-                                        <img src="res/ks.jpg" width="26" height="26" class="rounded-circle mr-1">
-                                        <a href="" style="text-decoration: none;" class="text-dark"><b>Orang lain</b></a>
-                                    </h6>
-                                    <p>Excepteur sint occaecat cupidatat non
-                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <button class="btn btn-success btn-sm mb-3"><span class="badge badge-pill badge-dark mr-2">3</span> <b>SETUJU</b></button>
-                                </div>
-                            </div>
+                            <?php foreach($jawaban as $j): ?>
                             <div class="row my-3 shadow-sm">
                                 <div class="col-12">
                                     <h6 class="m-0 d-flex align-items-center">
                                         <img src="res/sm.jpg" width="26" height="26" class="rounded-circle mr-1">
-                                        <a href="" style="text-decoration: none;" class="text-dark"><b>Temennya aldi</b></a>
+                                        <a href="" style="text-decoration: none;" class="text-dark"><b><?= $j['nama']?></b></a>
                                     </h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitatio.</p>
+                                    <p><?= $j['jawaban']?></p>
                                     <button class="btn btn-success btn-sm mb-3"><span class="badge badge-pill badge-dark mr-2">1</span> <b>SETUJU</b></button>
                                 </div>
                             </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
