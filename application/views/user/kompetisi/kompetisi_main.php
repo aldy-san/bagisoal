@@ -8,11 +8,11 @@
         <div class="col-6 align-self-centere p-0">
             <h5 class="my-auto text-left">Jelajahi Kompetisi Di Seluruh Indonesia</h5>
         </div>
-        <div class="col-6 col-lg-4 d-flex justify-content-end ">
+        <!-- <div class="col-6 col-lg-4 d-flex justify-content-end ">
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#cari">
                 Cari
             </button>
-        </div>
+        </div> -->
     </div>
     <div class="row">
         <div class="col-12">

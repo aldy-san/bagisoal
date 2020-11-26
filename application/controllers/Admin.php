@@ -150,12 +150,22 @@ class Admin extends CI_Controller
     {
         //PAGINATION
         $config['base_url'] = 'http://localhost/bagisoal/daftar/soal/';
-        $config['total_rows'] = $this->m_admin->jumlah_baris('soal');
         $config['per_page'] = 9;
         $config['start'] = $this->uri->segment(3);
-        $this->pagination->initialize($config);
-
-        $data['soal'] = $this->m_admin->tampil_data('soal', $config['per_page'], $config['start'], 'kode_soal')->result();
+        $config['first_url'] = $config['base_url'] . '?' . http_build_query($_GET);
+        if ($this->input->get('materi')) {
+            $where = [
+                'materi' => $this->input->get('materi')
+            ];
+            $config['total_rows'] = $this->m_admin->jumlah_baris_soal('soal', $where);
+            $data['soal'] = $this->m_admin->tampil_data_soal('soal', $config['per_page'], $config['start'], 'kode_soal', $where)->result();
+            $this->pagination->initialize($config);
+        } else {
+            $config['total_rows'] = $this->m_admin->jumlah_baris('soal');
+            $data['soal'] = $this->m_admin->tampil_data('soal', $config['per_page'], $config['start'], 'kode_soal')->result();
+            $this->pagination->initialize($config);
+        }
+        // $data['soal'] = $this->m_admin->tampil_data('soal', $config['per_page'], $config['start'], 'kode_soal')->result();
         $data['title'] = 'Daftar Soal';
         $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('admin/header', $data);

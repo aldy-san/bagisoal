@@ -30,6 +30,14 @@ class M_admin extends CI_Model
         $this->db->limit($limit, $start);
         return $this->db->get();
     }
+    public function tampil_data_soal($table, $limit, $start, $id, $where)
+    {
+        $this->db->from($table);
+        $this->db->where($where);
+        $this->db->order_by($id, 'DESC');
+        $this->db->limit($limit, $start);
+        return $this->db->get();
+    }
     public function tampil_data_limit($table, $limit, $id)
     {
         $this->db->from($table);
@@ -48,5 +56,11 @@ class M_admin extends CI_Model
     public function jumlah_baris($table)
     {
         return $this->db->get($table)->num_rows();
+    }
+    public function jumlah_baris_soal($table, $where)
+    {
+        $this->db->from($table);
+        $this->db->where($where);
+        return $this->db->get()->num_rows();
     }
 }

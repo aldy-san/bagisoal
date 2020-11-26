@@ -57,10 +57,12 @@
                     </div>
                     <div class="form-group col-12 col-md-3">
                         <label for="materi"><b>Materi</b></label>
-                        <select id="materi" name="materi" class="form-control">
-                            <option disabled value="">Materi...</option>
-                            <option value="MTK" <?= $soal['materi'] == 'MTK' ? ' selected="selected"' : ''; ?>>Matematika</option>
-                            <option value="IPA" <?= $soal['materi'] == 'IPA' ? ' selected="selected"' : ''; ?>>IPA</option>
+                        <select id="materi" name="materi" class="form-control" value="<?php echo set_value('materi'); ?>">
+                            <option selected disabled value="">Materi...</option>
+                            <option value="Matematika">Matematika</option>
+                            <option value="Fisika">Fisika</option>
+                            <option value="Biologi">Biologi</option>
+                            <option value="Kimia">Kimia</option>
                         </select>
                         <?= form_error('materi', '<small class="text-danger ml-0">', '</small>'); ?>
                     </div>

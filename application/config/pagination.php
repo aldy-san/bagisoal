@@ -25,5 +25,5 @@ $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" hre
 $config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
 $config['num_tag_open'] = '<li class="page-item">';
 $config['num_tag_close'] = '</li>';
-
+$config['reuse_query_string'] = TRUE;
 $config['attributes'] = array('class' => 'page-link');

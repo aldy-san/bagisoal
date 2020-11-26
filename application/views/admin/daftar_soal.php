@@ -14,6 +14,13 @@
         <h3><i class="fas fa-folder mr-2"></i>DAFTAR SOAL</h3>
         <hr>
         <a href="<?= base_url('admin/tambah_soal') ?>" class="btn btn-primary mb-3"><i class="fas fa-plus-square mr-2"></i>Tambah Data</a>
+        <div class="ml-auto">
+            <a href="<?= base_url('daftar/soal/') ?>" class="btn btn-info mb-3 <?= $this->input->get('materi') == '' ? 'active' : '' ?>">Semua</a>
+            <a href="<?= base_url('daftar/soal/') ?>?materi=Matematika" class="btn btn-info mb-3 <?= $this->input->get('materi') == 'Matematika' ? 'active' : '' ?>">Matematika</a>
+            <a href="<?= base_url('daftar/soal/') ?>?materi=Fisika" class="btn btn-info mb-3 <?= $this->input->get('materi') == 'Fisika' ? 'active' : '' ?>">Fisika</a>
+            <a href="<?= base_url('daftar/soal/') ?>?materi=Biologi" class="btn btn-info mb-3 <?= $this->input->get('materi') == 'Biologi' ? 'active' : '' ?>">Biologi</a>
+            <a href="<?= base_url('daftar/soal/') ?>?materi=Kimia" class="btn btn-info mb-3 <?= $this->input->get('materi') == 'Kimia' ? 'active' : '' ?>">Kimia</a>
+        </div>
         <table class="table table-sm table-responsive-sm text-center table-striped">
             <thead>
                 <tr>
