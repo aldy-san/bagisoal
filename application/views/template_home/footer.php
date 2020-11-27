@@ -71,6 +71,35 @@
     $(this).next('.custom-file-label').addClass("selected").html(fileName);
   })
 </script>
+<!-- <script type="text/javascript">
+  $(document).ready(function() {
+    $(".voteme").click(function() {
+      var id_vote = this.id;
+      var upOrDown = id_vote.split('_');
+      $.ajax({
+        type: "post",
+        url: "http://localhost/bagisoal/forum/voteme",
+        cache: false,
+        data: 'id_vote=' + upOrDown[0] + '&upOrDown=' + upOrDown[1],
+        success: function(response) {
+          try {
+            if (response == 'true') {
+              var newValue = parseInt($("#" + id_vote + '_result').text()) + 1;
+              $("#" + id_vote + '_result').html(newValue);
+            } else {
+              alert('Sorry Unable to update..');
+            }
+          } catch (e) {
+            alert('Exception while request..');
+          }
+        },
+        error: function() {
+          alert('Error while request..');
+        }
+      });
+    });
+  });
+</script> -->
 </body>
 
 </html>

@@ -50,7 +50,7 @@
                     <a href="#" class="badge badge-info">#SBMPTN</a>
                 </div> -->
                 <div class="text-left">
-                    <h3 class="text-center p-3">Top User</h3>
+                    <h2 class="text-center p-4">Top User</h2>
                     <?php foreach ($top_user as $top) : ?>
                         <div class="my-2">
                             <img src="<?= base_url() ?>./assets/foto/<?= $top['foto']; ?>" width="24" height="24" class="rounded-circle mr-2">
