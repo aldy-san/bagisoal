@@ -51,7 +51,7 @@ class Soal extends CI_Controller
         $data['id'] = $id;
 
         $data['soal'] = $this->m_soal->tampil_data_where('soal', $config['per_page'], $config['start'], 'kode_soal', ['materi' => 'Matematika'])->result();
-        $data['title'] = 'Soal';
+        $data['title'] = 'Soal Matematika';
         $this->load->view('template_home/header', $data);
         if ($this->session->userdata('email')) {
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
@@ -76,7 +76,7 @@ class Soal extends CI_Controller
         $data['id'] = $id;
 
         $data['soal'] = $this->m_soal->tampil_data_where('soal', $config['per_page'], $config['start'], 'kode_soal', ['materi' => 'Fisika'])->result();
-        $data['title'] = 'Soal';
+        $data['title'] = 'Soal Fisika';
         $this->load->view('template_home/header', $data);
         if ($this->session->userdata('email')) {
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
@@ -101,7 +101,7 @@ class Soal extends CI_Controller
         $data['id'] = $id;
 
         $data['soal'] = $this->m_soal->tampil_data_where('soal', $config['per_page'], $config['start'], 'kode_soal', ['materi' => 'Biologi'])->result();
-        $data['title'] = 'Soal';
+        $data['title'] = 'Soal Biologi';
         $this->load->view('template_home/header', $data);
         if ($this->session->userdata('email')) {
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
@@ -126,7 +126,7 @@ class Soal extends CI_Controller
         $data['id'] = $id;
 
         $data['soal'] = $this->m_soal->tampil_data_where('soal', $config['per_page'], $config['start'], 'kode_soal', ['materi' => 'Kimia'])->result();
-        $data['title'] = 'Soal';
+        $data['title'] = 'Soal Kimia';
         $this->load->view('template_home/header', $data);
         if ($this->session->userdata('email')) {
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();

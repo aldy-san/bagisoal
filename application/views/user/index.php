@@ -101,7 +101,7 @@
 				<a href="#" class="list-group-item list-group-item-action border-0">Berbagi Materi Kalkulus</a>
 				<a href="#" class="list-group-item list-group-item-action border-0">Berbagi Materi Kalkulus</a>
 				<a href="#" class="list-group-item list-group-item-action border-0">Berbagi Materi Kalkulus</a>
-				<button class="btn btn-outline-success rounded-0">Lebih..</button>
+				<button class="btn btn-primary rounded-0">Lebih..</button>
 			</ul>
 		</div>
 	</div>
