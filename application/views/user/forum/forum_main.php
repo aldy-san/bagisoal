@@ -11,10 +11,14 @@
                 <?php foreach ($pertanyaan as $p) : ?>
                     <div class="row shadow-sm py-3">
                         <div class="col-1 text-center text-dark">
-                            <?php $vote = $this->db->get_where('votes', ['up_down' => 1, 'id_pertanyaan' => ($p->id_pertanyaan)])->num_rows() ?>
-                            <p class="my-1"><?= $vote ?> Votes</p>
-                            <p class="my-1"><?= $p->jawaban ?> Jawaban</p>
-                            <p class="my-1"><?= $p->melihat ?> Melihat</p>
+                            <?php
+                            $vote_up = $this->db->get_where('votes', ['id_pertanyaan' => $p->id_pertanyaan, 'up_down' => 1])->num_rows();
+                            $vote_down = $this->db->get_where('votes', ['id_pertanyaan' => $p->id_pertanyaan, 'up_down' => -1])->num_rows();
+                            $vote = $vote_up - $vote_down;
+                            ?>
+                            <p class="my-1"><b class="badge badge-sm badge-danger"><?= $vote ?></b> Votes</p>
+                            <p class="my-1"><b class="badge badge-sm badge-warning text-white"><?= $p->jawaban ?></b> Jawaban</p>
+                            <p class="my-1"><b class="badge badge-sm badge-success"><?= $p->melihat ?></b> Melihat</p>
                         </div>
                         <div class="col-11  p-2">
                             <h6 class="m-0 d-flex align-items-center">

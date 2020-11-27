@@ -48,11 +48,13 @@ class Forum extends CI_Controller
             $data['title'] = 'Tanya Sesuatu';
             $data['pertanyaan'] = $this->m_soal->tampil_data_join_where('forum', 'id_pertanyaan', ['id_pertanyaan' => $id])->row_array();
             $data['jawaban'] = $this->m_soal->tampil_data_join_where('jawaban', 'id_jawaban', ['id_pertanyaan' => $id])->result_array();
-            $data['vote'] = $this->db->get_where('votes', ['id_pertanyaan' => $id])->row_array();
+            $data['vote'] = $this->db->get_where('votes', ['id_pertanyaan' => $id, 'id_user' => $this->session->userdata('id_user')])->row_array();
             if ($data['vote'] == null) {
                 $data['vote'] = ['up_down' => 0];
             }
-            $data['vote_row'] = $this->db->get_where('votes', ['id_pertanyaan' => $id, 'up_down' => 1])->num_rows();
+            $vote_up = $this->db->get_where('votes', ['id_pertanyaan' => $id, 'up_down' => 1])->num_rows();
+            $vote_down = $this->db->get_where('votes', ['id_pertanyaan' => $id, 'up_down' => -1])->num_rows();
+            $data['vote_row'] = $vote_up - $vote_down;
             $this->m_forum->update_forum($id, 'melihat', $data['pertanyaan']['melihat']);
             $this->load->view('template_home/header', $data);
             if ($this->session->userdata('email')) {
@@ -95,9 +97,9 @@ class Forum extends CI_Controller
             $this->db->insert('votes', $votes);
         } else {
             if ($cekVote['up_down'] != 1) {
-                $this->m_forum->update_votes($id, 'up_down', 1);
+                $this->m_forum->update_votes($id, 'up_down', 1, $id_user);
             } else {
-                $this->m_forum->update_votes($id, 'up_down', 0);
+                $this->m_forum->update_votes($id, 'up_down', 0, $id_user);
             }
         }
         redirect('forum/showforum/' . $id);
@@ -118,9 +120,9 @@ class Forum extends CI_Controller
             if ($cekVote['up_down'] != -1) {
                 // var_dump("asdas");
                 // die;
-                $this->m_forum->update_votes($id, 'up_down', -1);
+                $this->m_forum->update_votes($id, 'up_down', -1, $id_user);
             } else {
-                $this->m_forum->update_votes($id, 'up_down', 0);
+                $this->m_forum->update_votes($id, 'up_down', 0, $id_user);
             }
         }
         redirect('forum/showforum/' . $id);
