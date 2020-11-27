@@ -7,12 +7,12 @@
           <?= $this->session->flashdata('message'); ?>
           <div class="col-12 text-left">
             <h2><?= $catatan['judul_catatan']; ?></h2>
-            <div>
-              <img src="<?= base_url() ?>./assets/foto/<?= $catatan['foto']; ?>" width="26" height="26" class="rounded-circle mr-1">
-              <a href="" style="text-decoration: none;" class="text-secondary"><b><?= $catatan['nama']; ?></b></a>
+            <div class="fa-sm d-flex align-items-center">
+              <img src="<?= base_url() ?>./assets/foto/<?= $catatan['foto']; ?>" width="23" height="23" class="rounded-circle mr-1">
+              <a href="#" style="text-decoration: none;" class="text-dark"><b><?= $catatan['nama']; ?></b></a>
             </div>
             <hr class="my-1">
-            <p><?= $catatan['konten']; ?></p>
+            <p class="mt-3"><?= $catatan['konten']; ?></p>
             <hr>
             <form method="post" action="<?= current_url(); ?>">
               <div class="form-row justify-content-between">
@@ -21,7 +21,7 @@
                   <?= form_error('komentar', '<small class="text-danger ml-0">', '</small>'); ?>
                 </div>
                 <div class="col-2">
-                  <button type="submit" class="btn btn-warning rounded">Jawab</button>
+                  <button type="submit" class="btn btn-warning rounded"><b>Komentar</b></button>
                 </div>
               </div>
             </form>
