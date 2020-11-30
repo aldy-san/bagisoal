@@ -21,7 +21,7 @@
                 <?php foreach ($user_terbaik as $ut) : ?>
                     <tr>
                         <th scope="row"><?= ++$no ?></th>
-                        <td class="text-left"><?= $ut->nama ?></td>
+                        <td class="text-left"><a href="<?= base_url('user/profile/')?><?= $ut->id_user ?>"><?= $ut->nama ?></a></td>
                         <td><?= $ut->total_poin ?></td>
                     </tr>
                 <?php endforeach; ?>

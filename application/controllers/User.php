@@ -73,6 +73,30 @@ class User extends CI_Controller
         $this->load->view('user/profil', $data);
         $this->load->view('template_home/footer');
     }
+    public function profile()
+    {
+        $id    = $this->uri->segment(3);
+        $email = $this->session->userdata('email');
+        if ($this->session->userdata('id_user') == $id) {
+            redirect('user/profil');
+        }
+        $data['title'] = 'Profil';
+        $data['user'] = $this->db->get_where('users', ['email' => $email])->row_array();
+        $data['user_profil'] = $this->db->get_where('users', ['id_user' => $id])->row_array();
+        $data['total_jawab'] = $this->m_soal->user_jumlah_jawab($id);
+        $data['total_benar'] = $this->m_soal->user_jumlah_hasil($id, 'BENAR');
+        $data['total_salah'] = $this->m_soal->user_jumlah_hasil($id, 'SALAH');
+        if ($data['total_jawab'] > 0) {
+            $data['rasio']   = $data['total_benar'] / $data['total_jawab'] * 100;
+        } else {
+            $data['rasio'] = 0;
+        }
+
+        $this->load->view('template_home/header', $data);
+        $this->load->view('template_home/header_user', $data);
+        $this->load->view('user/profile', $data);
+        $this->load->view('template_home/footer');
+    }
     public function edit_profil()
     {
         if (!$this->session->userdata('email')) {
