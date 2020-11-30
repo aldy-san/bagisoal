@@ -34,6 +34,66 @@
                     <?= form_error('penyelenggara', '<small class="text-danger ml-0">', '</small>'); ?>
                 </div>
             </div>
+            <div class="row">
+                <h5 class="col"><b>Pilih soal dalam kompetisi ini </b></h5>
+            </div>
+            <div class="form-row justify-content-between">
+                <div class="form-group col-12 col-md-2 my-2">
+                    <label><b>Pilih Soal 1</b></label>
+                    <select class="form-control" name="soal1" id="soal1" value="<?php echo set_value('soal1'); ?>">
+                        <?php $soal1 = $soal; ?>
+                        <option value="" disabled selected>Pilih</option>
+                        <?php foreach ($soal1 as $soal1) : ?>
+                            <option value="<?= $soal1['kode_soal'] ?>" <?= ($soal1['kode_soal'] == $kompetisi['soal1']) ? 'selected' : ''; ?>><?= $soal1['kode_soal'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?= form_error('soal1', '<small class="text-danger ml-0">', '</small>'); ?>
+                </div>
+                <div class="form-group col-12 col-md-2 my-2">
+                    <label><b>Pilih Soal 2</b></label>
+                    <select class="form-control" name="soal2" id="soal2" value="<?php echo set_value('soal2'); ?>">
+                        <?php $soal1 = $soal; ?>
+                        <option value="" disabled selected>Pilih</option>
+                        <?php foreach ($soal1 as $soal1) : ?>
+                            <option value="<?= $soal1['kode_soal'] ?>" <?= ($soal1['kode_soal'] == $kompetisi['soal2']) ? 'selected' : ''; ?>><?= $soal1['kode_soal'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?= form_error('soal2', '<small class="text-danger ml-0">', '</small>'); ?>
+                </div>
+                <div class="form-group col-12 col-md-2 my-2">
+                    <label><b>Pilih Soal 3</b></label>
+                    <select class="form-control" name="soal3" id="soal3" value="<?php echo set_value('soal3'); ?>">
+                        <?php $soal1 = $soal; ?>
+                        <option value="" disabled selected>Pilih</option>
+                        <?php foreach ($soal1 as $soal1) : ?>
+                            <option value="<?= $soal1['kode_soal'] ?>" <?= ($soal1['kode_soal'] == $kompetisi['soal3']) ? 'selected' : ''; ?>><?= $soal1['kode_soal'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?= form_error('soal3', '<small class="text-danger ml-0">', '</small>'); ?>
+                </div>
+                <div class="form-group col-12 col-md-2 my-2">
+                    <label><b>Pilih Soal 4</b></label>
+                    <select class="form-control" name="soal4" id="soal4" value="<?php echo set_value('soal4'); ?>">
+                        <?php $soal1 = $soal; ?>
+                        <option value="" disabled selected>Pilih</option>
+                        <?php foreach ($soal1 as $soal1) : ?>
+                            <option value="<?= $soal1['kode_soal'] ?>" <?= ($soal1['kode_soal'] == $kompetisi['soal4']) ? 'selected' : ''; ?>><?= $soal1['kode_soal'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?= form_error('soal4', '<small class="text-danger ml-0">', '</small>'); ?>
+                </div>
+                <div class="form-group col-12 col-md-2 my-2">
+                    <label><b>Pilih Soal 5</b></label>
+                    <select class="form-control" name="soal5" id="soal5" value="<?php echo set_value('soal5'); ?>">
+                        <?php $soal1 = $soal; ?>
+                        <option value="" disabled selected>Pilih</option>
+                        <?php foreach ($soal1 as $soal1) : ?>
+                            <option value="<?= $soal1['kode_soal'] ?>" <?= ($soal1['kode_soal'] == $kompetisi['soal5']) ? 'selected' : ''; ?>><?= $soal1['kode_soal'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?= form_error('soal5', '<small class="text-danger ml-0">', '</small>'); ?>
+                </div>
+            </div>
             <div class="form-row">
                 <div class="form-group col-12 col-md-3 my-2">
                     <label><b>Batas Pendaftaran</b></label>

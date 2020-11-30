@@ -94,9 +94,7 @@
                         }
                         $cekTerjawab = $this->m_soal->cekTerjawab($id, $soal->kode_soal);
                         ?>
-                        <tr <?php if ($cekTerjawab) {
-                                echo "style='background-color: #B4F8C8;'";
-                            } ?>>
+                        <tr <?= $cekTerjawab ? "style='background-color: #B4F8C8;'" : ''; ?>>
                             <th scope="row"><a href="<?= base_url('soal/jawab/' . $soal->kode_soal) ?>" style="text-decoration: none; font-weight:600;"><?= substr($soal->soal, 0, 50) ?>...</a></th>
                             <td><?= $soal->materi ?></td>
                             <td><?= $soal->sumber ?></td>

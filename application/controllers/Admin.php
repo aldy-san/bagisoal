@@ -354,6 +354,32 @@ class Admin extends CI_Controller
             'Berakhir',
             'required',
         );
+        $this->form_validation->set_rules(
+            'soal1',
+            'Soal 1',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'soal2',
+            'Soal 2',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'soal3',
+            'Soal 3',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'soal4',
+            'Soal 4',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'soal5',
+            'Soal 5',
+            'required',
+        );
+        $data['soal'] = $this->db->get('soal')->result_array();
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Tambah kompetisi';
             $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
@@ -390,6 +416,11 @@ class Admin extends CI_Controller
             'batasPendaftaran'       => $this->input->post('batasPendaftaran'),
             'mulai'                  => $this->input->post('mulai'),
             'berakhir'               => $this->input->post('berakhir'),
+            'soal1'                  => $this->input->post('soal1'),
+            'soal2'                  => $this->input->post('soal2'),
+            'soal3'                  => $this->input->post('soal3'),
+            'soal4'                  => $this->input->post('soal4'),
+            'soal5'                  => $this->input->post('soal5'),
             'banner'                 => $banner
         );
         //log
@@ -585,6 +616,32 @@ class Admin extends CI_Controller
             'Berakhir',
             'required',
         );
+        $this->form_validation->set_rules(
+            'soal1',
+            'Soal 1',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'soal2',
+            'Soal 2',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'soal3',
+            'Soal 3',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'soal4',
+            'Soal 4',
+            'required',
+        );
+        $this->form_validation->set_rules(
+            'soal5',
+            'Soal 5',
+            'required',
+        );
+        $data['soal'] = $this->db->get('soal')->result_array();
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit kompetisi';
             $config['base_url'] = 'http://localhost/bagisoal/edit/kompetisi/';
@@ -625,6 +682,11 @@ class Admin extends CI_Controller
             'batasPendaftaran'       => $this->input->post('batasPendaftaran'),
             'mulai'                  => $this->input->post('mulai'),
             'berakhir'               => $this->input->post('berakhir'),
+            'soal1'                  => $this->input->post('soal1'),
+            'soal2'                  => $this->input->post('soal2'),
+            'soal3'                  => $this->input->post('soal3'),
+            'soal4'                  => $this->input->post('soal4'),
+            'soal5'                  => $this->input->post('soal5'),
             'banner'                 => $banner
         );
         $where = array(
@@ -632,6 +694,7 @@ class Admin extends CI_Controller
         );
         //log
         $id = $this->session->userdata('id_admin');
+        $last_id = $this->m_admin->edit_data('kompetisi', $data, $where);
         $log = array(
             'id_admin'      => $id,
             'keterangan'    => 'Edit',
@@ -693,6 +756,7 @@ class Admin extends CI_Controller
         );
         //log
         $id = $this->session->userdata('id_admin');
+        $last_id = $this->m_admin->edit_data('mitra', $data, $where);
         $log = array(
             'id_admin'      => $id,
             'keterangan'    => 'Edit',

@@ -27,97 +27,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
-                        <td>Kemdikbud RI</td>
-                        <td>8 Oktober 2020, 16:00 WIB</td>
-                        <td>10 Oktober 2020 - 11 Oktober 2020</td>
-                        <td><button type="button" class="btn btn-primary 
-                        <?php if (!$this->session->userdata('email')) {
-                            echo "disabled";
-                        } ?>">Daftar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
-                        <td>Universtias Negeri Jakarta</td>
-                        <td>8 Oktober 2020, 16:00 WIB</td>
-                        <td>10 Oktober 2020 - 11 Oktober 2020</td>
-                        <td><button type="button" class="btn btn-primary 
-                        <?php if (!$this->session->userdata('email')) {
-                            echo "disabled";
-                        } ?>">Daftar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
-                        <td>Kemdikbud RI</td>
-                        <td>8 Oktober 2020, 16:00 WIB</td>
-                        <td>10 Oktober 2020 - 11 Oktober 2020</td>
-                        <td><button type="button" class="btn btn-primary 
-                        <?php if (!$this->session->userdata('email')) {
-                            echo "disabled";
-                        } ?>">Daftar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
-                        <td>Universtias Negeri Jakarta</td>
-                        <td>8 Oktober 2020, 16:00 WIB</td>
-                        <td>10 Oktober 2020 - 11 Oktober 2020</td>
-                        <td><button type="button" class="btn btn-primary 
-                        <?php if (!$this->session->userdata('email')) {
-                            echo "disabled";
-                        } ?>">Daftar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
-                        <td>Universtias Negeri Jakarta</td>
-                        <td>8 Oktober 2020, 16:00 WIB</td>
-                        <td>10 Oktober 2020 - 11 Oktober 2020</td>
-                        <td><button type="button" class="btn btn-primary 
-                        <?php if (!$this->session->userdata('email')) {
-                            echo "disabled";
-                        } ?>">Daftar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
-                        <td>Kemdikbud RI</td>
-                        <td>8 Oktober 2020, 16:00 WIB</td>
-                        <td>10 Oktober 2020 - 11 Oktober 2020</td>
-                        <td><button type="button" class="btn btn-primary 
-                        <?php if (!$this->session->userdata('email')) {
-                            echo "disabled";
-                        } ?>">Daftar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><a href="<?= base_url('kompetisi/show') ?>">ON MIPA 2020</a></th>
-                        <td>Universtias Negeri Jakarta</td>
-                        <td>8 Oktober 2020, 16:00 WIB</td>
-                        <td>10 Oktober 2020 - 11 Oktober 2020</td>
-                        <td><button type="button" class="btn btn-primary 
-                        <?php if (!$this->session->userdata('email')) {
-                            echo "disabled";
-                        } ?>">Daftar</button></td>
-                    </tr>
+                    <?php foreach ($kompetisi as $kompetisi) : ?>
+                        <tr>
+                            <th scope="row"><a href="<?= base_url('kompetisi/show/') . $kompetisi->kode_kompetisi ?>"><?= $kompetisi->nama ?></a></th>
+                            <td><?= $kompetisi->penyelenggara ?></td>
+                            <td><?php setlocale(LC_ALL, 'IND');
+                                $stamp = strtotime($kompetisi->batasPendaftaran);
+                                echo strftime("%d %B %Y", $stamp);
+                                ?></td>
+                            <td><?php $stamp = strtotime($kompetisi->mulai);
+                                echo strftime("%d %B %Y", $stamp) ?> -
+                                <?php $stamp = strtotime($kompetisi->berakhir);
+                                echo strftime("%d %B %Y", $stamp) ?></td>
+                            <td>
+                                <?= $this->session->userdata('email') ? "<a href=" . base_url('kompetisi/daftar/') . $kompetisi->kode_kompetisi . " class='btn btn-primary'>Daftar</a>" : "<a href=" . base_url('auth') . " type='button' class='btn btn-outline-dark'>Login untuk mendaftar</a>"; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
     <div class="row justify-content-center m-2">
         <div class="col-4">
-            <nav aria-label="...">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="#">1<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+            <?= $this->pagination->create_links(); ?>
         </div>
     </div>
 </div>
