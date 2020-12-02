@@ -42,7 +42,7 @@
                   <div class="col-12">
                     <h6 class="m-0 d-flex align-items-center">
                       <img src="<?= base_url() ?>./assets/foto/<?= $k['foto']; ?>" width="26" height="26" class="rounded-circle mr-1">
-                      <a href="" style="text-decoration: none;" class="text-dark"><b><?= $k['nama'] ?></b></a>
+                      <a href="<?= base_url('user/profile/') ?><?= $k['id_user'] ?>" style="text-decoration: none;" class="text-dark"><b><?= $k['nama'] ?></b></a>
                     </h6>
                     <p><?= $k['komentar']; ?></p>
                   </div>

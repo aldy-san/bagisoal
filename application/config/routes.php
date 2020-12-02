@@ -12,6 +12,7 @@ $route['komunitas/forum']           = 'forum';
 $route['komunitas/forum/(:num)']    = 'forum';
 $route['komunitas/catatan']         = 'catatan';
 $route['komunitas/catatan/(:num)']  = 'catatan';
+
 //ADMIN
 $route['daftar/pengguna']           = 'admin/daftar_pengguna';
 $route['daftar/pengguna/(:num)']    = 'admin/daftar_pengguna';
@@ -35,3 +36,5 @@ $route['profil-admin/edit']         = 'admin/edit_profil';
 $route['profil-saya']               = 'user/profil';
 $route['profil-saya/(:num)']        = 'user/profil';
 $route['edit-profil']               = 'user/edit_profil';
+$route['peringkat']                 = 'user/peringkat';
+$route['peringkat/(:num)']          = 'user/peringkat';

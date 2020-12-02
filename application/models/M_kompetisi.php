@@ -13,4 +13,13 @@ class M_kompetisi extends CI_Model
         $this->db->where(['kode_kompetisi' => $kode_kompetisi]);
         return $this->db->get();
     }
+    public function cekTerdaftar($id, $kode)
+    {
+        $query = $this->db->get_where('user_kompetisi', ['id_user' => $id, 'kode_kompetisi' => $kode])->num_rows();
+        if ($query === 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

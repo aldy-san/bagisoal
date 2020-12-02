@@ -26,6 +26,7 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <?php foreach ($kompetisi as $kompetisi) : ?>
                         <tr>
@@ -40,7 +41,17 @@
                                 <?php $stamp = strtotime($kompetisi->berakhir);
                                 echo strftime("%d %B %Y", $stamp) ?></td>
                             <td>
-                                <?= $this->session->userdata('email') ? "<a href=" . base_url('kompetisi/daftar/') . $kompetisi->kode_kompetisi . " class='btn btn-primary'>Daftar</a>" : "<a href=" . base_url('auth') . " type='button' class='btn btn-outline-dark'>Login untuk mendaftar</a>"; ?>
+                                <?php
+                                if ($this->session->userdata('email')) {
+                                    if ($this->m_kompetisi->cekTerdaftar($this->session->userdata('id_user'), $kompetisi->kode_kompetisi)) {
+                                        echo "<a href=" . base_url('kompetisi/show/') . $kompetisi->kode_kompetisi . " class='btn btn-success'>Masuk</a>";
+                                    } else {
+                                        echo "<a href=" . base_url('kompetisi/daftar/') . $kompetisi->kode_kompetisi . " class='btn btn-primary'>Daftar</a>";
+                                    }
+                                } else {
+                                    echo "<a href=" . base_url('auth') . " type='button' class='btn btn-outline-dark'>Login untuk mendaftar</a>";
+                                }
+                                ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -17,7 +17,9 @@ class User extends CI_Controller
         $data['title'] = 'Beranda';
         $this->load->view('template_home/header', $data);
         $data['soal'] = $this->m_admin->tampil_data_limit('soal', 5, 'kode_soal')->result();
-        $data['user_terbaik'] = $this->m_admin->tampil_data_limit('users', 5, 'total_poin')->result();
+        $data['user_terbaik'] = $this->m_user->tampil_data_limit('users', 5, 'total_poin')->result();
+        $data['catatan'] = $this->m_user->tampil_komunitas_terbaru('catatan', 'id_catatan')->result();
+        $data['forum'] = $this->m_user->tampil_komunitas_terbaru('forum', 'id_pertanyaan')->result();
         if ($this->session->userdata('email')) {
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('template_home/header_user', $data);
@@ -30,8 +32,14 @@ class User extends CI_Controller
     public function peringkat()
     {
         $data['title'] = 'Beranda';
+        $config['base_url'] = 'http://localhost/bagisoal/peringkat/';
+        $config['total_rows'] = $this->m_admin->jumlah_baris('user_soal');
+        $config['per_page'] = 10;
+        $config['start'] = $this->uri->segment(2);
+        $this->pagination->initialize($config);
+
+        $data['user_terbaik'] = $this->m_user->tampil_data('users', $config['per_page'], $config['start'], 'total_poin')->result();
         $this->load->view('template_home/header', $data);
-        $data['user_terbaik'] = $this->m_admin->tampil_data_limit('users', 10, 'total_poin')->result();
         if ($this->session->userdata('email')) {
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('template_home/header_user', $data);
@@ -51,6 +59,7 @@ class User extends CI_Controller
         $config['per_page'] = 10;
         $config['start'] = $this->uri->segment(2);
         $this->pagination->initialize($config);
+
         $id = $this->session->userdata('id_user');
         $email = $this->session->userdata('email');
         if (!$id) {
@@ -58,6 +67,7 @@ class User extends CI_Controller
         }
         $data['title'] = 'Profil saya';
         $data['user'] = $this->db->get_where('users', ['email' => $email])->row_array();
+        $data['rank'] = $this->m_user->tampil_rank($id);
         $data['log'] = $this->m_soal->tampil_data_log('user_soal', $config['per_page'], $config['start'], 'id_jawaban', array('id_user' => $id));
         $data['total_jawab'] = $this->m_soal->user_jumlah_jawab($id);
         $data['total_benar'] = $this->m_soal->user_jumlah_hasil($id, 'BENAR');
@@ -82,6 +92,7 @@ class User extends CI_Controller
         }
         $data['title'] = 'Profil';
         $data['user'] = $this->db->get_where('users', ['email' => $email])->row_array();
+        $data['rank'] = $this->m_user->tampil_rank($id);
         $data['user_profil'] = $this->db->get_where('users', ['id_user' => $id])->row_array();
         $data['total_jawab'] = $this->m_soal->user_jumlah_jawab($id);
         $data['total_benar'] = $this->m_soal->user_jumlah_hasil($id, 'BENAR');

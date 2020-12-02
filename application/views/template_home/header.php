@@ -69,7 +69,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?= base_url('user/peringkat') ?>">PERINGKAT</a>
+          <a class="nav-link <?= ($this->uri->segment(1) == "peringkat") ? "active" : ''; ?>" href="<?= base_url('peringkat') ?>">PERINGKAT</a>
         </li>
 
         <li class="nav-item">

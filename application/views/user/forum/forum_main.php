@@ -23,7 +23,7 @@
                         <div class="col-11  p-2">
                             <h6 class="m-0 d-flex align-items-center">
                                 <img src="<?= base_url() ?>./assets/foto/<?= $p->foto; ?>" width="26" height="26" class="rounded-circle mr-1">
-                                <a href="" style="text-decoration: none;" class="text-dark"><b><?= $p->nama; ?></b></a>
+                                <a href="<?= base_url('user/profile/') ?><?= $p->id_user ?>" style="text-decoration: none;" class="text-dark"><b><?= $p->nama; ?></b></a>
                             </h6>
                             <div class="pt-2">
                                 <a class="h5 btn-klik" style="text-decoration: none; cursor:pointer;" href="<?= base_url('forum/showforum/') ?><?= $p->id_pertanyaan; ?>"><?= $p->judul_pertanyaan; ?></a>

@@ -17,16 +17,21 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $no = 0 ?>
+                <?php $no = $this->uri->segment(2) ?>
                 <?php foreach ($user_terbaik as $ut) : ?>
                     <tr>
                         <th scope="row"><?= ++$no ?></th>
-                        <td class="text-left"><a href="<?= base_url('user/profile/')?><?= $ut->id_user ?>"><?= $ut->nama ?></a></td>
+                        <td class="text-left"><a href="<?= base_url('user/profile/') ?><?= $ut->id_user ?>"><?= $ut->nama ?></a></td>
                         <td><?= $ut->total_poin ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <div class="row justify-content-center mt-4">
+            <div class="col-4">
+                <?= $this->pagination->create_links(); ?>
+            </div>
+        </div>
     </div>
 </div>
 </div>

@@ -17,7 +17,7 @@
                         <h6>ID USER : <?= $user['id_user'] ?></h6>
                         <h3><?= $user['nama'] ?></h3>
                         <h5>Poin: <?= $user['total_poin'] ?></h5>
-                        <h5>Peringkat: --</h5>
+                        <h5>Peringkat: <?= $rank['rank'] ?></h5>
                         <div class="my-2">
                             <i class="fas fa-envelope mr-2"></i>
                             <a href="" class="text-dark"><?= $user['email'] ?></a>

@@ -14,7 +14,7 @@
                         <div class="col-12 shadow-sm p-2">
                             <h6 class="m-0 d-flex align-items-center">
                                 <img src="<?= base_url() ?>./assets/foto/<?= $catatan->foto; ?>" width="26" height="26" class="rounded-circle mr-1">
-                                <a href="" style="text-decoration: none;" class="text-dark"><b><?= $catatan->nama; ?></b></a>
+                                <a href="<?= base_url('user/profile/') ?><?= $catatan->id_user ?>" style="text-decoration: none;" class="text-dark"><b><?= $catatan->nama; ?></b></a>
                             </h6>
                             <div class="pt-2">
                                 <h4><a style="text-decoration: none;" href="<?= base_url('catatan/showcatatan/') ?><?= $catatan->id_catatan; ?>"><?= $catatan->judul_catatan; ?></a></h4>

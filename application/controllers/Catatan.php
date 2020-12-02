@@ -21,7 +21,7 @@ class Catatan extends CI_Controller
 		$this->pagination->initialize($config);
 		$data['catatan'] = $this->m_soal->tampil_data_join_user('catatan', $config['per_page'], $config['start'], 'id_catatan')->result();
 
-		$data['top_user'] = $this->m_admin->tampil_data_limit('users', 5, 'total_poin')->result_array();
+		$data['top_user'] = $this->m_user->tampil_data_limit('users', 5, 'total_poin')->result_array();
 		$this->load->view('template_home/header', $data);
 		if ($this->session->userdata('email')) {
 			$data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();

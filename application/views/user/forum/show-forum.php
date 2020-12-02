@@ -21,7 +21,7 @@
                         <h2><?= $pertanyaan['judul_pertanyaan'] ?></h2>
                         <div class="fa-sm d-flex align-items-center">
                             <img src="<?= base_url() ?>./assets/foto/<?= $pertanyaan['foto']; ?>" width="23" height="23" class="rounded-circle mr-1">
-                            <a href="#" style="text-decoration: none;" class="text-dark"><b><?= $pertanyaan['nama']; ?></b></a>
+                            <a href="<?= base_url('user/profile/') ?><?= $pertanyaan['id_user'] ?>" style="text-decoration: none;" class="text-dark"><b><?= $pertanyaan['nama']; ?></b></a>
                         </div>
                         <hr class="my-1">
                         <p class="py-3"><?= $pertanyaan['pertanyaan'] ?></p>
