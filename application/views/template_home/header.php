@@ -76,11 +76,11 @@
           <a class="nav-link" href="#help">BANTUAN</a>
         </li>
       </ul>
-      <form class="form-inline mx-auto my-2 d-md-none d-lg-block">
+      <!-- <form class="form-inline mx-auto my-2 d-md-none d-lg-block">
         <div class="input-group">
           <input class="form-control mr-2 input" type="search" placeholder="Cari" aria-label="Search">
           <div class="input-group-append">
             <button class="btn btn-warning d-inline-block" type="submit"><i class="fas fa-search"></i></button>
           </div>
         </div>
-      </form>
+      </form> -->

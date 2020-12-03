@@ -34,7 +34,7 @@
                         <td>27-07-2001</td>
                         <td>Universitas Negeri Malang</td> -->
                         <td><?= $pengguna->email ?></td>
-                        <td><a href="" class="btn btn-info">Profil</a></td>
+                        <!-- <td><a href="" class="btn btn-info">Profil</a></td> -->
                         <td onclick="return confirm('yakin?')"><a type="button" href="<?= base_url('admin/hapus_users/' . $pengguna->id_user) ?>" id="btn-delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                         <!-- <td><button type="button" data-toggle="modal" data-target="#hapus" href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td> -->
                     </tr>

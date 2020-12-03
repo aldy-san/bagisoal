@@ -79,7 +79,11 @@ class User extends CI_Controller
         }
 
         $this->load->view('template_home/header', $data);
-        $this->load->view('template_home/header_user', $data);
+        if ($this->session->userdata('email')) {
+            $this->load->view('template_home/header_user', $data);
+        } else {
+            $this->load->view('template_home/header_umum');
+        }
         $this->load->view('user/profil', $data);
         $this->load->view('template_home/footer');
     }
@@ -104,7 +108,11 @@ class User extends CI_Controller
         }
 
         $this->load->view('template_home/header', $data);
-        $this->load->view('template_home/header_user', $data);
+        if ($this->session->userdata('email')) {
+            $this->load->view('template_home/header_user', $data);
+        } else {
+            $this->load->view('template_home/header_umum');
+        }
         $this->load->view('user/profile', $data);
         $this->load->view('template_home/footer');
     }

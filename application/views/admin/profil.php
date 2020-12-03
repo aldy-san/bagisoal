@@ -51,7 +51,7 @@
                 <tr>
                   <th class="" scope="col">AKTIVITAS</th>
                   <th class="" scope="col">WAKTU</th>
-                  <th class="" scope="col">KETERANGAN</th>
+                  <!-- <th class="" scope="col">KETERANGAN</th> -->
                 </tr>
               </thead>
               <tbody>
@@ -60,11 +60,11 @@
                     <td><?= $log->keterangan . " " . $log->data ?></td>
                     <td><?php $stamp = strtotime($log->tanggal);
                         echo date("d F Y", $stamp); ?></td>
-                    <td><a href="#" class="btn btn-sm btn-info">DETAIL</a></td>
+                    <!-- <td><a href="#" class="btn btn-sm btn-info">DETAIL</a></td> -->
                   </tr>
                 <?php endforeach; ?>
                 <tr>
-                  <td colspan="4" class="border-0"><button class="btn btn-sm btn-primary">Lihat Lebih</button></td>
+                  <!-- <td colspan="4" class="border-0"><button class="btn btn-sm btn-primary">Lihat Lebih</button></td> -->
                 </tr>
               </tbody>
             </table>

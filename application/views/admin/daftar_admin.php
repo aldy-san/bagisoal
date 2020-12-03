@@ -19,7 +19,6 @@
                     <th scope="col" class="align-middle"></th>
                     <th scope="col" class="align-middle">Nama Admin</th>
                     <th scope="col" class="align-middle">Jabatan</th>
-                    <th scope="col" class="align-middle"></th>
                 </tr>
             </thead>
             <tbody>
@@ -29,7 +28,7 @@
                         <th scope="row"><img src="<?= base_url() ?>./assets/foto/<?= $admin->foto; ?>" height="45" width="45" class="rounded-circle"></th>
                         <td class="align-middle"><?= $admin->nama_admin ?></td>
                         <td class="align-middle"><?= $admin->jabatan ?></td>
-                        <td><a href="profil-admin.html" class="btn btn-success">Profil</a></td>
+                        <!-- <td><a href="profil-admin.html" class="btn btn-success">Profil</a></td> -->
                     </tr>
                 <?php endforeach; ?>
             </tbody>

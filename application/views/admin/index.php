@@ -86,7 +86,7 @@
                             <th class="" scope="col">WAKTU</th>
                             <th class="" scope="col">AKTIVITAS</th>
                             <th class="" scope="col">ADMIN</th>
-                            <th class="" scope="col">KETERANGAN</th>
+                            <!-- <th class="" scope="col">KETERANGAN</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -98,7 +98,7 @@
                                     echo date("d F Y", $stamp); ?></td>
                                 <td><?= $log->keterangan . " " . $log->data ?></td>
                                 <td><?= $admin['nama_admin'] ?></td>
-                                <td><a href="#" class="btn btn-info">DETAIL</a></td>
+                                <!-- <td><a href="#" class="btn btn-info">DETAIL</a></td> -->
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

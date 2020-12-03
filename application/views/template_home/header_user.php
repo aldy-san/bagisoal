@@ -1,4 +1,4 @@
-<ul class="navbar-nav mr-md-3 d-flex ">
+<ul class="navbar-nav mr-md-3 d-flex ml-auto">
     <li class="nav-item">
         <div class="text-white align-self-center text-right">
             <p style="line-height: 25px" class="p-0 m-0"><?= $user['nama'] ?></p>

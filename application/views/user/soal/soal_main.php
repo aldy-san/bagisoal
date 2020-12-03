@@ -8,11 +8,11 @@
         <div class="col-2 align-self-center">
             <h5 class=" my-auto text-left">Jelajahi Soal</h5>
         </div>
-        <div class="float-right mr-3">
+        <!-- <div class="float-right mr-3">
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#filter">Filter</button>
-        </div>
+        </div> -->
         <!-- Modal -->
-        <div class="modal fade" id="filter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="filter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="row">
         <div class="col-12">
