@@ -58,6 +58,7 @@ class Kompetisi extends CI_Controller
             'kode_kompetisi' => $kode_kompetisi
         ];
         $this->db->insert('user_kompetisi', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil Mendaftar</div>');
         redirect('kompetisi/show/' . $kode_kompetisi);
     }
 }

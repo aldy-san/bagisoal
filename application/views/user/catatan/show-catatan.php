@@ -54,15 +54,12 @@
       </div>
     </div>
     <div class="col-3">
-      <div class="container text-left">
+      <div class="container text-center">
         <h4>Catatan Lain</h4>
         <ul style="list-style: none; text-indent: 0px;" class="py-1 px-0">
-          <li class="border-bottom py-2 "><a href="" class="text-dark">Catatan lain</a></li>
-          <li class="border-bottom py-2 "><a href="" class="text-dark">Catatan lain</a></li>
-          <li class="border-bottom py-2 "><a href="" class="text-dark">Catatan lain</a></li>
-          <li class="border-bottom py-2 "><a href="" class="text-dark">Catatan lain</a></li>
-          <li class="border-bottom py-2 "><a href="" class="text-dark">Catatan lain</a></li>
-          <li class="border-bottom py-2 "><a href="" class="text-dark">Catatan lain</a></li>
+          <?php foreach ($catatan_lain as $catatan) : ?>
+            <li class="border-bottom py-2 "><a href="<?= base_url('catatan/showcatatan/') ?><?= $catatan->id_catatan; ?>" class="text-dark"><?= $catatan->judul_catatan; ?></a></li>
+          <?php endforeach; ?>
         </ul>
       </div>
     </div>

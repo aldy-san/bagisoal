@@ -89,6 +89,7 @@ class Catatan extends CI_Controller
 			$data['title'] = 'Bagikan Catatan';
 			$data['catatan'] = $this->m_soal->tampil_data_join_where('catatan', 'id_catatan', ['id_catatan' => $id])->row_array();
 			$data['komentar'] = $this->m_soal->tampil_data_join_where('komentar', 'id_komentar', ['id_catatan' => $id])->result_array();
+			$data['catatan_lain'] = $this->m_user->tampil_komunitas_terbaru('catatan', 'id_catatan')->result();
 
 			$this->load->view('template_home/header', $data);
 			if ($this->session->userdata('email')) {

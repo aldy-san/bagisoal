@@ -3,12 +3,14 @@
         <div class="col-md-10 col-12 shadow p-3">
             <div class="container">
                 <div class="row">
+                    <?= $this->session->flashdata('message'); ?>
+                </div>
+                <div class="row">
                     <h2>Berbagilah catatan dengan semua orang</h2>
                 </div>
                 <div class="row my-3 justify-content-between">
                     <a type="button" class="btn btn-dark shadow px-3" href="<?= base_url('catatan/tulis'); ?>">Berbagi Catatan</a>
                 </div>
-                <?= $this->session->flashdata('message'); ?>
                 <?php foreach ($catatan as $catatan) : ?>
                     <div class="row py-3">
                         <div class="col-12 shadow-sm p-2">

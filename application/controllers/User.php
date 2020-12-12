@@ -31,7 +31,7 @@ class User extends CI_Controller
     }
     public function peringkat()
     {
-        $data['title'] = 'Beranda';
+        $data['title'] = 'Peringkat';
         $config['base_url'] = 'http://localhost/bagisoal/peringkat/';
         $config['total_rows'] = $this->m_admin->jumlah_baris('user_soal');
         $config['per_page'] = 10;

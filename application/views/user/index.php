@@ -96,14 +96,14 @@
 				<?php foreach ($catatan as $catatan) : ?>
 					<a href="<?= base_url('catatan/showcatatan/') ?><?= $catatan->id_catatan; ?>" class="shadow-sm list-group-item list-group-item-action border-0"><?= $catatan->judul_catatan; ?></a>
 				<?php endforeach; ?>
-				<a href="#" class="btn btn-outline-secondary rounded-0">Lebih..</a>
+				<a href="<?= base_url('komunitas/catatan') ?>" class="btn btn-outline-secondary rounded-0">Lebih..</a>
 			</ul>
 			<h4 class="mt-2 my-4"><b>FORUM</b></h4>
 			<ul class="list-group">
 				<?php foreach ($forum as $forum) : ?>
 					<a href="<?= base_url('forum/showforum/') ?><?= $forum->id_pertanyaan; ?>" class="shadow-sm list-group-item list-group-item-action border-0"><?= $forum->judul_pertanyaan; ?></a>
 				<?php endforeach; ?>
-				<a href="#" class="btn btn-outline-secondary rounded-0">Lebih..</a>
+				<a href="<?= base_url('komunitas/forum') ?>" class="btn btn-outline-secondary rounded-0">Lebih..</a>
 			</ul>
 		</div>
 	</div>
