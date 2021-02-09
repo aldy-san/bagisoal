@@ -75,7 +75,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules(
             'nama',
             'Nama',
-            'required|trim',
+            'required|trim|alpha',
         );
         $this->form_validation->set_rules(
             'email',
