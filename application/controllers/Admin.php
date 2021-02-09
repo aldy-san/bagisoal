@@ -282,6 +282,11 @@ class Admin extends CI_Controller
             'required',
         );
         $this->form_validation->set_rules(
+            'bab',
+            'bab',
+            'required',
+        );
+        $this->form_validation->set_rules(
             'pembahasan',
             'Pembahasan',
             'required',
@@ -310,6 +315,7 @@ class Admin extends CI_Controller
             'sumber'        => $this->input->post('sumber'),
             'materi'        => $this->input->post('materi'),
             'poin'          => $this->input->post('poin'),
+            'bab'    => $this->input->post('bab'),
             'pembahasan'    => $this->input->post('pembahasan')
         );
         //log
@@ -539,6 +545,11 @@ class Admin extends CI_Controller
             'required',
         );
         $this->form_validation->set_rules(
+            'bab',
+            'bab',
+            'required',
+        );
+        $this->form_validation->set_rules(
             'pembahasan',
             'Pembahasan',
             'required',
@@ -568,6 +579,7 @@ class Admin extends CI_Controller
             'sumber'        => $this->input->post('sumber'),
             'materi'        => $this->input->post('materi'),
             'poin'          => $this->input->post('poin'),
+            'bab'    => $this->input->post('bab'),
             'pembahasan'    => $this->input->post('pembahasan')
         );
         $where = array(

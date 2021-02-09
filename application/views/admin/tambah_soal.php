@@ -61,7 +61,7 @@
                                 <?= form_error('jawaban', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                             <div class="form-group col-12 col-md-3">
-                                <label for="sumber"><b>Materi</b></label>
+                                <label for="sumber"><b>Sumber</b></label>
                                 <input class="form-control" type="text" id="sumber" name="sumber" placeholder="Sumber" value="<?php echo set_value('sumber'); ?>">
                                 <?= form_error('sumber', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
@@ -80,6 +80,13 @@
                                 <label for="poin"><b>Poin</b></label>
                                 <input class="form-control" type="number" id="poin" name="poin" placeholder="Poin" value="<?php echo set_value('poin'); ?>">
                                 <?= form_error('poin', '<small class="text-danger ml-0">', '</small>'); ?>
+                            </div>
+                        </div>
+                        <div class="form-row my-2">
+                            <div class="form-group col-12">
+                                <label for="bab"><b>bab</b></label>
+                                <input class="form-control" type="text" id="bab" name="bab" placeholder="bab" value="<?php echo set_value('bab'); ?>">
+                                <?= form_error('bab', '<small class="text-danger ml-0">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="form-row my-2">

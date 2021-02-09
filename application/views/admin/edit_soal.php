@@ -74,6 +74,13 @@
                 </div>
                 <div class="form-row my-2">
                     <div class="form-group col-12">
+                        <label for="bab"><b>bab</b></label>
+                        <input class="form-control" type="text" id="bab" name="bab" placeholder="bab" value="<?= $soal['bab']; ?>">
+                        <?= form_error('bab', '<small class="text-danger ml-0">', '</small>'); ?>
+                    </div>
+                </div>
+                <div class="form-row my-2">
+                    <div class="form-group col-12">
                         <label for="pembahasan"><b>Pembahasan</b></label>
                         <textarea class="form-control col-12 p-2" id="pembahasan" name="pembahasan" placeholder="Masukkan Pembahasan"><?= $soal['pembahasan']; ?></textarea>
                         <?= form_error('pembahasan', '<small class="text-danger ml-0">', '</small>'); ?>

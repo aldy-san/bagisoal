@@ -77,7 +77,6 @@ class User extends CI_Controller
         } else {
             $data['rasio'] = 0;
         }
-
         $this->load->view('template_home/header', $data);
         if ($this->session->userdata('email')) {
             $this->load->view('template_home/header_user', $data);

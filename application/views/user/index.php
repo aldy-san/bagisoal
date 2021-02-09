@@ -41,6 +41,7 @@
 									<th scope="col">#</th>
 									<th scope="col">SOAL</th>
 									<th scope="col">MATERI</th>
+									<th scope="col">BAB</th>
 									<th scope="col">SUMBER</th>
 									<th scope="col">POIN</th>
 								</tr>
@@ -50,8 +51,9 @@
 								foreach ($soal as $soal) : ?>
 									<tr>
 										<th scope="row"><?= ++$no ?></th>
-										<td><a href="<?= base_url('soal/jawab/' . $soal->kode_soal) ?>"> <?= substr($soal->soal, 0, 50) ?>...</a></td>
+										<td class="text-left px-3"><a href="<?= base_url('soal/jawab/' . $soal->kode_soal) ?>"> <?= substr($soal->soal, 0, 50) ?>...</a></td>
 										<td><?= $soal->materi ?></td>
+										<td><?= $soal->bab ?></td>
 										<td><?= $soal->sumber ?></td>
 										<td><?= $soal->poin ?></td>
 									</tr>
